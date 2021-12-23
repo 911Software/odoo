@@ -112,6 +112,20 @@
                     </div>
                     <h2>Payment Terminals</h2>
                     <div class="row mt16 o_settings_container" id="o_settings_use_payment_terminals">
+			<!-- tag_cloud9_module_pos_cloud9: add Cloud9 Payment terminal -->
+                        <div class="col-12 col-lg-6 o_setting_box"
+                            id="cloud9_payment_terminal_setting"
+                            title="The transactions are processed by Cloud9. Set your Cloud9 credentials on the related payment method.">
+                            <div class="o_setting_left_pane">
+                                <field name="module_pos_cloud9"/>
+                            </div>
+                            <div class="o_setting_right_pane">
+                                <label for="module_pos_cloud9" string="Cloud9"/>
+                                <div class="text-muted">
+                                    Accept payments with a Cloud9 payment terminal
+                                </div>
+                            </div>
+                        </div>
                         <div class="col-12 col-lg-6 o_setting_box"
                             id="adyen_payment_terminal_setting"
                             title="The transactions are processed by Adyen. Set your Adyen credentials on the related payment method.">
