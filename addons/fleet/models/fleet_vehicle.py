@@ -31,7 +31,6 @@ class FleetVehicle(models.Model):
     active = fields.Boolean('Active', default=True, tracking=True)
     manager_id = fields.Many2one(
         'res.users', 'Fleet Manager',
-        compute='_compute_manager_id', store=True, readonly=False,
         domain=lambda self: [('groups_id', 'in', self.env.ref('fleet.fleet_group_manager').id)],
     )
     company_id = fields.Many2one(
@@ -216,7 +215,7 @@ class FleetVehicle(models.Model):
             ('expiration_date', '>', today),
             ('expiration_date', '<', limit_date),
             ('state', 'in', ['open', 'expired'])
-        ]).mapped('id')
+        ]).mapped('vehicle_id').ids
         res.append(('id', search_operator, res_ids))
         return res
 
@@ -232,7 +231,7 @@ class FleetVehicle(models.Model):
             ('expiration_date', '!=', False),
             ('expiration_date', '<', today),
             ('state', 'in', ['open', 'expired'])
-        ]).mapped('id')
+        ]).mapped('vehicle_id').ids
         res.append(('id', search_operator, res_ids))
         return res
 

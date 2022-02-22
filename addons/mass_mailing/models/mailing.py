@@ -395,6 +395,9 @@ class MassMailing(models.Model):
             if mailing.ab_testing_enabled and not mailing.campaign_id
         ]
         self.env['utm.campaign'].create(campaign_vals)
+
+        mailings._fix_attachment_ownership()
+
         return mailings
 
     def write(self, values):
@@ -409,6 +412,7 @@ class MassMailing(models.Model):
             raise ValidationError(_("A campaign should be set when A/B test is enabled"))
 
         result = super(MassMailing, self).write(values)
+        self._fix_attachment_ownership()
 
         if any(self.mapped('ab_testing_schedule_datetime')):
             schedule_date = min(m.ab_testing_schedule_datetime for m in self if m.ab_testing_schedule_datetime)
@@ -416,6 +420,11 @@ class MassMailing(models.Model):
             ab_testing_cron._trigger(at=schedule_date)
 
         return result
+
+    def _fix_attachment_ownership(self):
+        for record in self:
+            record.attachment_ids.write({'res_model': record._name, 'res_id': record.id})
+        return self
 
     @api.returns('self', lambda value: value.id)
     def copy(self, default=None):
@@ -1131,6 +1140,6 @@ class MassMailing(models.Model):
                 modified = True
 
         if modified:
-            return lxml.html.tostring(root)
+            return lxml.html.tostring(root, encoding='unicode')
 
         return body_html

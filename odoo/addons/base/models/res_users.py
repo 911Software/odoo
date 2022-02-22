@@ -21,6 +21,7 @@ import passlib.context
 import pytz
 from lxml import etree
 from lxml.builder import E
+from psycopg2 import sql
 
 from odoo import api, fields, models, tools, SUPERUSER_ID, _, Command
 from odoo.addons.base.models.ir_model import MODULE_UNINSTALL_FLAG
@@ -1025,6 +1026,9 @@ class Users(models.Model):
         if hasattr(self, 'check_credentials'):
             _logger.warning("The check_credentials method of res.users has been renamed _check_credentials. One of your installed modules defines one, but it will not be called anymore.")
 
+    def _mfa_type(self):
+        """ If an MFA method is enabled, returns its type as a string. """
+        return
 
     def _mfa_url(self):
         """ If an MFA method is enabled, returns the URL for its second step. """
@@ -1663,8 +1667,8 @@ class APIKeys(models.Model):
     create_date = fields.Datetime("Creation Date", readonly=True)
 
     def init(self):
-        # pylint: disable=sql-injection
-        self.env.cr.execute("""
+        table = sql.Identifier(self._table)
+        self.env.cr.execute(sql.SQL("""
         CREATE TABLE IF NOT EXISTS {table} (
             id serial primary key,
             name varchar not null,
@@ -1674,17 +1678,19 @@ class APIKeys(models.Model):
             key varchar not null,
             create_date timestamp without time zone DEFAULT (now() at time zone 'utc')
         )
-        """.format(table=self._table, index_size=INDEX_SIZE))
+        """).format(table=table, index_size=sql.Placeholder('index_size')), {
+            'index_size': INDEX_SIZE
+        })
 
         index_name = self._table + "_user_id_index_idx"
         if len(index_name) > 63:
             # unique determinist index name
             index_name = self._table[:50] + "_idx_" + sha256(self._table.encode()).hexdigest()[:8]
-        self.env.cr.execute("""
+        self.env.cr.execute(sql.SQL("""
         CREATE INDEX IF NOT EXISTS {index_name} ON {table} (user_id, index);
-        """.format(
-            table=self._table,
-            index_name=index_name
+        """).format(
+            table=table,
+            index_name=sql.Identifier(index_name)
         ))
 
     @check_identity

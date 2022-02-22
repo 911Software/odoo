@@ -41,13 +41,13 @@ PROJECT_TASK_READABLE_FIELDS = {
     'legend_normal',
     'legend_blocked',
     'legend_done',
+    'user_ids',
 }
 
 PROJECT_TASK_WRITABLE_FIELDS = {
     'name',
     'partner_id',
     'partner_email',
-    'user_ids',
     'date_deadline',
     'tag_ids',
     'sequence',
@@ -151,15 +151,21 @@ class Project(models.Model):
     _check_company_auto = True
 
     def _compute_attached_docs_count(self):
-        Attachment = self.env['ir.attachment']
+        self.env.cr.execute(
+            """
+            SELECT coalesce(task.project_id, project.id), count(*)
+              FROM ir_attachment attachment
+              LEFT JOIN project_task task ON attachment.res_model = 'project.task' AND task.id = attachment.res_id
+              LEFT JOIN project_project project ON attachment.res_model = 'project.project' AND project.id = attachment.res_id
+             WHERE project.id IN %(project_ids)s
+                OR task.project_id IN %(project_ids)s
+             GROUP BY coalesce(task.project_id, project.id)
+            """,
+            {"project_ids": tuple(self.ids)}
+        )
+        docs_count = dict(self.env.cr.fetchall())
         for project in self:
-            project.doc_count = Attachment.search_count([
-                '|',
-                '&',
-                ('res_model', '=', 'project.project'), ('res_id', '=', project.id),
-                '&',
-                ('res_model', '=', 'project.task'), ('res_id', 'in', project.task_ids.ids)
-            ])
+            project.doc_count = docs_count.get(project.id, 0)
 
     def _compute_task_count(self):
         task_data = self.env['project.task'].read_group(
@@ -435,6 +441,9 @@ class Project(models.Model):
                 # set the parent to the duplicated task
                 defaults['parent_id'] = old_to_new_tasks.get(task.parent_id.id, False)
             new_task = task.copy(defaults)
+            # If child are created before parent (ex sub_sub_tasks)
+            new_child_ids = [old_to_new_tasks[child.id] for child in task.child_ids if child.id in old_to_new_tasks]
+            tasks.browse(new_child_ids).write({'parent_id': new_task.id})
             old_to_new_tasks[task.id] = new_task.id
             tasks += new_task
 
@@ -740,7 +749,7 @@ class Project(models.Model):
                 'number': format_amount(self.env, self.analytic_account_balance, self.company_id.currency_id),
                 'action_type': 'object',
                 'action': 'action_view_analytic_account_entries',
-                'show': True,
+                'show': bool(self.analytic_account_id),
                 'sequence': 18,
             })
         return buttons
@@ -918,7 +927,7 @@ class Task(models.Model):
         help="Sum of the time planned of all the sub-tasks linked to this task. Usually less than or equal to the initially planned time of this task.")
     # Tracking of this field is done in the write function
     user_ids = fields.Many2many('res.users', relation='project_task_user_rel', column1='task_id', column2='user_id',
-        string='Assignees', default=lambda self: self.env.user, context={'active_test': False})
+        string='Assignees', default=lambda self: not self.env.user.share and self.env.user, context={'active_test': False}, tracking=True)
     # User names displayed in project sharing views
     portal_user_names = fields.Char(compute='_compute_portal_user_names', compute_sudo=True, search='_search_portal_user_names')
     # Second Many2many containing the actual personal stage for the current user
@@ -983,7 +992,7 @@ class Task(models.Model):
     allow_task_dependencies = fields.Boolean(related='project_id.allow_task_dependencies')
     # Tracking of this field is done in the write function
     depend_on_ids = fields.Many2many('project.task', relation="task_dependencies_rel", column1="task_id",
-                                     column2="depends_on_id", string="Blocked By",
+                                     column2="depends_on_id", string="Blocked By", tracking=True,
                                      domain="[('allow_task_dependencies', '=', True), ('id', '!=', id)]")
     dependent_ids = fields.Many2many('project.task', relation="task_dependencies_rel", column1="depends_on_id",
                                      column2="task_id", string="Block",
@@ -1393,8 +1402,9 @@ class Task(models.Model):
             (In other words, this compute is only used in project sharing views to see all assignees for each task)
         """
         if self.ids:
-            # fetch 'user_ids' in superuser mode (and override value in cache)
-            self._read(['user_ids'])
+            # fetch 'user_ids' in superuser mode (and override value in cache
+            # browse is useful to avoid miscache because of the newIds contained in self
+            self.browse(self.ids)._read(['user_ids'])
         for task in self.with_context(prefetch_fields=False):
             task.portal_user_names = ', '.join(task.user_ids.mapped('name'))
 
@@ -1673,6 +1683,8 @@ class Task(models.Model):
         if 'active' in vals and not vals.get('active') and any(self.mapped('recurrence_id')):
             # TODO: show a dialog to stop the recurrence
             raise UserError(_('You cannot archive recurring tasks. Please disable the recurrence first.'))
+        if 'recurrence_id' in vals and vals.get('recurrence_id') and any(not task.active for task in self):
+            raise UserError(_('Archived tasks cannot be recurring. Please unarchive the task first.'))
         # stage change: update date_last_stage_update
         if 'stage_id' in vals:
             vals.update(self.update_date_end(vals['stage_id']))
@@ -1719,41 +1731,7 @@ class Task(models.Model):
         # Track user_ids to send assignment notifications
         old_user_ids = {t: t.user_ids for t in self}
 
-        # X2Many Field Tracking
-        # Extract to a separate function if necessary
-        x2m_tracked_fields = {'user_ids', 'depend_on_ids'}
-        x2m_vals_common_fields = vals.keys() & x2m_tracked_fields
-        x2m_tracking_values = dict()
-        # Structured like so
-        # {
-        #     task: {
-        #         field_name: (value, display_value)
-        #     }
-        # }
-        if not self._context.get('mail_notrack') and x2m_vals_common_fields:
-            # Compute the value before the changes
-            for task in self:
-                task_values = x2m_tracking_values.setdefault(task, {})
-                for field in x2m_vals_common_fields:
-                    task_values[field] = (task[field], ', '.join(record.display_name for record in task[field]))
-
         result = super(Task, tasks).write(vals)
-        if x2m_tracking_values:
-            for task, tracking_values in x2m_tracking_values.items():
-                # Compile the different changes
-                MailTracking = self.env['mail.tracking.value']
-                tracking_value_ids = []
-                # Use mail.tracking.value to track our changes, this is to use the same format as the default tracking one
-                #  we just hack the record to think it is a text field and compile the data ourself beforehand
-                for field in tracking_values:
-                    if task[field] != tracking_values[field][0]:
-                        field_desc = task._fields[field]._description_string(self.env)
-                        old_value = tracking_values[field][1]
-                        new_value = ', '.join(record.display_name for record in task[field])
-                        tracking_value_ids.append((0, 0, MailTracking.create_tracking_values(
-                            old_value, new_value, field, {'type': 'char', 'string': field_desc}, 100, self._name)))
-                if tracking_value_ids:
-                    task._message_log(tracking_value_ids=tracking_value_ids)
 
         self._task_message_auto_subscribe_notify({task: task.user_ids - old_user_ids[task] - self.env.user for task in self})
 
@@ -1859,8 +1837,21 @@ class Task(models.Model):
         return new_followers
 
     def _mail_track(self, tracked_fields, initial_values):
-        result = super()._mail_track(tracked_fields, initial_values)
-        changes, tracking_value_ids = result
+        changes, tracking_value_ids  = super()._mail_track(tracked_fields, initial_values)
+        # Many2many tracking
+        if len(changes) > len(tracking_value_ids):
+            for changed_field in changes:
+                if tracked_fields[changed_field]['type'] in ['one2many', 'many2many']:
+                    field = self.env['ir.model.fields']._get(self._name, changed_field)
+                    vals = {
+                        'field': field.id,
+                        'field_desc': field.field_description,
+                        'field_type': field.ttype,
+                        'tracking_sequence': field.tracking,
+                        'old_value_char': ', '.join(initial_values[changed_field].mapped('name')),
+                        'new_value_char': ', '.join(self[changed_field].mapped('name')),
+                    }
+                    tracking_value_ids.append(Command.create(vals))
         # Track changes on depending tasks
         depends_tracked_fields = self._get_depends_tracked_fields()
         depends_changes = changes & depends_tracked_fields
@@ -1886,7 +1877,7 @@ class Task(models.Model):
                 })
                 for p in parent_ids:
                     p.message_post(body=body, subtype_id=subtype, tracking_value_ids=depends_tracking_value_ids)
-        return result
+        return changes, tracking_value_ids
 
     def _track_template(self, changes):
         res = super(Task, self)._track_template(changes)
@@ -2087,15 +2078,16 @@ class Task(models.Model):
         action = {
             'res_model': 'project.task',
             'type': 'ir.actions.act_window',
-            'context': {**self._context, 'default_depend_on_ids': [Command.link(self.id)]},
+            'context': {**self._context, 'default_depend_on_ids': [Command.link(self.id)], 'show_project_update': False},
+            'domain': [('depend_on_ids', '=', self.id)],
         }
         if self.dependent_tasks_count == 1:
             action['view_mode'] = 'form'
             action['res_id'] = self.dependent_ids.id
+            action['views'] = [(False, 'form')]
         else:
             action['name'] = _('Dependent Tasks')
             action['view_mode'] = 'tree,form,kanban,calendar,pivot,graph,activity'
-            action['domain'] = [('depend_on_ids', '=', self.id)]
         return action
 
     def action_recurring_tasks(self):

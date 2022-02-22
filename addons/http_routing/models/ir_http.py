@@ -395,7 +395,7 @@ class IrHttp(models.AbstractModel):
             if nearest_lang:
                 lang = Lang._lang_get(nearest_lang)
             else:
-                nearest_ctx_lg = not is_a_bot and cls.get_nearest_lang(request.env.context['lang'])
+                nearest_ctx_lg = not is_a_bot and cls.get_nearest_lang(request.env.context.get('lang'))
                 nearest_ctx_lg = nearest_ctx_lg in lang_codes and nearest_ctx_lg
                 preferred_lang = Lang._lang_get(cook_lang or nearest_ctx_lg)
                 lang = preferred_lang or cls._get_default_lang()
@@ -673,7 +673,8 @@ class IrHttp(models.AbstractModel):
         except werkzeug.exceptions.MethodNotAllowed:
             endpoint = router.match(path, method='GET', query_args=query_args)
         except werkzeug.routing.RequestRedirect as e:
-            new_url = e.new_url[7:]  # remove scheme
+            # get path from http://{path}?{current query string}
+            new_url = e.new_url.split('?')[0][7:]
             _, endpoint = self.url_rewrite(new_url, query_args)
             endpoint = endpoint and [endpoint]
         except werkzeug.exceptions.NotFound:

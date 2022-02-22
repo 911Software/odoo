@@ -49,6 +49,14 @@ class AccountMove(models.Model):
     _check_company_auto = True
     _sequence_index = "journal_id"
 
+    def init(self):
+        self.env.cr.execute("""
+            CREATE INDEX IF NOT EXISTS account_move_to_check_idx
+            ON account_move(journal_id) WHERE to_check = true;
+            CREATE INDEX IF NOT EXISTS account_move_payment_idx
+            ON account_move(journal_id, state, payment_state, move_type, date);
+        """)
+
     @property
     def _sequence_monthly_regex(self):
         return self.journal_id.sequence_override_regex or super()._sequence_monthly_regex
@@ -607,6 +615,7 @@ class AccountMove(models.Model):
             'analytic_account_id': tax_line.tax_line_id.analytic and tax_line.analytic_account_id.id,
             'tax_ids': [(6, 0, tax_line.tax_ids.ids)],
             'tax_tag_ids': [(6, 0, tax_line.tax_tag_ids.ids)],
+            'partner_id': tax_line.partner_id.id,
         }
 
     @api.model
@@ -628,6 +637,7 @@ class AccountMove(models.Model):
             'analytic_account_id': tax_vals['analytic'] and base_line.analytic_account_id.id,
             'tax_ids': [(6, 0, tax_vals['tax_ids'])],
             'tax_tag_ids': [(6, 0, tax_vals['tag_ids'])],
+            'partner_id': base_line.partner_id.id,
         }
 
     def _get_tax_force_sign(self):
@@ -758,12 +768,6 @@ class AccountMove(models.Model):
 
             currency = self.env['res.currency'].browse(taxes_map_entry['grouping_dict']['currency_id'])
 
-            # Don't create tax lines with zero balance.
-            if currency.is_zero(taxes_map_entry['amount']):
-                if taxes_map_entry['tax_line'] and not recompute_tax_base_amount:
-                    self.line_ids -= taxes_map_entry['tax_line']
-                continue
-
             # tax_base_amount field is expressed using the company currency.
             tax_base_amount = currency._convert(taxes_map_entry['tax_base_amount'], self.company_currency_id, self.company_id, self.date or fields.Date.context_today(self))
 
@@ -800,7 +804,6 @@ class AccountMove(models.Model):
                     **to_write_on_line,
                     'name': tax.name,
                     'move_id': self.id,
-                    'partner_id': line.partner_id.id,
                     'company_id': line.company_id.id,
                     'company_currency_id': line.company_currency_id.id,
                     'tax_base_amount': tax_base_amount,
@@ -889,6 +892,7 @@ class AccountMove(models.Model):
                     'name': _('%s (rounding)', biggest_tax_line.name),
                     'account_id': biggest_tax_line.account_id.id,
                     'tax_repartition_line_id': biggest_tax_line.tax_repartition_line_id.id,
+                    'tax_tag_ids': [(6, 0, biggest_tax_line.tax_tag_ids.ids)],
                     'exclude_from_invoice_tab': True,
                 })
 
@@ -1793,7 +1797,6 @@ class AccountMove(models.Model):
                                                                 }
             }
         """
-        lang_env = self.with_context(lang=partner.lang).env
         account_tax = self.env['account.tax']
 
         grouped_taxes = defaultdict(lambda: defaultdict(lambda: {'base_amount': 0.0, 'tax_amount': 0.0, 'base_line_keys': set()}))
@@ -1839,8 +1842,8 @@ class AccountMove(models.Model):
                 'tax_group_name': group.name,
                 'tax_group_amount': amounts['tax_amount'],
                 'tax_group_base_amount': amounts['base_amount'],
-                'formatted_tax_group_amount': formatLang(lang_env, amounts['tax_amount'], currency_obj=currency),
-                'formatted_tax_group_base_amount': formatLang(lang_env, amounts['base_amount'], currency_obj=currency),
+                'formatted_tax_group_amount': formatLang(self.env, amounts['tax_amount'], currency_obj=currency),
+                'formatted_tax_group_base_amount': formatLang(self.env, amounts['base_amount'], currency_obj=currency),
                 'tax_group_id': group.id,
                 'group_key': '%s-%s' %(subtotal_title, group.id),
             } for group, amounts in sorted(groups.items(), key=lambda l: l[0].sequence)]
@@ -1855,7 +1858,7 @@ class AccountMove(models.Model):
             subtotals_list.append({
                 'name': subtotal_title,
                 'amount': subtotal_value,
-                'formatted_amount': formatLang(lang_env, subtotal_value, currency_obj=currency),
+                'formatted_amount': formatLang(self.env, subtotal_value, currency_obj=currency),
             })
 
             subtotal_tax_amount = sum(group_val['tax_group_amount'] for group_val in groups_by_subtotal[subtotal_title])
@@ -1865,8 +1868,8 @@ class AccountMove(models.Model):
         return {
             'amount_total': amount_total,
             'amount_untaxed': amount_untaxed,
-            'formatted_amount_total': formatLang(lang_env, amount_total, currency_obj=currency),
-            'formatted_amount_untaxed': formatLang(lang_env, amount_untaxed, currency_obj=currency),
+            'formatted_amount_total': formatLang(self.env, amount_total, currency_obj=currency),
+            'formatted_amount_untaxed': formatLang(self.env, amount_untaxed, currency_obj=currency),
             'groups_by_subtotal': groups_by_subtotal,
             'subtotals': subtotals_list,
             'allow_tax_edition': False,
@@ -1961,9 +1964,9 @@ class AccountMove(models.Model):
             raise ValidationError(_('Posted journal entry must have an unique sequence number per company.\n'
                                     'Problematic numbers: %s\n') % ', '.join(r[1] for r in res))
 
-    @api.constrains('ref', 'move_type', 'partner_id', 'journal_id', 'invoice_date')
+    @api.constrains('ref', 'move_type', 'partner_id', 'journal_id', 'invoice_date', 'state')
     def _check_duplicate_supplier_reference(self):
-        moves = self.filtered(lambda move: move.is_purchase_document() and move.ref)
+        moves = self.filtered(lambda move: move.state == 'posted' and move.is_purchase_document() and move.ref)
         if not moves:
             return
 
@@ -2080,7 +2083,7 @@ class AccountMove(models.Model):
             # Shortcut to load the demo data.
             # Doing line.account_id triggers a default_get(['account_id']) that could returns a result.
             # A section / note must not have an account_id set.
-            if not line._cache.get('account_id') and not line.display_type and not line._origin:
+            if not line._cache.get('account_id') and not line._origin:
                 line.account_id = line._get_computed_account() or self.journal_id.default_account_id
             if line.product_id and not line._cache.get('name'):
                 line.name = line._get_computed_name()
@@ -2657,7 +2660,11 @@ class AccountMove(models.Model):
                 'credit': balance < 0.0 and -balance or 0.0,
             })
 
-            if not is_refund:
+            if not is_refund or self.tax_cash_basis_origin_move_id:
+                # We don't map tax repartition for non-refund operations, nor for cash basis entries.
+                # Indeed, cancelling a cash basis entry usually happens when unreconciling and invoice,
+                # in which case we always want the reverse entry to totally cancel the original one, keeping the same accounts,
+                # tags and repartition lines
                 continue
 
             # ==== Map tax repartition lines ====
@@ -2911,6 +2918,8 @@ class AccountMove(models.Model):
         if not self.env.su and not self.env.user.has_group('account.group_account_invoice'):
             raise AccessError(_("You don't have the access rights to post an invoice."))
         for move in to_post:
+            if move.partner_bank_id and not move.partner_bank_id.active:
+                raise UserError(_("The recipient bank account link to this invoice is archived.\nSo you cannot confirm the invoice."))
             if move.state == 'posted':
                 raise UserError(_('The entry %s (id %s) is already posted.') % (move.name, move.id))
             if not move.line_ids.filtered(lambda line: not line.display_type):
@@ -3137,7 +3146,6 @@ class AccountMove(models.Model):
             custom_layout="mail.mail_notification_paynow",
             model_description=self.with_context(lang=lang).type_name,
             force_email=True,
-            wizard_opened=True
         )
         return {
             'name': _('Send Invoice'),
@@ -3466,7 +3474,7 @@ class AccountMoveLine(models.Model):
         help="The move of this entry line.")
     move_name = fields.Char(string='Number', related='move_id.name', store=True, index=True)
     date = fields.Date(related='move_id.date', store=True, readonly=True, index=True, copy=False, group_operator='min')
-    ref = fields.Char(related='move_id.ref', store=True, copy=False, index=True, readonly=False)
+    ref = fields.Char(related='move_id.ref', store=True, copy=False, index=True, readonly=True)
     parent_state = fields.Selection(related='move_id.state', store=True, readonly=True)
     journal_id = fields.Many2one(related='move_id.journal_id', store=True, index=True, copy=False)
     company_id = fields.Many2one(related='move_id.company_id', store=True, readonly=True)

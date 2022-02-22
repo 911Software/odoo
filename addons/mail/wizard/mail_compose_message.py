@@ -258,7 +258,7 @@ class MailComposer(models.TransientModel):
                 new_attachment_ids = []
                 for attachment in wizard.attachment_ids:
                     if attachment in wizard.template_id.attachment_ids:
-                        new_attachment_ids.append(attachment.sudo().copy({'res_model': 'mail.compose.message', 'res_id': wizard.id}).id)
+                        new_attachment_ids.append(attachment.copy({'res_model': 'mail.compose.message', 'res_id': wizard.id}).id)
                     else:
                         new_attachment_ids.append(attachment.id)
                 new_attachment_ids.reverse()
@@ -334,9 +334,16 @@ class MailComposer(models.TransientModel):
                 'subject': record.subject or False,
                 'body_html': record.body or False,
                 'model_id': model.id or False,
-                'attachment_ids': [Command.set(record.attachment_ids.ids)],
             }
             template = self.env['mail.template'].create(values)
+
+            if record.attachment_ids:
+                attachments = self.env['ir.attachment'].sudo().browse(record.attachment_ids.ids).filtered(
+                    lambda a: a.res_model == 'mail.compose.message' and a.create_uid.id == self._uid)
+                if attachments:
+                    attachments.write({'res_model': template._name, 'res_id': template.id})
+                template.attachment_ids |= record.attachment_ids
+
             # generate the saved template
             record.write({'template_id': template.id})
             record._onchange_template_id_wrapper()
@@ -592,7 +599,8 @@ class MailComposer(models.TransientModel):
             res_ids = [res_ids]
 
         subjects = self._render_field('subject', res_ids, options={"render_safe": True})
-        bodies = self._render_field('body', res_ids, post_process=True)
+        # We want to preserve comments in emails so as to keep mso conditionals
+        bodies = self.with_context(preserve_comments=self.composition_mode == 'mass_mail')._render_field('body', res_ids, post_process=True)
         emails_from = self._render_field('email_from', res_ids)
         replies_to = self._render_field('reply_to', res_ids)
         default_recipients = {}

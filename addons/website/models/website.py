@@ -315,7 +315,7 @@ class Website(models.Model):
     def configurator_init(self):
         r = dict()
         company = self.get_current_website().company_id
-        configurator_features = self.env['website.configurator.feature'].search([])
+        configurator_features = self.env['website.configurator.feature'].with_context(lang=self.get_current_website().default_lang_id.code).search([])
         r['features'] = [{
             'id': feature.id,
             'name': feature.name,
@@ -329,7 +329,7 @@ class Website(models.Model):
         if company.logo and company.logo != company._get_logo():
             r['logo'] = company.logo.decode('utf-8')
         try:
-            result = self._website_api_rpc('/api/website/1/configurator/industries', {'lang': self.env.user.lang})
+            result = self._website_api_rpc('/api/website/1/configurator/industries', {'lang': self.get_current_website().default_lang_id.code})
             r['industries'] = result['industries']
         except AccessError as e:
             logger.warning(e.args[0])
@@ -424,7 +424,7 @@ class Website(models.Model):
             nb_snippets = len(snippet_list)
             for i, snippet in enumerate(snippet_list, start=1):
                 try:
-                    view_id = self.env['website'].with_context(website_id=website.id).viewref('website.' + snippet)
+                    view_id = self.env['website'].with_context(website_id=website.id, lang=website.default_lang_id.code).viewref('website.' + snippet)
                     if view_id:
                         el = html.fromstring(view_id._render(values=cta_data))
 
@@ -1279,6 +1279,9 @@ class Website(models.Model):
     def button_go_website(self, path='/', mode_edit=False):
         self._force()
         if mode_edit:
+            # If the user gets on a translated page (e.g /fr) the editor will
+            # never start. Forcing the default language fixes this issue.
+            path = url_for(path, self.default_lang_id.url_code)
             path += '?enable_editor=1'
         return {
             'type': 'ir.actions.act_url',
@@ -1420,9 +1423,13 @@ class Website(models.Model):
             snippet_occurences.append(match.group())
 
         # As well as every snippet dropped in html fields
-        snippet_regex = f'<([^>]*data-snippet="{snippet_id}"[^>]*)>'
-        snippet_dropped = 'UNION '.join(f'SELECT REGEXP_MATCHES({column}, \'{snippet_regex}\') FROM {table} ' for table, column in html_fields)
-        self.env.cr.execute(snippet_dropped)
+        self.env.cr.execute(sql.SQL(" UNION ").join(
+            sql.SQL('SELECT regexp_matches({}, {}) FROM {}').format(
+                sql.Identifier(column),
+                sql.Placeholder('snippet_regex'),
+                sql.Identifier(table)
+            ) for table, column in html_fields
+        ), {'snippet_regex': f'<([^>]*data-snippet="{snippet_id}"[^>]*)>'})
         results = self.env.cr.fetchall()
         for r in results:
             snippet_occurences.append(r[0][0])
@@ -1527,7 +1534,7 @@ class Website(models.Model):
             fuzzy_term = self._search_find_fuzzy_term(search_details, search)
             if fuzzy_term:
                 count, results = self._search_exact(search_details, fuzzy_term, limit, order)
-                if fuzzy_term == search:
+                if fuzzy_term.lower() == search.lower():
                     fuzzy_term = False
             else:
                 count, results = self._search_exact(search_details, search, limit, order)
@@ -1593,7 +1600,8 @@ class Website(models.Model):
 
         :return: term on which a search can be performed instead of the initial search
         """
-        if len(search) < 4 or ' ' in search:
+        # No fuzzy search for less that 4 characters, multi-words nor 80%+ numbers.
+        if len(search) < 4 or ' ' in search or len(re.findall(r'\d', search)) / len(search) >= 0.8:
             return search
         search = search.lower()
         words = set()

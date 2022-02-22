@@ -56,7 +56,7 @@ class AccountPayment(models.Model):
 
     # == Payment methods fields ==
     payment_method_line_id = fields.Many2one('account.payment.method.line', string='Payment Method',
-        readonly=False, store=True,
+        readonly=False, store=True, copy=False,
         compute='_compute_payment_method_line_id',
         domain="[('id', 'in', available_payment_method_line_ids)]",
         help="Manual: Pay or Get paid by any method outside of Odoo.\n"
@@ -889,7 +889,8 @@ class AccountPayment(models.Model):
                 'payment_type': payment.payment_type == 'outbound' and 'inbound' or 'outbound',
                 'move_id': None,
                 'ref': payment.ref,
-                'paired_internal_transfer_payment_id': payment.id
+                'paired_internal_transfer_payment_id': payment.id,
+                'date': payment.date,
             })
             paired_payment.move_id._post(soft=False)
             payment.paired_internal_transfer_payment_id = paired_payment

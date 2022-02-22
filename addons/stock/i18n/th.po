@@ -11,7 +11,7 @@
 # Odoo Thaidev <odoothaidev@gmail.com>, 2021
 # Seksan Poltree <seksan.poltree@gmail.com>, 2021
 # Krisa C, 2021
-# Wichanon Jamwutthipreecha, 2021
+# Wichanon Jamwutthipreecha, 2022
 # 
 msgid ""
 msgstr ""
@@ -19,7 +19,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-11-16 13:18+0000\n"
 "PO-Revision-Date: 2021-09-14 12:26+0000\n"
-"Last-Translator: Wichanon Jamwutthipreecha, 2021\n"
+"Last-Translator: Wichanon Jamwutthipreecha, 2022\n"
 "Language-Team: Thai (https://www.transifex.com/odoo/teams/41243/th/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -1923,7 +1923,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:stock.field_stock_move__date
 #: model_terms:ir.ui.view,arch_db:stock.view_move_form
 msgid "Date Scheduled"
-msgstr ""
+msgstr "วันที่กำหนด"
 
 #. module: stock
 #: model:ir.model.fields,help:stock.field_product_replenish__date_planned
@@ -2143,7 +2143,7 @@ msgstr "ที่อยู่จัดส่ง"
 #. module: stock
 #: model:ir.model.fields,field_description:stock.field_res_config_settings__module_delivery
 msgid "Delivery Methods"
-msgstr ""
+msgstr "วิธีจัดส่ง"
 
 #. module: stock
 #: code:addons/stock/models/stock_warehouse.py:0
@@ -2583,7 +2583,7 @@ msgstr ""
 #. module: stock
 #: model_terms:ir.ui.view,arch_db:stock.exception_on_picking
 msgid "Exception(s):"
-msgstr ""
+msgstr "ข้อยกเว้น:"
 
 #. module: stock
 #: code:addons/stock/models/stock_move.py:0
@@ -2644,7 +2644,7 @@ msgstr "กุมภาพันธ์"
 #. module: stock
 #: model:ir.model.fields,field_description:stock.field_res_config_settings__module_delivery_fedex
 msgid "FedEx Connector"
-msgstr ""
+msgstr "ตัวเชื่อม FedEx "
 
 #. module: stock
 #: model:ir.model.fields,field_description:stock.field_stock_package_destination__filtered_location
@@ -2816,7 +2816,7 @@ msgstr ""
 #. module: stock
 #: model_terms:ir.ui.view,arch_db:stock.report_replenishment_header
 msgid "Forecasted<br/>+ Pending"
-msgstr ""
+msgstr "คาดการณ์<br/>+ รอยืนยัน"
 
 #. module: stock
 #: model:ir.model.fields,field_description:stock.field_product_label_layout__print_format
@@ -3827,7 +3827,7 @@ msgstr ""
 #. module: stock
 #: model:ir.model.fields,field_description:stock.field_stock_rule__delay
 msgid "Lead Time"
-msgstr ""
+msgstr "ช่วงเวลานำการผลิต"
 
 #. module: stock
 #. openerp-web
@@ -4135,7 +4135,7 @@ msgstr ""
 #. module: stock
 #: model:ir.model.fields.selection,name:stock.selection__stock_picking_type__reservation_method__manual
 msgid "Manually"
-msgstr ""
+msgstr "ด้วยตนเอง"
 
 #. module: stock
 #: model_terms:ir.ui.view,arch_db:stock.stock_move_line_view_search
@@ -4808,7 +4808,7 @@ msgstr ""
 #: code:addons/stock/models/stock_picking.py:0
 #, python-format
 msgid "Order signed by %s"
-msgstr ""
+msgstr "คำสั่งเซ็นโดย %s"
 
 #. module: stock
 #: model:ir.model.fields,field_description:stock.field_stock_orderpoint_snooze__orderpoint_ids
@@ -5431,7 +5431,7 @@ msgstr "เคลื่อนย้ายสินค้า ( ในสต็อ
 #. module: stock
 #: model:ir.model,name:stock.model_product_packaging
 msgid "Product Packaging"
-msgstr ""
+msgstr "บรรจุภัณฑ์ของสินค้า"
 
 #. module: stock
 #: model:ir.actions.report,name:stock.label_product_packaging
@@ -6537,7 +6537,7 @@ msgstr ""
 #. module: stock
 #: model_terms:ir.ui.view,arch_db:stock.res_config_settings_view_form
 msgid "Sell and purchase products in different units of measure"
-msgstr ""
+msgstr "ขายและซื้อสินค้าในหน่วยวัดต่าง ๆ "
 
 #. module: stock
 #: model_terms:ir.ui.view,arch_db:stock.res_config_settings_view_form
@@ -6554,7 +6554,7 @@ msgstr ""
 #. module: stock
 #: model:ir.actions.act_window,name:stock.action_lead_mass_mail
 msgid "Send email"
-msgstr ""
+msgstr "ส่งอีเมล"
 
 #. module: stock
 #: model:ir.model.fields.selection,name:stock.selection__stock_warehouse__delivery_steps__pick_ship
@@ -9092,7 +9092,7 @@ msgstr ""
 #. module: stock
 #: model:mail.template,report_name:stock.mail_template_data_delivery_confirmation
 msgid "{{ (object.name or '').replace('/','_') }}"
-msgstr ""
+msgstr "{{ (object.name or '').replace('/','_') }}"
 
 #. module: stock
 #: model:mail.template,subject:stock.mail_template_data_delivery_confirmation

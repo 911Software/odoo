@@ -999,9 +999,9 @@ class BaseModel(metaclass=MetaModel):
 
                             if name == 'id':
                                 xml_ids = [xid for _, xid in value.__ensure_xml_id()]
-                                current[index] = ','.join(xml_ids) or False
+                                current[index] = ','.join(xml_ids)
                             else:
-                                current[index] = field.convert_to_export(value, record) or False
+                                current[index] = field.convert_to_export(value, record)
                             continue
 
                         lines2 = value._export_rows(fields2, _is_toplevel_call=False)
@@ -1013,7 +1013,7 @@ class BaseModel(metaclass=MetaModel):
                             # append the other lines at the end
                             lines += lines2[1:]
                         else:
-                            current[i] = False
+                            current[i] = ''
 
         # if any xid should be exported, only do so at toplevel
         if _is_toplevel_call and any(f[-1] == 'id' for f in fields):
@@ -3970,7 +3970,7 @@ Fields:
         The new records are initialized using the values from the list of dicts
         ``vals_list``, and if necessary those from :meth:`~.default_get`.
 
-        :param list vals_list:
+        :param Union[list[dict], dict] vals_list:
             values for the model's fields, as a list of dictionaries::
 
                 [{'field_name': field_value, ...}, ...]
@@ -4322,11 +4322,15 @@ Fields:
             FROM {0} node
             WHERE node.id IN %s
             AND child.parent_path LIKE concat(node.parent_path, '%%')
-            RETURNING child.id
+            RETURNING child.id, child.parent_path
         """
         cr.execute(query.format(self._table), [prefix, tuple(self.ids)])
-        modified_ids = {row[0] for row in cr.fetchall()}
-        self.browse(modified_ids).modified(['parent_path'])
+
+        # update the cache of updated nodes, and determine what to recompute
+        updated = dict(cr.fetchall())
+        records = self.browse(updated)
+        self.env.cache.update(records, self._fields['parent_path'], updated.values())
+        records.modified(['parent_path'])
 
     def _load_records_write(self, values):
         self.write(values)
@@ -4380,6 +4384,14 @@ Fields:
                 to_create.append(data)
                 continue
             d_id, d_module, d_name, d_model, d_res_id, d_noupdate, r_id = row
+            if self._name != d_model:
+                _logger.warning((
+                    "For external id %s "
+                    "when trying to create/update a record of model %s "
+                    "found record of different model %s (%s)"
+                    "\nUpdating record %s of target model %s"),
+                    xml_id, self._name, d_model, d_id, d_id, self._name
+                )
             record = self.browse(d_res_id)
             if r_id:
                 data['record'] = record

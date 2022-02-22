@@ -198,6 +198,8 @@ class ProductTemplate(models.Model):
                 list_price = taxes.compute_all(combination_info['list_price'], pricelist.currency_id, quantity_1, product, partner)[tax_display]
             else:
                 list_price = price
+            combination_info['price_extra'] = self.env['account.tax']._fix_tax_included_price_company(combination_info['price_extra'], product_taxes, taxes, company_id)
+            price_extra = taxes.compute_all(combination_info['price_extra'], pricelist.currency_id, quantity_1, product, partner)[tax_display]
             has_discounted_price = pricelist.currency_id.compare_amounts(list_price, price) == 1
 
             combination_info.update(
@@ -205,6 +207,7 @@ class ProductTemplate(models.Model):
                 base_unit_price=product.base_unit_price,
                 price=price,
                 list_price=list_price,
+                price_extra=price_extra,
                 has_discounted_price=has_discounted_price,
             )
 
@@ -231,11 +234,11 @@ class ProductTemplate(models.Model):
         :rtype: recordset of 'product.template' or recordset of 'product.product'
         """
         self.ensure_one()
-        if self.image_1920:
+        if self.image_128:
             return self
         variant = self.env['product.product'].browse(self._get_first_possible_variant_id())
         # if the variant has no image anyway, spare some queries by using template
-        return variant if variant.image_variant_1920 else self
+        return variant if variant.image_variant_128 else self
 
     def _get_current_company_fallback(self, **kwargs):
         """Override: if a website is set on the product or given, fallback to
@@ -363,11 +366,14 @@ class ProductTemplate(models.Model):
         fetch_fields = ['id', 'name', 'website_url']
         mapping = {
             'name': {'name': 'name', 'type': 'text', 'match': True},
-            'website_url': {'name': 'website_url', 'type': 'text'},
+            'website_url': {'name': 'website_url', 'type': 'text', 'truncate': False},
         }
         if with_image:
             mapping['image_url'] = {'name': 'image_url', 'type': 'html'}
         if with_description:
+            # Internal note is not part of the rendering.
+            search_fields.append('description')
+            fetch_fields.append('description')
             search_fields.append('description_sale')
             fetch_fields.append('description_sale')
             mapping['description'] = {'name': 'description_sale', 'type': 'text', 'match': True}

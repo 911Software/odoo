@@ -4,6 +4,7 @@
 from datetime import datetime, date
 import time
 from dateutil.relativedelta import relativedelta
+from freezegun import freeze_time
 from pytz import timezone, UTC
 
 from odoo import fields
@@ -104,36 +105,37 @@ class TestLeaveRequests(TestHrHolidaysCommon):
     @mute_logger('odoo.models.unlink', 'odoo.addons.mail.models.mail_mail')
     def test_limited_type_days_left(self):
         """  Employee creates a leave request in a limited category and has enough days left  """
-        aloc1_user_group = self.env['hr.leave.allocation'].with_user(self.user_hruser_id).create({
-            'name': 'Days for limited category',
-            'employee_id': self.employee_emp_id,
-            'holiday_status_id': self.holidays_type_2.id,
-            'number_of_days': 2,
-            'state': 'confirm',
-            'date_from': time.strftime('%Y-1-1'),
-            'date_to': time.strftime('%Y-12-31'),
-        })
-        aloc1_user_group.action_validate()
+        with freeze_time('2022-01-05'):
+            aloc1_user_group = self.env['hr.leave.allocation'].with_user(self.user_hruser_id).create({
+                'name': 'Days for limited category',
+                'employee_id': self.employee_emp_id,
+                'holiday_status_id': self.holidays_type_2.id,
+                'number_of_days': 2,
+                'state': 'confirm',
+                'date_from': time.strftime('%Y-1-1'),
+                'date_to': time.strftime('%Y-12-31'),
+            })
+            aloc1_user_group.action_validate()
 
-        holiday_status = self.holidays_type_2.with_user(self.user_employee_id)
-        self._check_holidays_status(holiday_status, 2.0, 0.0, 2.0, 2.0)
+            holiday_status = self.holidays_type_2.with_user(self.user_employee_id)
+            self._check_holidays_status(holiday_status, 2.0, 0.0, 2.0, 2.0)
 
-        hol = self.env['hr.leave'].with_user(self.user_employee_id).create({
-            'name': 'Hol11',
-            'employee_id': self.employee_emp_id,
-            'holiday_status_id': self.holidays_type_2.id,
-            'date_from': (datetime.today() - relativedelta(days=2)),
-            'date_to': datetime.today(),
-            'number_of_days': 2,
-        })
+            hol = self.env['hr.leave'].with_user(self.user_employee_id).create({
+                'name': 'Hol11',
+                'employee_id': self.employee_emp_id,
+                'holiday_status_id': self.holidays_type_2.id,
+                'date_from': (datetime.today() - relativedelta(days=2)),
+                'date_to': datetime.today(),
+                'number_of_days': 2,
+            })
 
-        holiday_status.invalidate_cache()
-        self._check_holidays_status(holiday_status, 2.0, 0.0, 2.0, 0.0)
+            holiday_status.invalidate_cache()
+            self._check_holidays_status(holiday_status, 2.0, 0.0, 2.0, 0.0)
 
-        hol.with_user(self.user_hrmanager_id).action_approve()
+            hol.with_user(self.user_hrmanager_id).action_approve()
 
-        holiday_status.invalidate_cache(['max_leaves'])
-        self._check_holidays_status(holiday_status, 2.0, 2.0, 0.0, 0.0)
+            holiday_status.invalidate_cache(['max_leaves'])
+            self._check_holidays_status(holiday_status, 2.0, 2.0, 0.0, 0.0)
 
     @mute_logger('odoo.models.unlink', 'odoo.addons.mail.models.mail_mail')
     def test_accrual_validity_time_valid(self):
@@ -527,3 +529,34 @@ class TestLeaveRequests(TestHrHolidaysCommon):
             'date_to': '2021-09-08',
             'number_of_days': 3,
         })
+
+    def test_company_leaves(self):
+        # First expired allocation
+        allocation = self.env['hr.leave.allocation'].create({
+            'name': 'Allocation',
+            'holiday_type': 'company',
+            'mode_company_id': self.env.company.id,
+            'holiday_status_id': self.holidays_type_1.id,
+            'number_of_days': 20,
+            'state': 'confirm',
+            'date_from': '2021-01-01',
+        })
+        allocation.action_validate()
+
+        req1_form = Form(self.env['hr.leave'].sudo())
+        req1_form.employee_ids.add(self.employee_emp)
+        req1_form.employee_ids.add(self.employee_hrmanager)
+        req1_form.holiday_status_id = self.holidays_type_1
+        req1_form.request_date_from = fields.Date.to_date('2021-12-06')
+        req1_form.request_date_to = fields.Date.to_date('2021-12-08')
+
+        self.assertEqual(req1_form.number_of_days, 3)
+        req1_form.save().action_approve()
+
+        req2_form = Form(self.env['hr.leave'].sudo())
+        req2_form.employee_ids.add(self.employee_hruser)
+        req2_form.holiday_status_id = self.holidays_type_1
+        req2_form.request_date_from = fields.Date.to_date('2021-12-06')
+        req2_form.request_date_to = fields.Date.to_date('2021-12-08')
+
+        self.assertEqual(req2_form.number_of_days, 3)

@@ -4,6 +4,7 @@
 # 
 # Translators:
 # Martin Trigaux, 2021
+# Malaz Abuidris <msea@odoo.com>, 2022
 # 
 msgid ""
 msgstr ""
@@ -11,7 +12,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-09-14 10:28+0000\n"
 "PO-Revision-Date: 2021-09-14 12:27+0000\n"
-"Last-Translator: Martin Trigaux, 2021\n"
+"Last-Translator: Malaz Abuidris <msea@odoo.com>, 2022\n"
 "Language-Team: Arabic (https://www.transifex.com/odoo/teams/41243/ar/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -43,7 +44,7 @@ msgstr ""
 #. module: website_blog
 #: model_terms:ir.ui.view,arch_db:website_blog.blog_post_short
 msgid "'. Showing results for '"
-msgstr ""
+msgstr "'. يتم عرض النتائج لـ '"
 
 #. module: website_blog
 #: model_terms:ir.ui.view,arch_db:website_blog.date_selector
@@ -627,7 +628,7 @@ msgstr ""
 #. module: website_blog
 #: model:ir.model.fields,field_description:website_blog.field_blog_post__can_publish
 msgid "Can Publish"
-msgstr ""
+msgstr "بإمكانه النشر "
 
 #. module: website_blog
 #: model:ir.model.fields,field_description:website_blog.field_blog_tag__category_id
@@ -884,7 +885,7 @@ msgstr "تجميع حسب"
 #: model:ir.model.fields,field_description:website_blog.field_blog_blog__has_message
 #: model:ir.model.fields,field_description:website_blog.field_blog_post__has_message
 msgid "Has Message"
-msgstr ""
+msgstr "توجد رسالة "
 
 #. module: website_blog
 #: model_terms:blog.post,content:website_blog.blog_post_3
@@ -985,7 +986,7 @@ msgstr "متابع"
 #: model:ir.model.fields,field_description:website_blog.field_blog_post__is_published
 #: model_terms:ir.ui.view,arch_db:website_blog.view_blog_post_list
 msgid "Is Published"
-msgstr ""
+msgstr "تم نشره "
 
 #. module: website_blog
 #: code:addons/website_blog/models/website_snippet_filter.py:0
@@ -1264,7 +1265,7 @@ msgstr ""
 #. module: website_blog
 #: model_terms:ir.ui.view,arch_db:website_blog.blog_post_short
 msgid "No results found for '"
-msgstr ""
+msgstr "لم يتم العثور على نتائج لـ’"
 
 #. module: website_blog
 #: model_terms:ir.ui.view,arch_db:website_blog.opt_sidebar_blog_index_tags
@@ -1468,7 +1469,7 @@ msgstr "قصر إمكانية النشر على هذا الموقع."
 #. module: website_blog
 #: model_terms:ir.ui.view,arch_db:website_blog.view_blog_post_form
 msgid "SEO"
-msgstr ""
+msgstr "تحسين محركات البحث "
 
 #. module: website_blog
 #: model:ir.model.fields,field_description:website_blog.field_blog_blog__is_seo_optimized
@@ -1542,7 +1543,7 @@ msgstr "اختر هذا العنصر من القائمة لإنشاء مقال �
 #: model:ir.model.fields,field_description:website_blog.field_blog_post__seo_name
 #: model:ir.model.fields,field_description:website_blog.field_blog_tag__seo_name
 msgid "Seo name"
-msgstr ""
+msgstr "اسم محسنات محرك البحث "
 
 #. module: website_blog
 #: model_terms:ir.ui.view,arch_db:website_blog.view_blog_post_form
@@ -2066,7 +2067,7 @@ msgstr "رسائل الموقع"
 #. module: website_blog
 #: model:ir.model,name:website_blog.model_website_snippet_filter
 msgid "Website Snippet Filter"
-msgstr ""
+msgstr "عامل تصفية قصاصات الموقع الإلكتروني "
 
 #. module: website_blog
 #: model:ir.model.fields,field_description:website_blog.field_blog_post__website_url
