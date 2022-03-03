@@ -51,3 +51,4 @@ tsconfig.json
 
 # avoid paymuse-odoo
 paymuse-odoo/
+myaddons/
