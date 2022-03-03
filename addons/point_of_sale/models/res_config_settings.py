@@ -7,8 +7,6 @@ class ResConfigSettings(models.TransientModel):
     _inherit = 'res.config.settings'
 
     sale_tax_id = fields.Many2one('account.tax', string="Default Sale Tax", related='company_id.account_sale_tax_id', readonly=False)
-    # tag_cloud9_module_pos_cloud9: add module_pos_cloud9
-    module_pos_cloud9 = fields.Boolean(string="Cloud9 Payment Terminal", help="The transactions are processed by Cloud9. Set your Cloud9 credentials on the related payment method.")
     module_pos_mercury = fields.Boolean(string="Vantiv Payment Terminal", help="The transactions are processed by Vantiv. Set your Vantiv credentials on the related payment method.")
     module_pos_adyen = fields.Boolean(string="Adyen Payment Terminal", help="The transactions are processed by Adyen. Set your Adyen credentials on the related payment method.")
     module_pos_six = fields.Boolean(string="Six Payment Terminal", help="The transactions are processed by Six. Set the IP address of the terminal on the related payment method.")
