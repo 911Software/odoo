@@ -3,10 +3,19 @@
 
 from datetime import timedelta
 from itertools import groupby
-
+import operator as py_operator
 from odoo import api, fields, models
 from odoo.tools.float_utils import float_round, float_is_zero
 
+
+OPERATORS = {
+    '<': py_operator.lt,
+    '>': py_operator.gt,
+    '<=': py_operator.le,
+    '>=': py_operator.ge,
+    '=': py_operator.eq,
+    '!=': py_operator.ne
+}
 
 class ProductTemplate(models.Model):
     _inherit = "product.template"
@@ -189,13 +198,17 @@ class ProductProduct(models.Model):
                 if not qty_per_kit:
                     continue
                 rounding = component.uom_id.rounding
-                component_res = res.get(component.id, {
-                    "virtual_available": float_round(component.virtual_available, precision_rounding=rounding),
-                    "qty_available": float_round(component.qty_available, precision_rounding=rounding),
-                    "incoming_qty": float_round(component.incoming_qty, precision_rounding=rounding),
-                    "outgoing_qty": float_round(component.outgoing_qty, precision_rounding=rounding),
-                    "free_qty": float_round(component.free_qty, precision_rounding=rounding),
-                })
+                component_res = (
+                    qties.get(component.id)
+                    if component.id in qties
+                    else {
+                        "virtual_available": float_round(component.virtual_available, precision_rounding=rounding),
+                        "qty_available": float_round(component.qty_available, precision_rounding=rounding),
+                        "incoming_qty": float_round(component.incoming_qty, precision_rounding=rounding),
+                        "outgoing_qty": float_round(component.outgoing_qty, precision_rounding=rounding),
+                        "free_qty": float_round(component.free_qty, precision_rounding=rounding),
+                    }
+                )
                 ratios_virtual_available.append(component_res["virtual_available"] / qty_per_kit)
                 ratios_qty_available.append(component_res["qty_available"] / qty_per_kit)
                 ratios_incoming_qty.append(component_res["incoming_qty"] / qty_per_kit)
@@ -273,3 +286,18 @@ class ProductProduct(models.Model):
             ('move_id.unbuild_id', '!=', False),
         ])
         return super()._count_returned_sn_products(sn_lot) + res
+
+    def _search_qty_available_new(self, operator, value, lot_id=False, owner_id=False, package_id=False):
+        '''extending the method in stock.product to take into account kits'''
+        product_ids = super(ProductProduct, self)._search_qty_available_new(operator, value, lot_id, owner_id, package_id)
+        kit_boms = self.env['mrp.bom'].search([('type', "=", 'phantom')])
+        kit_products = self.env['product.product']
+        for kit in kit_boms:
+            if kit.product_id:
+                kit_products |= kit.product_id
+            else:
+                kit_products |= kit.product_tmpl_id.product_variant_ids
+        for product in kit_products:
+            if OPERATORS[operator](product.qty_available, value):
+                product_ids.append(product.id)
+        return list(set(product_ids))

@@ -3,17 +3,17 @@
 # 	* im_livechat
 # 
 # Translators:
-# Martin Trigaux, 2021
 # SBO-Sebastien <sebastien@sbo-solutions.fr>, 2021
-# Cécile Collart <cco@odoo.com>, 2021
+# Martin Trigaux, 2022
+# Cécile Collart <cco@odoo.com>, 2022
 # 
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server saas~14.5\n"
+"Project-Id-Version: Odoo Server 15.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-09-14 10:28+0000\n"
+"POT-Creation-Date: 2022-01-24 08:19+0000\n"
 "PO-Revision-Date: 2021-09-14 12:23+0000\n"
-"Last-Translator: Cécile Collart <cco@odoo.com>, 2021\n"
+"Last-Translator: Cécile Collart <cco@odoo.com>, 2022\n"
 "Language-Team: French (https://www.transifex.com/odoo/teams/41243/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -172,7 +172,7 @@ msgstr "Nom des utilisateurs anonymes"
 #. module: im_livechat
 #: model:ir.model.fields,field_description:im_livechat.field_im_livechat_channel__are_you_inside
 msgid "Are you inside the matrix?"
-msgstr "Êtes-vous dans la matrice?"
+msgstr "Êtes-vous dans la matrice ?"
 
 #. module: im_livechat
 #. openerp-web
@@ -547,7 +547,7 @@ msgstr "Supprimer"
 #: code:addons/im_livechat/static/src/legacy/public_livechat.xml:0
 #, python-format
 msgid "Did we correctly answer your question ?"
-msgstr "Avons-nous correctement répondu à votre question? "
+msgstr "Avons-nous correctement répondu à votre question ? "
 
 #. module: im_livechat
 #: model:ir.model,name:im_livechat.model_digest_digest
@@ -677,7 +677,7 @@ msgstr "Comment puis-je vous aider ?"
 #. module: im_livechat
 #: model_terms:ir.ui.view,arch_db:im_livechat.im_livechat_channel_view_form
 msgid "How to use the Website Live Chat widget?"
-msgstr "Comment utiliser le widget de Live Chat sur le site web?"
+msgstr "Comment utiliser le widget de Live Chat sur le site web ?"
 
 #. module: im_livechat
 #: model:ir.model.fields,field_description:im_livechat.field_im_livechat_channel__id
@@ -946,6 +946,11 @@ msgstr "Marquer \"À faire\""
 #: model:ir.model.fields,field_description:im_livechat.field_im_livechat_channel_rule__sequence
 msgid "Matching order"
 msgstr "Commande correspondante"
+
+#. module: im_livechat
+#: model:ir.model,name:im_livechat.model_mail_message
+msgid "Message"
+msgstr "Message"
 
 #. module: im_livechat
 #: model_terms:ir.ui.view,arch_db:im_livechat.im_livechat_report_channel_view_search
@@ -1631,6 +1636,12 @@ msgid "User"
 msgstr "Utilisateur"
 
 #. module: im_livechat
+#: model:ir.model.fields,field_description:im_livechat.field_res_partner__user_livechat_username
+#: model:ir.model.fields,field_description:im_livechat.field_res_users__user_livechat_username
+msgid "User Livechat Username"
+msgstr ""
+
+#. module: im_livechat
 #: model:ir.model,name:im_livechat.model_res_users_settings
 msgid "User Settings"
 msgstr "Paramètres utilisateur"
@@ -1795,7 +1806,7 @@ msgstr "par exemple : /contactus"
 #. module: im_livechat
 #: model_terms:ir.ui.view,arch_db:im_livechat.im_livechat_channel_view_form
 msgid "e.g. Hello, how may I help you?"
-msgstr "ex. Bonjour, comment puis-je vous aider?"
+msgstr "ex. Bonjour, comment puis-je vous aider ?"
 
 #. module: im_livechat
 #: model_terms:ir.ui.view,arch_db:im_livechat.im_livechat_channel_view_form

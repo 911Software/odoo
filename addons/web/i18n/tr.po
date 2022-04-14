@@ -17,23 +17,24 @@
 # Murat Kaplan <muratk@projetgrup.com>, 2021
 # Ahmet Altinisik <aaltinisik@altinkaya.com.tr>, 2021
 # Saban Yildiz <sabany@projetgrup.com>, 2021
-# Ertuğrul Güreş <ertugrulg@projetgrup.com>, 2021
 # Erdinç Akın, 2021
 # Gurkan Erdogdu <gurkan.erdogdu@mechsoft.com.tr>, 2021
 # Doğan Altunbay <doganaltunbay@gmail.com>, 2021
 # Umur Akın <umura@projetgrup.com>, 2021
-# Murat Durmuş <muratd@projetgrup.com>, 2021
 # ismail eski <ismaileski@gmail.com>, 2021
 # abc Def <hdogan1974@gmail.com>, 2021
-# Ediz Duman <neps1192@gmail.com>, 2021
+# Nadir Gazioglu <nadirgazioglu@gmail.com>, 2022
+# Ediz Duman <neps1192@gmail.com>, 2022
+# Ertuğrul Güreş <ertugrulg@projetgrup.com>, 2022
+# Murat Durmuş <muratd@projetgrup.com>, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 15.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-05 10:54+0000\n"
+"POT-Creation-Date: 2022-01-24 08:20+0000\n"
 "PO-Revision-Date: 2021-09-14 12:27+0000\n"
-"Last-Translator: Ediz Duman <neps1192@gmail.com>, 2021\n"
+"Last-Translator: Murat Durmuş <muratd@projetgrup.com>, 2022\n"
 "Language-Team: Turkish (https://www.transifex.com/odoo/teams/41243/tr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -121,7 +122,7 @@ msgstr "'%s' doğru bir tarih değildir"
 #: code:addons/web/static/src/core/l10n/dates.js:0
 #, python-format
 msgid "'%s' is not a correct date or datetime"
-msgstr ""
+msgstr "'%s' doğru bir tarih veya tarih ve saat değil"
 
 #. module: web
 #. openerp-web
@@ -170,7 +171,7 @@ msgstr "'%s' tarih, tarihsaat veya saat biçimine çevrilemiyor"
 #: code:addons/web/static/src/legacy/js/views/basic/basic_model.js:0
 #, python-format
 msgid "'%s' is unsynchronized with '%s'."
-msgstr ""
+msgstr "'%s' ile senkronize değil '%s'."
 
 #. module: web
 #. openerp-web
@@ -299,7 +300,7 @@ msgstr ""
 #. module: web
 #: model_terms:ir.ui.view,arch_db:web.report_invoice_wizard_preview
 msgid "<span>$ <span class=\"oe_currency_value\">19,250.00</span></span>"
-msgstr ""
+msgstr "<span>$ <span class=\"oe_currency_value\">19,250.00</span></span>"
 
 #. module: web
 #: model_terms:ir.ui.view,arch_db:web.report_invoice_wizard_preview
@@ -2393,6 +2394,8 @@ msgstr "Daha Fazla... ("
 
 #. module: web
 #. openerp-web
+#: code:addons/web/static/src/legacy/xml/base.xml:0
+#: code:addons/web/static/src/legacy/xml/base.xml:0
 #: code:addons/web/static/src/webclient/loading_indicator/loading_indicator.xml:0
 #, python-format
 msgid "Loading"
@@ -2806,6 +2809,7 @@ msgstr ""
 #. module: web
 #. openerp-web
 #: code:addons/web/static/src/legacy/js/fields/field_utils.js:0
+#: code:addons/web/static/src/legacy/js/fields/relational_fields.js:0
 #, python-format
 msgid "No records"
 msgstr "Kayıt Yok"
@@ -2823,13 +2827,6 @@ msgstr "Kayıt bulunamadı !"
 #, python-format
 msgid "No results found"
 msgstr ""
-
-#. module: web
-#. openerp-web
-#: code:addons/web/static/src/legacy/js/fields/relational_fields.js:0
-#, python-format
-msgid "No results to show..."
-msgstr "Gösterilecek sonuç yok..."
 
 #. module: web
 #: code:addons/web/controllers/main.py:0
@@ -3573,6 +3570,14 @@ msgstr ""
 #, python-format
 msgid "Red"
 msgstr "Kırmızı"
+
+#. module: web
+#. openerp-web
+#: code:addons/web/static/src/legacy/xml/base.xml:0
+#: code:addons/web/static/src/legacy/xml/base.xml:0
+#, python-format
+msgid "Refresh"
+msgstr "Refresh"
 
 #. module: web
 #. openerp-web
@@ -4868,6 +4873,12 @@ msgstr "Evet"
 #, python-format
 msgid "Yesterday"
 msgstr "Dün"
+
+#. module: web
+#: code:addons/web/controllers/main.py:0
+#, python-format
+msgid "You are not allowed to upload an attachment here."
+msgstr "Buraya bir ek yüklemenize izin verilmiyor."
 
 #. module: web
 #. openerp-web

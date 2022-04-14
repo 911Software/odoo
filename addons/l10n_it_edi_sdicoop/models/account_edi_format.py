@@ -52,16 +52,26 @@ class AccountEdiFormat(models.Model):
                     _logger.info('Received file badly formatted, skipping: \n %s', file)
                     continue
 
-                invoice = self.env.ref('l10n_it_edi.edi_fatturaPA')._create_invoice_from_xml_tree(fattura['filename'], tree)
-                self.env['ir.attachment'].create({
+                invoice = self.env['account.move'].create({'move_type': 'in_invoice'})
+                attachment = self.env['ir.attachment'].create({
                     'name': fattura['filename'],
                     'raw': file,
                     'type': 'binary',
                     'res_model': 'account.move',
                     'res_id': invoice.id
                 })
-
+                if not self.env.context.get('test_skip_commit'):
+                    self.env.cr.commit() #In case something fails after, we still have the attachment
+                # So that we don't delete the attachment when deleting the invoice
+                attachment.res_id = False
+                attachment.res_model = False
+                invoice.unlink()
+                invoice = self.env.ref('l10n_it_edi.edi_fatturaPA')._create_invoice_from_xml_tree(fattura['filename'], tree)
+                attachment.write({'res_model': 'account.move',
+                                  'res_id': invoice.id})
                 proxy_acks.append(id_transaction)
+                if not self.env.context.get('test_skip_commit'):
+                    self.env.cr.commit()
 
             if proxy_acks:
                 try:
@@ -227,9 +237,29 @@ class AccountEdiFormat(models.Model):
                 else:
                     to_return[invoice] = {'attachment': invoice.l10n_it_edi_attachment_id, 'success': True}
             elif state == 'notificaScarto':
-                errors = [element.find('Descrizione').text for element in response_tree.xpath('//Errore')]
-                to_return[invoice] = {'error': self._format_error_message(_('The invoice has been refused by the Exchange System'), errors), 'blocking_level': 'error'}
-                invoice.l10n_it_edi_transaction = False
+                elements = response_tree.xpath('//Errore')
+                error_codes = [element.find('Codice').text for element in elements]
+                errors = [element.find('Descrizione').text for element in elements]
+                # Duplicated invoice
+                if '00404' in error_codes:
+                    idx = error_codes.index('00404')
+                    invoice.message_post(body=_(
+                        'This invoice number had already been submitted to the SdI, so it is'
+                        ' set as Sent. Please verify that the system is correctly configured,'
+                        ' because the correct flow does not need to send the same invoice'
+                        ' twice for any reason.\n'
+                        ' Original message from the SDI: %s', errors[idx]))
+                    to_return[invoice] = {'attachment': invoice.l10n_it_edi_attachment_id, 'success': True}
+                else:
+                    # Add helpful text if duplicated filename error
+                    if '00002' in error_codes:
+                        idx = error_codes.index('00002')
+                        errors[idx] = _(
+                            'The filename is duplicated. Try again (or adjust the FatturaPA Filename sequence).'
+                            ' Original message from the SDI: %s', [errors[idx]]
+                        )
+                    to_return[invoice] = {'error': self._format_error_message(_('The invoice has been refused by the Exchange System'), errors), 'blocking_level': 'error'}
+                    invoice.l10n_it_edi_transaction = False
             elif state == 'notificaMancataConsegna':
                 if invoice._is_commercial_partner_pa():
                     to_return[invoice] = {'error': _(

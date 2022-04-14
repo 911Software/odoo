@@ -3,7 +3,7 @@
 
 from odoo import api, fields, models, _
 from odoo.exceptions import UserError
-from odoo.tools import float_is_zero, float_repr
+from odoo.tools import float_is_zero, float_repr, float_compare
 from odoo.exceptions import ValidationError
 from collections import defaultdict
 
@@ -221,9 +221,10 @@ class ProductProduct(models.Model):
             if product.cost_method not in ('standard', 'average'):
                 continue
             quantity_svl = product.sudo().quantity_svl
-            if float_is_zero(quantity_svl, precision_rounding=product.uom_id.rounding):
+            if float_compare(quantity_svl, 0.0, precision_rounding=product.uom_id.rounding) <= 0:
                 continue
-            diff = new_price - product.standard_price
+            rounded_new_price = company_id.currency_id.round(new_price)
+            diff = rounded_new_price - product.standard_price
             value = company_id.currency_id.round(quantity_svl * diff)
             if company_id.currency_id.is_zero(value):
                 continue
@@ -231,7 +232,7 @@ class ProductProduct(models.Model):
             svl_vals = {
                 'company_id': company_id.id,
                 'product_id': product.id,
-                'description': _('Product value manually modified (from %s to %s)') % (product.standard_price, new_price),
+                'description': _('Product value manually modified (from %s to %s)') % (product.standard_price, rounded_new_price),
                 'value': value,
                 'quantity': 0,
             }

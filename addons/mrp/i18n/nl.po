@@ -4,15 +4,15 @@
 # 
 # Translators:
 # Martin Trigaux, 2021
-# Erwin van der Ploeg <erwin@odooexperts.nl>, 2021
+# Erwin van der Ploeg <erwin@odooexperts.nl>, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 15.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-16 13:18+0000\n"
+"POT-Creation-Date: 2022-01-24 08:19+0000\n"
 "PO-Revision-Date: 2021-09-14 12:24+0000\n"
-"Last-Translator: Erwin van der Ploeg <erwin@odooexperts.nl>, 2021\n"
+"Last-Translator: Erwin van der Ploeg <erwin@odooexperts.nl>, 2022\n"
 "Language-Team: Dutch (https://www.transifex.com/odoo/teams/41243/nl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -1800,12 +1800,6 @@ msgid "Expected duration (in minutes)"
 msgstr "Verwachte tijdsduur (in minuten)"
 
 #. module: mrp
-#: code:addons/mrp/models/mrp_production.py:0
-#, python-format
-msgid "Expected product tracked by Serial Number."
-msgstr "Verwacht product gevolgd door serienummer."
-
-#. module: mrp
 #: model:ir.model.fields,field_description:mrp.field_mrp_document__datas
 msgid "File Content (base64)"
 msgstr "Bestandsinhoud (base64)"
@@ -2295,6 +2289,17 @@ msgid "It has already been unblocked."
 msgstr "Het is al gedeblokkeerd."
 
 #. module: mrp
+#: code:addons/mrp/models/mrp_workorder.py:0
+#, python-format
+msgid ""
+"It is not possible to unplan one single Work Order. You should unplan the "
+"Manufacturing Order instead in order to unplan all the linked operations."
+msgstr ""
+"Het is niet mogelijk om van één enkele werkorder de planning ongedaan te "
+"maken. Je moet de planning van de productieorder in plaats daarvan ongedaan "
+"maken om alle gekoppelde bewerkingen te annuleren."
+
+#. module: mrp
 #: model:ir.model.fields,field_description:mrp.field_mrp_production__is_planned
 msgid "Its Operations are Planned"
 msgstr "de bewerkingen zijn gepland"
@@ -2592,7 +2597,7 @@ msgstr ""
 #. module: mrp
 #: model:res.groups,name:mrp.group_mrp_routings
 msgid "Manage Work Order Operations"
-msgstr "Beheer werkorder bewerkingen"
+msgstr "Beheer bewerkingen met werkorders"
 
 #. module: mrp
 #: model:ir.model.fields,field_description:mrp.field_mrp_routing_workcenter__time_cycle_manual
@@ -4568,6 +4573,18 @@ msgstr ""
 "liggen. Corrigeer dit om de werkorder op te slaan."
 
 #. module: mrp
+#: code:addons/mrp/models/mrp_bom.py:0
+#, python-format
+msgid ""
+"The product has already been used at least once, editing its structure may "
+"lead to undesirable behaviours. You should rather archive the product and "
+"create a new one with a new bill of materials."
+msgstr ""
+"Het product is al minstens één keer gebruikt, het wijzigen van de structuur "
+"kan leiden tot ongewenst gedrag. Je kunt het product beter archiveren en een"
+" nieuwe aanmaken met een nieuwe stuklijst."
+
+#. module: mrp
 #: code:addons/mrp/models/mrp_production.py:0
 #, python-format
 msgid "The quantity produced of by-products must be positive."
@@ -4940,6 +4957,12 @@ msgstr "Soort bewerking"
 #: model:ir.model.fields,help:mrp.field_mrp_unbuild__activity_exception_decoration
 msgid "Type of the exception activity on record."
 msgstr "Type van activiteit uitzondering op record."
+
+#. module: mrp
+#: code:addons/mrp/models/mrp_production.py:0
+#, python-format
+msgid "Unable to split with more than the quantity to produce."
+msgstr "Kan niet splitsen met meer dan de te produceren hoeveelheid."
 
 #. module: mrp
 #: model_terms:ir.ui.view,arch_db:mrp.mrp_production_workorder_tree_editable_view
@@ -5400,8 +5423,10 @@ msgid ""
 "produce a product. They are attached to bills of materials that will define "
 "the required components."
 msgstr ""
-"Werkorder bewerkingen staan je toe om productie bewerkingen aan te maken en te beheren die gevolgd moeten worden in werkplekken om\n"
-"het product te produceren. Ze zijn gekoppeld aan de stuklijst die de vereiste ruwe materialen definieert."
+"Met bewerkingen met werkorders kunt je de productiebewerkingen  beheren die "
+"op de werkplekken moeten worden uitgevoerd om een product te produceren. "
+"Bewerkingen zijn gekoppeld aan stuklijsten die welke de te verbruiken "
+"componenten bevatten."
 
 #. module: mrp
 #: model:ir.model.fields,field_description:mrp.field_stock_move__workorder_id
@@ -5634,12 +5659,6 @@ msgid "You cannot move a manufacturing order once it is cancelled or done."
 msgstr ""
 "Je kunt een productieorder niet verplaatsen nadat deze is geannuleerd of "
 "voltooid."
-
-#. module: mrp
-#: code:addons/mrp/models/mrp_production.py:0
-#, python-format
-msgid "Unable to split with more than the quantity to produce."
-msgstr ""
 
 #. module: mrp
 #: code:addons/mrp/models/mrp_workorder.py:0

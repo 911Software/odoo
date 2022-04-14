@@ -4,7 +4,6 @@
 # 
 # Translators:
 # f91684c3ff9ec3e650d5c8461e534581_686eae3 <449b96d9f63071f94d89e129677b83de_366193>, 2021
-# Martin Trigaux, 2021
 # Ermin Trevisan <trevi@twanda.com>, 2021
 # Chris Egal <sodaswed@web.de>, 2021
 # Jan Meyer, 2021
@@ -12,6 +11,7 @@
 # qndi <andreas.brueckl@datenpol.at>, 2021
 # Andreas Jonderko <a.jonderko@gastronovi.com>, 2022
 # Felix Schubert <felix.schubert@go-erp.com>, 2022
+# Martin Trigaux, 2022
 # Friederike Fasterling-Nesselbosch, 2022
 # 
 msgid ""
@@ -510,7 +510,7 @@ msgstr ""
 "\n"
 "\n"
 "Mit diesem Modul kann der Kassierer schnell prozentbasierte\n"
-"Rabatt für einen Kunden.\n"
+"Rabatt für einen Kunden berechnen und anwenden.\n"
 "\n"
 
 #. module: base
@@ -740,6 +740,8 @@ msgid ""
 "        Allows users to easily export accounting data that can be imported to a 3rd party that does 1099 e-filing.\n"
 "    "
 msgstr ""
+"\n"
+"Ermöglicht den Benutzern den einfachen Export von Buchhaltungsdaten, die in ein Drittunternehmen importiert werden können, das die elektronische 1099-Einreichung vornimmt."
 
 #. module: base
 #: model:ir.module.module,description:base.module_documents
@@ -785,6 +787,8 @@ msgid ""
 "        Bridge module between belgian accounting and Base address extended\n"
 "    "
 msgstr ""
+"\n"
+"Bridge-Modul zwischen belgischer Buchhaltung und Basisadresse erweitert"
 
 #. module: base
 #: model:ir.module.module,description:base.module_l10n_be_reports_sms
@@ -803,6 +807,9 @@ msgid ""
 "        Bridge module between point_of_sale and account_reports,\n"
 "        for tax reporting."
 msgstr ""
+"\n"
+"Bridgemodul zwischen point_of_sale und account_reports,\n"
+"für Steuerberichte."
 
 #. module: base
 #: model:ir.module.module,description:base.module_purchase_intrastat
@@ -975,6 +982,8 @@ msgid ""
 "        Disallowed Expenses Data for Belgium\n"
 "    "
 msgstr ""
+"\n"
+"Daten über nicht zulässige Auslagen für Belgien"
 
 #. module: base
 #: model:ir.module.module,description:base.module_helpdesk_fsm_report
@@ -1060,6 +1069,8 @@ msgid ""
 "        Enterprise digest data\n"
 "    "
 msgstr ""
+"\n"
+"Unternehmensdaten (Digest)"
 
 #. module: base
 #: model:ir.module.module,description:base.module_l10n_us_payment_nacha
@@ -1106,6 +1117,9 @@ msgid ""
 "        This Module will synchronise all payrun journals from KeyPay to Odoo.\n"
 "    "
 msgstr ""
+"\n"
+"KeyPay Gehaltsabrechnung Integration\n"
+"Dieses Modul synchronisiert alle Lohnjournale von KeyPay mit Odoo."
 
 #. module: base
 #: model:ir.module.module,summary:base.module_voip
@@ -1254,6 +1268,9 @@ msgid ""
 "        RFQ from an approval purchase request.\n"
 "    "
 msgstr ""
+"\n"
+"Dieses Modul fügt dem Genehmigungs-Workflow die Möglichkeit hinzu, eine\n"
+"Ausschreibung aus einer Genehmigungsanfrage zu generieren."
 
 #. module: base
 #: model:ir.module.module,description:base.module_website_sale_delivery_mondialrelay
@@ -1320,6 +1337,14 @@ msgid ""
 "        Forecast shifts and keep an eye on the hours consumed on your plannable products.\n"
 "    "
 msgstr ""
+"\n"
+"Mit diesem Modul können Sie Ihren Kundenauftrag auf der Grundlage der Produktkonfiguration planen.\n"
+"\n"
+"Für Produkte, bei denen die Option \"Dienste planen\" aktiviert ist, haben Sie die Möglichkeit\n"
+"automatisch die Schichten für die Mitarbeiter zu prognostizieren, die die Schicht übernehmen können\n"
+"(d.h. Mitarbeiter, die die gleiche Rolle haben wie die für das Produkt konfigurierte).\n"
+"\n"
+"Prognostizieren Sie Schichten und behalten Sie die verbrauchten Stunden für Ihre planbaren Produkte im Auge."
 
 #. module: base
 #: model:ir.module.module,description:base.module_sale_planning
@@ -1595,6 +1620,8 @@ msgid ""
 "\n"
 "    Create customizable worksheet for Quality Control.\n"
 msgstr ""
+"\n"
+"Anpassbares Arbeitsblatt für die Qualitätskontrolle erstellen.\n"
 
 #. module: base
 #: model:ir.module.module,description:base.module_hr_holidays_gantt
@@ -1627,6 +1654,12 @@ msgid ""
 "    * Any new All Users Lock Date must be posterior (or equal) to the previous one.\n"
 "    "
 msgstr ""
+"\n"
+"Machen Sie das Sperrdatum irreversibel:\n"
+"\n"
+"* Sie können für Berater keine strengeren Beschränkungen festlegen als für Benutzer. Daher muss das Sperrdatum für alle Benutzer vor dem Sperrdatum für Rechnungen liegen (oder diesem entsprechen).\n"
+"* Sie können keinen Zeitraum sperren, der noch nicht beendet ist. Daher muss das Sperrdatum für alle Benutzer vor dem letzten Tag des Vormonats liegen (oder diesem entsprechen).\n"
+"* Jedes neue Sperrdatum für alle Benutzer muss nach dem vorherigen liegen (oder diesem entsprechen)."
 
 #. module: base
 #: model:ir.module.module,description:base.module_sale_coupon_taxcloud
@@ -1723,6 +1756,8 @@ msgid ""
 "    Support for Export/Import in UBL format (BIS3).\n"
 "    "
 msgstr ""
+"\n"
+"Unterstützung für Export/Import im UBL-Format (BIS3)."
 
 #. module: base
 #: model:ir.module.module,description:base.module_account_edi_facturx
@@ -1731,6 +1766,8 @@ msgid ""
 "    Support for invoice Export/Import in Factur-x format (1.0.04).\n"
 "    "
 msgstr ""
+"\n"
+"Unterstützung für den Export/Import von Rechnungen im Factur-x-Format (1.0.04)."
 
 #. module: base
 #: model:ir.module.module,description:base.module_l10n_cl_edi_stock
@@ -1962,6 +1999,102 @@ msgid ""
 "    When validating a batch payment, the ABA file will be generated.  It can\n"
 "    be regenerated.  This file can then be uploaded to the bank.\n"
 msgstr ""
+"\n"
+"ABA Credit Transfer\n"
+"===================\n"
+"\n"
+"This module allows the generation of payment batches as ABA (Australian\n"
+"Bankers Association) text files.  The generated 'aba' file can be uploaded\n"
+"to many Australian banks.\n"
+"\n"
+"Setup\n"
+"-----\n"
+"\n"
+"- *Account > Configuration > invoicing > Journals*\n"
+"\n"
+"    If needed, create new journal or choose an existing journal with **Type**\n"
+"    set to *“Bank”*.\n"
+"\n"
+"    On **Advanced Settings**, ensure ABA Credit Transfer is ticked.\n"
+"\n"
+"    On the **Bank Account** tab, enter the **Account Number**.\n"
+"\n"
+"    On the same tab, ensure the ABA transfer information is set up.\n"
+"\n"
+"    **BSB** - Required, 6 digits, and will be auto formatted.\n"
+"\n"
+"    **Financial Institution Code** - Required (provided by bank or can be found\n"
+"    on Google).  It is three uppercase 3 characters.\n"
+"\n"
+"    **Supplying User Name** - Some banks allow this to be freeform, some banks\n"
+"    may reject the ABA file if the Supplying User Name is not as expected.  It\n"
+"    cannot be longer than 26 characters.\n"
+"\n"
+"    **APCA Identification Number** - User Identification number is bank\n"
+"    allocated.  It is 6 digits.\n"
+"\n"
+"    **Include Self Balancing Transaction** - Some institutions require that the\n"
+"    last be a self balancing transaction which is used as a verification.\n"
+"\n"
+"- *Accounting > Configuration > Payments > Bank Accounts*\n"
+"\n"
+"    Account will show up in list as the journal name.\n"
+"\n"
+"    Editing will show the **Account Number**.  This is important as it is used by\n"
+"    the ABA process.\n"
+"\n"
+"    **Bank** is optional.\n"
+"\n"
+"- *Contacts > Configuration > Bank Accounts > Bank Accounts*\n"
+"\n"
+"    Paying account will show up in list as the account number.\n"
+"\n"
+"    **Account Holder Name** - Can be entered here, if Required.  Generally not\n"
+"    validated by the banks on ABA file transfers, but may show up on the payee\n"
+"    bank statement against the payment.\n"
+"\n"
+"- Vendor bank accounts can be set up in the same place, however, it is\n"
+"  generally easier to set them up from the partner from for the Vendor.\n"
+"\n"
+"- *Accounting > Vendors > Vendors*\n"
+"\n"
+"    On **Accounting** tab, click on *\"View accounts detail\"* from where a\n"
+"    vendor bank account can be created or edited.\n"
+"\n"
+"    **Account Number** - Required, must be less than 9 digits.\n"
+"\n"
+"    **BSB** - Required, 6 digits, and will be auto formatted.\n"
+"\n"
+"    **Account Holder Name** - Optional.\n"
+"\n"
+"Use\n"
+"---\n"
+"\n"
+"- Create a vendor payment in the normal way.\n"
+"\n"
+"    Ensure the **Vendor** is one with a valid ABA payment account.\n"
+"\n"
+"    Choose the correct **Payment Journal** which is set for ABA payments.\n"
+"\n"
+"    Select **ABA Credit Transfer** radio button.\n"
+"\n"
+"    If the vendor has multiple bank account, you may need to select the\n"
+"    correct **Recipient Bank Account**.  Or if paying a vendor bill, it may\n"
+"    need the correct bank account associated with it.\n"
+"\n"
+"    Enter payment amount, etc.\n"
+"\n"
+"- *Vendors > Payments*\n"
+"\n"
+"    After payment(s) are confirmed, they will show up in the payments list.\n"
+"\n"
+"    Using filters, or sorting, select the payments to be included.  Under\n"
+"    *Actions* choose *Create batch payment*.\n"
+"\n"
+"- *Vendors > Batch Payments*\n"
+"\n"
+"    When validating a batch payment, the ABA file will be generated.  It can\n"
+"    be regenerated.  This file can then be uploaded to the bank.\n"
 
 #. module: base
 #: model:ir.module.module,description:base.module_account_auto_transfer
@@ -2043,6 +2176,11 @@ msgid ""
 "\n"
 "    "
 msgstr ""
+"\n"
+"Buchhaltungsdaten für KSA Gehaltsabrechnungsregeln.\n"
+"=======================================================\n"
+"\n"
+"    "
 
 #. module: base
 #: model:ir.module.module,description:base.module_l10n_ae_hr_payroll_account
@@ -2516,21 +2654,9 @@ msgstr ""
 "Erlauben Sie Kreditkarten-POS-Zahlungen\n"
 "==============================\n"
 "\n"
-"Dieses Modul ermöglicht es Kunden, ihre Bestellungen mit Kredit zu bezahlen\n"
-"Karten. Die Transaktionen werden von Vantiv (entwickelt von Wells\n"
-"Fargo Bank). Ein Vantiv-Händlerkonto ist erforderlich. Es erlaubt die\n"
-"die folgenden:\n"
-"\n"
-"* Schnelle Bezahlung durch einfaches Durchziehen einer Kreditkarte während des Zahlungsvorgangs\n"
-"* Kombination von Barzahlungen und Kreditkartenzahlungen\n"
-"* Cashback\n"
-"* Unterstützte Karten: Visa, MasterCard, American Express, DiscoverAllow Kreditkarten-POS-Zahlungen \n"
-"============================== \n"
-"\n"
-"Dieses Modul ermöglicht es Kunden, ihre Bestellungen mit Kredit zu bezahlen \n"
-"Karten. Die Transaktionen werden von Vantiv (entwickelt von Wells \n"
-"Fargo Bank). Ein Vantiv-Händlerkonto ist erforderlich. Es erlaubt die\n"
-"die folgenden:\n"
+"Dieses Modul ermöglicht es Kunden, ihre Bestellungen per Kreditkarte zu bezahlen.\n"
+"Die Transaktionen werden von Vantiv bearbeitet (entwickelt von Wells\n"
+"Fargo Bank). Ein Vantiv-Händlerkonto ist erforderlich. Es erlaubt Ihnen Folgendes:\n"
 "\n"
 "* Schnelle Bezahlung durch einfaches Durchziehen einer Kreditkarte während des Zahlungsvorgangs\n"
 "* Kombination von Barzahlungen und Kreditkartenzahlungen\n"
@@ -2626,6 +2752,9 @@ msgid ""
 "Allows to compute accurate margin for Service sales.\n"
 "======================================================\n"
 msgstr ""
+"\n"
+"Ermöglicht die genaue Berechnung der Marge für Serviceverkäufe.\n"
+"======================================================\n"
 
 #. module: base
 #: model:ir.module.module,description:base.module_sale_project
@@ -2712,7 +2841,8 @@ msgid ""
 "        "
 msgstr ""
 "\n"
-"Ermöglicht es Rechnungen per Post zu senden."
+"Ermöglicht den Rechnungsversand per Post.\n"
+"====================================================="
 
 #. module: base
 #: model:ir.module.module,description:base.module_delivery_iot
@@ -2943,6 +3073,10 @@ msgid ""
 "This is meant to be used with localization specific modules.\n"
 "    "
 msgstr ""
+"\n"
+"Basismodul für SAF-T-Meldungen\n"
+"===============================\n"
+"Dies ist für die Verwendung mit lokalisierungsspezifischen Modulen gedacht."
 
 #. module: base
 #: model:ir.module.module,description:base.module_l10n_br
@@ -2984,6 +3118,42 @@ msgid ""
 "2011). Those modules are also strictly licensed under AGPL V3 and today don't\n"
 "come with any additional paid permission for online use of 'private modules'.\n"
 msgstr ""
+"\n"
+"Basismodul für die brasilianische Lokalisierung\n"
+"==========================================\n"
+"\n"
+"Dieses Modul besteht aus:\n"
+"\n"
+"- Allgemeiner brasilianischer Kontenplan\n"
+"- Brasilianische Steuern wie z.B.:\n"
+"\n"
+"        - IPI\n"
+"        - ICMS\n"
+"        - PIS\n"
+"        - COFINS\n"
+"        - ISS\n"
+"        - IR\n"
+"        - IRPJ\n"
+"        - CSLL\n"
+"\n"
+"Das Feld tax_discount wurde auch in den Objekten account.tax.template und\n"
+"account.tax-Objekten hinzugefügt, um die korrekte Berechnung einiger brasilianischer Mehrwertsteuersätze\n"
+"wie z.B. ICMS zu gewährleisten. Der Assistent zur Erstellung von Kontenplänen wurde erweitert, um\n"
+"diese neuen Daten korrekt zu übertragen.\n"
+"\n"
+"Es ist jedoch wichtig zu beachten, dass diesem Modul viele Implementierungen fehlen, um\n"
+"Odoo in Brasilien richtig zu nutzen. Diese Implementierungen (wie zum Beispiel die elektronische\n"
+"Rechnungsstellung, die bereits einsatzbereit ist) werden von mehr als 15\n"
+"zusätzlichen Modulen des brasilianischen Launchpad-Lokalisierungsprojekts\n"
+"https://launchpad.net/openerp.pt-br-localiz und deren Abhängigkeiten im\n"
+"Bereich \"Extra addons\" bereitgestellt. Diese Module zielen darauf ab, nicht mit der bemerkenswerten\n"
+"Modularität von Odoo zu brechen, deshalb sind sie klein und zahlreich. Einer der\n"
+"Gründe für die Beibehaltung dieser Module ist, dass\n"
+"die brasilianischen Lokalisierungsverantwortlichen flexibel agieren können müssen, um die Lokalisierung abzuschließen, da die Unternehmen\n"
+"die verbleibenden gesetzlichen Anforderungen finanzieren (wie z.B. bald fiskalische Hauptbücher,\n"
+"Buchhaltungs-SPED, Steuer-SPED und PAF ECF, die im September noch fehlen\n"
+"2011).\n"
+"Diese Module sind ebenfalls streng unter der AGPL V3 lizenziert und werden heute nicht mehr mit einer zusätzlichen kostenpflichtigen Genehmigung für die Online-Nutzung von \"privaten Modulen\" versehen.\n"
 
 #. module: base
 #: model:ir.module.module,description:base.module_account_batch_payment
@@ -2998,6 +3168,14 @@ msgid ""
 "When you reconcile, simply select the corresponding batch payment to reconcile all the payments in the batch.\n"
 "    "
 msgstr ""
+"\n"
+"Batch-Zahlungen\n"
+"=======================================\n"
+"Batch-Zahlungen ermöglichen die Gruppierung von Zahlungen.\n"
+"\n"
+"Sie werden insbesondere, aber nicht nur, verwendet, um mehrere Schecks zusammenzufassen, um sie gemeinsam bei der Bank einzureichen.\n"
+"Der gesamte eingezahlte Betrag wird dann als eine einzige Transaktion auf Ihrem Kontoauszug erscheinen.\n"
+"Beim Kontenabgleich wählen Sie einfach die entsprechende Sammelzahlung aus, um alle Zahlungen im Batch abzustimmen."
 
 #. module: base
 #: model:ir.module.module,description:base.module_l10n_be_hr_payroll
@@ -3055,6 +3233,25 @@ msgid ""
 "No modified version is certified and supported by Odoo SA.\n"
 "    "
 msgstr ""
+"\n"
+"Belgische Registrierkasse\n"
+"\n"
+"================================\n"
+"\n"
+"Dieses Modul verwandelt das Point-of-Sale-Modul in eine zertifizierte belgische Registrierkasse.\n"
+"\n"
+"Mehr Informationen:\n"
+"  * http://www.systemedecaisseenregistreuse.be/\n"
+"  * http://www.geregistreerdkassasysteem.be/\n"
+"\n"
+"Rechtliches\n"
+"-----\n"
+"**Der Gebruch von pos_blackbox_be Quellen ist nur für die odoo.com SaaS Plattform  für Version 13.0 \n"
+"zertifiziert.** Kontaktieren Sie Odoo SA bevor Sie das pos_blackbox_be Modul installieren.\n"
+"\n"
+"Eine verschlüsselte und zertifizierte Version der pos_blackbox_be kann auf\n"
+"Anfrage für On-Premise-Installationen zur Verfügung gestellt werden.\n"
+"Modifizierte Versionen sind nicht zertifiziert und werden von Odoo SA nicht unterstützt."
 
 #. module: base
 #: model:ir.module.module,description:base.module_l10n_bo
@@ -3081,6 +3278,9 @@ msgid ""
 "inclusion of rating directly within the customer portal discuss widget.\n"
 "        "
 msgstr ""
+"\n"
+"Das Bridge-Modul fügt dem Portal Bewertungsfunktionen hinzu. Es umfasst insbesondere\n"
+"Einbindung der Bewertung direkt im Diskussions-Widget des Kundenportals."
 
 #. module: base
 #: model:ir.module.module,description:base.module_documents_account
@@ -3131,6 +3331,8 @@ msgid ""
 "Bridge module for project_enterprise and hr\n"
 "    "
 msgstr ""
+"\n"
+"Bridge-Modul für project_enterprise und hr"
 
 #. module: base
 #: model:ir.module.module,description:base.module_project_enterprise_hr_contract
@@ -3686,6 +3888,16 @@ msgid ""
 "- Základní fiskální pozice pro českou legislativu\n"
 "    "
 msgstr ""
+"\n"
+"Tschechischer Kontenplan und Lokalisierung. Mit Kontenplan mit Steuern und steuerlichen Grundpositionen.\n"
+"\n"
+"Tento modul definuje:\n"
+"\n"
+"- Českou účetní osnovu za rok 2020\n"
+"\n"
+"- Základní sazby pro DPH z prodeje a nákupu\n"
+"\n"
+"- Základní fiskální pozice pro českou legislativu"
 
 #. module: base
 #: model:ir.module.module,description:base.module_mass_mailing_themes
@@ -3764,6 +3976,23 @@ msgid ""
 "invoice line to export in the FatturaPA XML.   \n"
 "    "
 msgstr ""
+"\n"
+"Documento di Trasporto (DDT)\n"
+"\n"
+"Wann immer Waren zwischen A und B übertragen werden, dient der DDT\n"
+"als Legitimation, z. B. wenn die Polizei Sie anhält. \n"
+"\n"
+"Wenn Sie eine ausgehende Kommissionierung in einem italienischen Unternehmen drucken wollen, \n"
+"wird stattdessen ein DDT gedruckt. Er ist wie der Lieferschein, enthält aber auch den Wert des Produkts, \n"
+"den Transportgrund, den Spediteur, ... Das macht ihn zu einem DDT.  \n"
+"\n"
+"Für den DDT wird eine eine eigene Sequenz verwendet, denn die Nummer darf keine \n"
+"keine Lücken aufweisen und darf und sollte erst zum Zeitpunkt des Versands der Waren angebracht werden.\n"
+"\n"
+"Wenn Rechnungen mit ihrem Verkaufsauftrag und der Verkaufsauftrag mit der \n"
+"Lieferung verbunden sind, berechnet das System automatisch die verknüpften DDTs für jede \n"
+"Rechnungszeile für den Export in FatturaPA XML. \n"
+"    "
 
 #. module: base
 #: model:ir.module.module,description:base.module_l10n_it_edi
@@ -3784,6 +4013,9 @@ msgid ""
 "and then fetched by this module.\n"
 "    "
 msgstr ""
+"\n"
+"Implementierung der elektronischen Abrechnung für Italien mit dem Web-Service. Senden und Empfangen von Dokumenten von SdiCoop. Die von SdiCoop gesendeten Dateien werden zunächst auf dem Proxy gespeichert\n"
+"und dann von diesem Modul abgeholt."
 
 #. module: base
 #: model:ir.module.module,description:base.module_hr_skills_slides
@@ -3856,6 +4088,19 @@ msgid ""
 "We support sending and cancelling of customer invoices.\n"
 "    "
 msgstr ""
+"\n"
+"EDI Peru Lokalisierung\n"
+"======================\n"
+"Erlauben Sie dem Benutzer, EDI-Dokumente für die peruanische Rechnungsstellung zu erzeugen.\n"
+"\n"
+"Standardmäßig verwendet das System den IAP-Proxy. Dies hat den Vorteil, dass Sie\n"
+"das System sofort nutzen können, sobald Sie Digiflow als Ihre OSE\n"
+"im SUNAT-Portal auswählen.\n"
+"\n"
+"Sie können es auch direkt an Digiflow senden, wenn Sie dort ein Konto haben\n"
+"und an SUNAT ebenfalls.\n"
+"\n"
+"Wir unterstützen den Versand und die Stornierung von Kundenrechnungen."
 
 #. module: base
 #: model:ir.module.module,description:base.module_l10n_no_edi
@@ -3864,6 +4109,8 @@ msgid ""
 "EHF 3 is the Norwegian implementation of EN 16931 norm.\n"
 "    "
 msgstr ""
+"\n"
+"EHF 3 ist die norwegische Umsetzung der Norm EN 16931."
 
 #. module: base
 #: model:ir.module.module,description:base.module_hw_escpos
@@ -3905,6 +4152,22 @@ msgid ""
 "\n"
 "    "
 msgstr ""
+"\n"
+"EU One Stop Shop (OSS) MwSt.\n"
+"==========================\n"
+"\n"
+"Ab dem 1. Juli 2021 müssen sich EU-Unternehmen, die innerhalb der EU Waren im Wert von über 10 000 EUR an Käufer in einem anderen EU-Mitgliedstaat verkaufen, im Mitgliedstaat des Käufers registrieren lassen und dort die Mehrwertsteuer entrichten.\n"
+"Unterhalb dieses neuen EU-weiten Schwellenwerts können Sie auf Ihre grenzüberschreitenden Verkäufe weiterhin die inländischen Vorschriften für die Mehrwertsteuer anwenden. Um die Anwendung dieser EU-Richtlinie zu vereinfachen, ermöglicht das One Stop Shop (OSS)-Registrierungssystem den Unternehmen, eine einzige Steuererklärung abzugeben.\n"
+"\n"
+"Dieses Modul macht es möglich, indem es bei der Erstellung der erforderlichen EU-Steuerpositionen und Steuern hilft, um die erforderlichen Steuern automatisch anzuwenden und zu erfassen.\n"
+"\n"
+"Sie müssen lediglich prüfen, ob die vorgeschlagene Zuordnung für die von Ihnen verkauften Produkte und Dienstleistungen geeignet ist.\n"
+"\n"
+"Referenz\n"
+"++++++++++\n"
+"Richtlinie (EU) 2017/2455 des Rates\n"
+"Richtlinie (EU) 2019/1995 des Rates\n"
+"Durchführungsverordnung des Rates (EU) 2019/2026"
 
 #. module: base
 #: model:ir.module.module,description:base.module_l10n_eu_oss_reports
@@ -3947,6 +4210,15 @@ msgid ""
 "governements, etc.)\n"
 "    "
 msgstr ""
+"\n"
+"Elektronischer Datenaustausch\n"
+"=======================================\n"
+"EDI ist der elektronische Austausch von Geschäftsinformationen in einem standardisierten Format.\n"
+"\n"
+"Dies ist das Basismodul für den Import und Export von Rechnungen in verschiedenen EDI-Formaten und die\n"
+"Übermittlung dieser Dokumente an verschiedene am Austausch beteiligte Parteien (andere Unternehmen,\n"
+"Behörden, etc.)\n"
+"    "
 
 #. module: base
 #: model:ir.module.module,description:base.module_documents_l10n_be_hr_payroll
@@ -4536,6 +4808,22 @@ msgid ""
 "\n"
 "    "
 msgstr ""
+"\n"
+"Helpdesk - Ticket Management App\n"
+"================================\n"
+"\n"
+"Features:\n"
+"\n"
+"- Bearbeiten Sie Tickets in verschiedenen Phasen, um sie zu lösen.\n"
+"- Fügen Sie Prioritäten, Typen, Beschreibungen und Tags hinzu, um Ihre Tickets zu kategorisieren.\n"
+"- Nutzen Sie den Chat, um zusätzliche Informationen zu kommunizieren und Mitarbeiter auf Tickets hinzuweisen.\n"
+"- Nutzen Sie ein angepasstes Dashboard und eine einfach zu bedienende Kanban-Ansicht zur Bearbeitung Ihrer Tickets.\n"
+"- Erstellen Sie eine detaillierte Analyse Ihrer Tickets mit der Pivot-Ansicht im Berichtsmenü.\n"
+"- Legen Sie ein Team an und definieren Sie dessen Mitglieder, verwenden Sie eine automatische Zuweisungsmethode, wenn Sie möchten.\n"
+"- Nutzen Sie einen E-Mail-Alias, um automatisch Tickets zu erstellen und mit Ihren Kunden zu kommunizieren.\n"
+"- Fügen Sie Ihren Tickets automatisch Fristen für Dienstleistungsvereinbarungen hinzu.\n"
+"- Holen Sie Kundenfeedback mit Hilfe von Bewertungen ein.\n"
+"- Installieren Sie zusätzliche Funktionen ganz einfach über Ihre Teamformularansicht."
 
 #. module: base
 #: model:ir.module.module,description:base.module_base_import_module
@@ -4825,6 +5113,9 @@ msgid ""
 "\n"
 "    "
 msgstr ""
+"\n"
+"Königreich Saudi-Arabien Regeln für die Gehaltsabrechnung und das Ende der Dienstzeit.\n"
+"==========================================================="
 
 #. module: base
 #: model:ir.module.module,description:base.module_stock_landed_costs
@@ -4892,6 +5183,13 @@ msgid ""
 "* Redirection to the Android/iOS mobile app when you click on an Odoo URL.\n"
 "    "
 msgstr ""
+"\n"
+"Mail Mobil\n"
+"===========\n"
+"Dieses Modul modifiziert das Mail-Addon, um Folgendes zu bieten:\n"
+"\n"
+"* Push-Benachrichtigungen an registrierte Geräte für Direktnachrichten, Chat-Nachrichten und Kanäle.\n"
+"* Weiterleitung zur mobilen Android/iOS-App, wenn Sie auf eine Odoo-URL klicken."
 
 #. module: base
 #: model:ir.module.module,description:base.module_mrp_maintenance
@@ -5429,6 +5727,11 @@ msgid ""
 "Improve the import of bank statement feature to support the SEPA recommended Cash Management format (CAMT.053).\n"
 "    "
 msgstr ""
+"\n"
+"Modul zum Importieren von CAMT-Bankauszügen.\n"
+"======================================\n"
+"\n"
+"Verbesserung der Funktion zum Import von Kontoauszügen, um das empfohlene SEPA Cash Management Format (CAMT.053) zu unterstützen."
 
 #. module: base
 #: model:ir.module.module,description:base.module_l10n_be_coda
@@ -5627,6 +5930,8 @@ msgid ""
 "NLCIUS is the Dutch implementation of EN 16931 norm. Both for UBL and UN / CEFACT XML CII.\n"
 "    "
 msgstr ""
+"\n"
+"NLCIUS ist die niederländische Umsetzung der Norm EN 16931. Sowohl für UBL als auch für UN / CEFACT XML CII."
 
 #. module: base
 #: model:ir.module.module,description:base.module_l10n_nz
@@ -5771,6 +6076,9 @@ msgid ""
 "\n"
 "    "
 msgstr ""
+"\n"
+"Odoo Web Gantt-Diagramm-Ansicht.\n"
+"============================="
 
 #. module: base
 #: model:ir.module.module,description:base.module_web
@@ -5781,6 +6089,11 @@ msgid ""
 "\n"
 "This module provides the core of the Odoo Web Client.\n"
 msgstr ""
+"\n"
+"Kernmodul von Odoo Web.\n"
+"========================\n"
+"\n"
+"Dieses Modul stellt den Kern des Odoo Web Client dar.\n"
 
 #. module: base
 #: model:ir.module.module,description:base.module_web_tour
@@ -5982,6 +6295,11 @@ msgid ""
 "With this module, planning take into account employee's contracts for\n"
 "slots planification and allocated hours.\n"
 msgstr ""
+"\n"
+"Integration der Planung mit Personalverträgen\n"
+"\n"
+"Mit diesem Modul berücksichtigt die Planung die Verträge der Mitarbeiter für die\n"
+"Schicht-Planung und zugewiesene Stunden.\n"
 
 #. module: base
 #: model:ir.module.module,description:base.module_planning_holidays
@@ -5989,6 +6307,8 @@ msgid ""
 "\n"
 "Planning integration with time off\n"
 msgstr ""
+"\n"
+"Planung der Integration mit Freizeit\n"
 
 #. module: base
 #: model:ir.module.module,description:base.module_product_matrix
@@ -6503,6 +6823,19 @@ msgid ""
 "    \n"
 "    "
 msgstr ""
+"\n"
+"Kontenplan und Lokalisierung für die Slowakei: Kontenplan 2020, Basis-Mehrwertsteuersätze + \n"
+"Steuerliche Positionen.\n"
+"\n"
+"Tento modul definuje:\n"
+"- Slovenskú účtovú osnovu za rok 2020\n"
+"\n"
+"- Základné sadzby pre DPH z predaja a nákupu\n"
+"\n"
+"- Základné fiškálne pozície pre slovenskú legislatívu\n"
+"\n"
+"\n"
+"Pre viac informácií kontaktujte info@26house.com alebo navštívte https://www.26house.com."
 
 #. module: base
 #: model:ir.module.module,description:base.module_l10n_es
@@ -6742,6 +7075,9 @@ msgid ""
 "The module adds Microsoft user in res user.\n"
 "===========================================\n"
 msgstr ""
+"\n"
+"Das Modul fügt Microsoft-Benutzer zu res user hinzu.\n"
+"===========================================\n"
 
 #. module: base
 #: model:ir.module.module,description:base.module_google_account
@@ -6888,6 +7224,16 @@ msgid ""
 "Set the payment reference type from the Sales Journal.\n"
 "    "
 msgstr ""
+"\n"
+"Dies ist das Odoo-Modul zur Verwaltung der Buchhaltung in Finnland.\n"
+"============================================================\n"
+"\n"
+"Nachdem Sie dieses Modul installiert haben, haben Sie Zugriff auf :\n"
+"* Finnischen Kontenplan\n"
+"* Steuerliche Positionen\n"
+"* Zahlungsreferenztypen für Rechnungen (Finnische Standardreferenz & Finnische Gläubigerreferenz (RF))\n"
+"\n"
+"Legen Sie die Zahlungsreferenzart aus dem Verkaufsjournal fest."
 
 #. module: base
 #: model:ir.module.module,description:base.module_uom
@@ -7531,6 +7877,8 @@ msgid ""
 "\n"
 "This module adds features depending on both modules.\n"
 msgstr ""
+"\n"
+"Dieses Modul fügt Funktionen hinzu, die von beiden Modulen abhängen.\n"
 
 #. module: base
 #: model:ir.module.module,description:base.module_account_edi_proxy_client
@@ -7544,6 +7892,12 @@ msgid ""
 "- Authentication offers an additionnal level of security to avoid impersonification, in case someone gains to the user's database.\n"
 "    "
 msgstr ""
+"\n"
+"Dieses Modul fügt generische Funktionen hinzu, um eine Odoo-DB auf dem Proxy zu registrieren, der für den Empfang von Daten (über Anfragen von Web-Services) verantwortlich ist.\n"
+"- Ein edi_proxy_user hat eine eindeutige Identifikation in einem bestimmten Format (z.B. MwSt. für Peppol), die es ermöglicht, ihn beim Empfang eines an ihn gerichteten Dokuments zu identifizieren. Er ist mit einem bestimmten Unternehmen in einer bestimmten\n"
+"Odoo-Datenbank verknüpft.\n"
+"- Verschlüsselungsfunktionen ermöglichen die Entschlüsselung aller Daten des Benutzers, wenn er sie vom Proxy erhält.\n"
+"- Die Authentifizierung bietet zusätzlich Sicherheit, um zu verhindern, dass Dritte sich Zugang zur Datenbank des Benutzers verschaffen."
 
 #. module: base
 #: model:ir.module.module,description:base.module_portal
@@ -7558,6 +7912,11 @@ msgid ""
 "of this module is to allow the display of a customer portal without having\n"
 "a dependency towards website editing and customization capabilities."
 msgstr ""
+"\n"
+"Dieses Modul fügt den benötigten Basiscode für ein vollständig integriertes Kundenportal hinzu.\n"
+"Es enthält die Basis-Controllerklasse und Basisvorlagen. Business-Add-ons fügen ihre spezifischen Vorlagen und Controller hinzu, um das Kundenportal zu erweitern.\n"
+"\n"
+"Dieses Modul enthält den meisten Code aus odoo v10 website_portal. Zweck dieses Moduls ist es, das Anzeigen des Kundenportals ohne Abhängigkeit zu den Websiten-Ausgabe- und -Anpassungskapazitäten zu ermöglichen."
 
 #. module: base
 #: model:ir.module.module,description:base.module_event_barcode
@@ -7612,6 +7971,8 @@ msgid ""
 "widget.\n"
 "    "
 msgstr ""
+"\n"
+"Dieses Modul fügt die Möglichkeit hinzu, im Abstimmungs-Widget nach Schecknummer zu filtern."
 
 #. module: base
 #: model:ir.module.module,description:base.module_hr_attendance
@@ -7740,6 +8101,23 @@ msgid ""
 "- Check on bottom: ADP standard (https://www.checkdepot.net/checks/checkorder/laser_bottomcheck.htm)\n"
 "    "
 msgstr ""
+"\n"
+"Mit diesem Modul können Sie Ihre Zahlungen auf vorgedrucktem Scheckpapier ausdrucken.\n"
+"Sie können die Ausgabe (Layout, Informationen zu den Schecks usw.) in den Firmeneinstellungen konfigurieren und die\n"
+"Schecknummerierung (wenn Sie vorgedruckte Schecks ohne Nummern verwenden) in den Journaleinstellungen verwalten.\n"
+"\n"
+"Unterstützte Formate\n"
+"-----------------\n"
+"Dieses Modul unterstützt die drei gängigsten Scheckformate und funktioniert sofort mit den verknüpften Schecks von checkdepot.net.\n"
+"\n"
+"Sehen Sie sich hier alle Schecks an: https://www.checkdepot.net/checks/laser/Odoo.htm\n"
+"\n"
+"Sie können wählen zwischen:\n"
+"\n"
+"- Scheck oben: Quicken / QuickBooks standard (https://www.checkdepot.net/checks/checkorder/laser_topcheck.htm)\n"
+"- Scheck mittig: Peachtree standard (https://www.checkdepot.net/checks/checkorder/laser_middlecheck.htm)\n"
+"- Scheck unten: ADP standard (https://www.checkdepot.net/checks/checkorder/laser_bottomcheck.htm)\n"
+"    "
 
 #. module: base
 #: model:ir.module.module,description:base.module_l10n_ca_check_printing
@@ -8622,6 +9000,21 @@ msgid ""
 "* Show all costs associated to a vehicle or to a type of service\n"
 "* Analysis graph for costs\n"
 msgstr ""
+"\n"
+"Fahrzeuge, Leasing, Versicherungen, Kosten\n"
+"==================================\n"
+"Mit diesem Modul hilft Odoo Ihnen, all Ihre Fahrzeuge,\n"
+"dazugehörige Verträge und Dienstleistungen, Kosten\n"
+"und viele andere notwendige Funktionen zur Verwaltung Ihres Fuhrparks zu managen\n"
+"\n"
+"Hauptfunktionen\n"
+"-------------\n"
+"* Fahrzeuge zum Fuhrpark hinzufügen\n"
+"* Fahrzeugverträge verwalten\n"
+"* Erinnerung an auslaufende Verträge\n"
+"* Hinzufügen von Services, Tachowerten für alle Fahrzeuge\n"
+"* Anzeige aller Fahrzeug- und Servicekosten\n"
+"* Graph für Kostenanalyse\n"
 
 #. module: base
 #: model:ir.module.module,description:base.module_stock_account
@@ -8768,6 +9161,9 @@ msgid ""
 "\n"
 "    Supported documents are SO, PO.\n"
 msgstr ""
+"Modul für die Synchronisierung von Dokumenten zwischen mehreren Unternehmen. So können Sie z.B. automatisch einen Kundenauftrag erstellen lassen, wenn eine Bestellung bei einer anderen Firma im System als Lieferauftrag validiert wird, und umgekehrt.\n"
+"\n"
+" Unterstützte Dokumente sind Kundenaufträge, Bestellungen.\n"
 
 #. module: base
 #: model:ir.module.module,description:base.module_account_inter_company_rules
@@ -8835,13 +9231,13 @@ msgstr "%(action_name)s ist keine gültige Aktion für %(model_name)s"
 #: code:addons/base/models/ir_ui_view.py:0
 #, python-format
 msgid "%(attribute)r value must be an integer (%(value)s)"
-msgstr ""
+msgstr "%(Attribut)r Wert muss eine ganze Zahl sein (%(value)s)"
 
 #. module: base
 #: code:addons/base/models/res_currency.py:0
 #, python-format
 msgid "%(company_currency_name)s per %(rate_currency_name)s"
-msgstr ""
+msgstr "%(company_currency_name)s per %(rate_currency_name)s"
 
 #. module: base
 #: code:addons/base/models/ir_ui_view.py:0
@@ -9037,6 +9433,8 @@ msgid ""
 "- %(record)r belongs to company %(company)r and %(field)r (%(fname)s: "
 "%(values)s) belongs to another company."
 msgstr ""
+"- %(record)r gehört zum Unternehmen %(company)r und %(field)r (%(fname)s: "
+"%(values)s) gehört zu einem anderen Unternehmen."
 
 #. module: base
 #: code:addons/model.py:0
@@ -9853,7 +10251,7 @@ msgstr "Ein Modul um Import und Export zu testen."
 #. module: base
 #: model:ir.module.module,description:base.module_test_populate
 msgid "A module to test populate."
-msgstr ""
+msgstr "Ein Modul für Testpopulation."
 
 #. module: base
 #: model:ir.module.module,description:base.module_test_new_api
@@ -9889,6 +10287,7 @@ msgstr "Ein Modul zur Überprüfung vom Asset-Bundle Mechanismus."
 #: model:ir.module.module,description:base.module_test_inherit_depends
 msgid "A module to verify the inheritance using _inherit across modules."
 msgstr ""
+"Ein Modul zur Überprüfung der Vererbung mittels _inherit über Module hinweg."
 
 #. module: base
 #: model:ir.module.module,description:base.module_test_inherits_depends
@@ -10116,7 +10515,7 @@ msgstr "Import Bankkontoauszug"
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_account_accountant_batch_payment
 msgid "Account Batch Payment Reconciliation"
-msgstr ""
+msgstr "Abgleich von Batch-Zahlungen"
 
 #. module: base
 #: model:ir.module.category,name:base.module_category_accounting_localizations_account_charts
@@ -10193,12 +10592,12 @@ msgstr "TaxCloud-Konto – Verkauf"
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_sale_coupon_taxcloud
 msgid "Account Taxcloud - Sale (coupon)"
-msgstr ""
+msgstr "Account Taxcloud - Sale (Coupon)"
 
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_sale_coupon_taxcloud_delivery
 msgid "Account Taxcloud - Sale (coupon) - Delivery"
-msgstr ""
+msgstr "Konto Taxcloud - Verkauf (Coupon) - Lieferung"
 
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_account_winbooks_import
@@ -10220,7 +10619,7 @@ msgstr "Inhaber der Bankverbindung, wenn dieser nicht der Kunde ist"
 #. module: base
 #: model:ir.module.module,summary:base.module_account_sale_timesheet
 msgid "Account sale timesheet"
-msgstr ""
+msgstr "Konto Verkauf Stundenzettel"
 
 #. module: base
 #: model:ir.module.category,name:base.module_category_accounting
@@ -10254,7 +10653,7 @@ msgstr "Finanzberichte"
 #. module: base
 #: model:ir.module.module,summary:base.module_sale_timesheet_account_budget
 msgid "Accounting budget sale timesheet"
-msgstr ""
+msgstr "Buchhaltung Budget Verkauf Zeiterfassung"
 
 #. module: base
 #: model:ir.module.module,description:base.module_l10n_nl
@@ -10394,7 +10793,7 @@ msgstr "Verwendung"
 #. module: base
 #: model:ir.model,name:base.model_ir_actions_act_window
 msgid "Action Window"
-msgstr "Aktives Fenster"
+msgstr ""
 
 #. module: base
 #: model:ir.model,name:base.model_ir_actions_act_window_close
@@ -10489,6 +10888,8 @@ msgstr ""
 #: model:ir.module.module,summary:base.module_data_merge_project
 msgid "Add Merge action in contextual menu of project task and tag models."
 msgstr ""
+"Hinzufügen der Aktion Zusammenführen im Kontextmenü von Projektaufgaben und "
+"Tag-Modellen."
 
 #. module: base
 #: model:ir.module.module,summary:base.module_mail_bot
@@ -10566,7 +10967,7 @@ msgstr "Erlaubt es Frachtkosten im Online-Shop zu berechnen"
 #: code:addons/base/models/ir_qweb_fields.py:0
 #, python-format
 msgid "Add direction"
-msgstr ""
+msgstr "Richtung hinzufügen"
 
 #. module: base
 #: code:addons/base/models/ir_qweb_fields.py:0
@@ -10635,6 +11036,8 @@ msgstr "Unterstützung für Verkaufsabonnements in Massenmailings hinzufügen"
 #: model:ir.module.module,summary:base.module_stock_barcode_picking_batch
 msgid "Add the support of batch transfers into the barcode view"
 msgstr ""
+"Aggiungi il supporto dei trasferimenti in batch nella vista dei codici a "
+"barre"
 
 #. module: base
 #: model:ir.module.module,summary:base.module_sale_product_matrix
@@ -10975,7 +11378,7 @@ msgstr "Alles was Sie zur finanziellen Konsolidierung benötigen"
 #. module: base
 #: model:ir.module.module,summary:base.module_hr_holidays
 msgid "Allocate PTOs and follow leaves requests"
-msgstr ""
+msgstr "Bezahlte Freizeit zuweisen und Urlaubsanträge verfolgen"
 
 #. module: base
 #: model:ir.module.module,summary:base.module_helpdesk_fsm
@@ -11034,8 +11437,8 @@ msgid ""
 "Allows to access the website profile of the users and see their statistics "
 "(karma, badges, etc..)"
 msgstr ""
-"Ermöglicht den Zugriff auf das Website-Profil der Benutzer und sehen ihre "
-"Statistiken (Karma, Abzeichen, etc..)"
+"Ermöglicht den Zugriff auf das Website-Profil der Benutzer und die Anzeige "
+"ihrer Statistiken (Karma, Auszeichnungen, etc.)."
 
 #. module: base
 #: model:ir.module.module,summary:base.module_website_slides_forum
@@ -11509,7 +11912,7 @@ msgstr "Beziehungsmanagement"
 #: code:addons/base/models/res_lang.py:0
 #, python-format
 msgid "At least one language must be active."
-msgstr "Es muss wenigstens eine Sprache aktiviert sein."
+msgstr "Es muss mindestens eine Sprache aktiviert sein."
 
 #. module: base
 #: model_terms:ir.actions.act_window,help:base.action_attachment
@@ -11544,7 +11947,7 @@ msgstr "Anhangsliste und Dokumentindizierung"
 #. module: base
 #: model:ir.module.module,summary:base.module_hr_holidays_attendance
 msgid "Attendance Holidays"
-msgstr ""
+msgstr "Anwesenheit Urlaub"
 
 #. module: base
 #: model:ir.module.category,name:base.module_category_human_resources_attendances
@@ -11940,7 +12343,7 @@ msgstr "Barbados"
 #: model:ir.module.module,shortdesc:base.module_barcodes
 #: model:ir.module.module,shortdesc:base.module_stock_barcode
 msgid "Barcode"
-msgstr "Strichcode"
+msgstr "Barcode"
 
 #. module: base
 #: code:addons/base/models/ir_qweb_fields.py:0
@@ -12080,7 +12483,8 @@ msgstr "Grundlegende Modelle und Helfer zur Unterstützung von In-App-Käufen."
 #. module: base
 #: model:ir.module.module,summary:base.module_iot
 msgid "Basic models and helpers to support Internet of Things."
-msgstr "Grundmodelle und Helfer zur Unterstützung des Internets der Dinge."
+msgstr ""
+"Grundmodelle und Helfer zur Unterstützung des Internets der Dinge (IoT)."
 
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_account_batch_payment
@@ -12152,7 +12556,7 @@ msgstr "Registrierte Barkasse – Belgien"
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_pos_hr_l10n_be
 msgid "Belgian Registered Cash Register Employee module"
-msgstr ""
+msgstr "Belgisches Modul Registrierkasse Mitarbeiter"
 
 #. module: base
 #: model:res.country,name:base.be
@@ -12172,7 +12576,7 @@ msgstr "Belgische Buchhaltungsauswertungen"
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_l10n_be_reports_base_address_extended
 msgid "Belgium - Accounting Reports - Base address extended"
-msgstr ""
+msgstr "Belgien - Buchhaltungsberichte - Basisadresse erweitert"
 
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_l10n_be_reports_sms
@@ -12236,7 +12640,7 @@ msgstr "Benin"
 #. module: base
 #: model:res.country,name:base.bm
 msgid "Bermuda"
-msgstr "Bermudas"
+msgstr "Bermuda"
 
 #. module: base
 #: model:res.country,name:base.bt
@@ -12380,7 +12784,7 @@ msgstr "Bridge zwischen IAP und CRM"
 #: model:ir.module.module,description:base.module_iap_mail
 #: model:ir.module.module,summary:base.module_iap_mail
 msgid "Bridge between IAP and mail"
-msgstr ""
+msgstr "Bridge zwischen IAP und E-Mail"
 
 #. module: base
 #: model:ir.module.module,summary:base.module_sale_account_accountant
@@ -12446,6 +12850,8 @@ msgid ""
 "Bridge created to remove the profitability setting if the account module is "
 "installed"
 msgstr ""
+"Bridge erstellt, um die Rentabilitätseinstellung zu entfernen, wenn das "
+"Kontomodul installiert ist"
 
 #. module: base
 #: model:ir.module.module,summary:base.module_sale_amazon_taxcloud
@@ -12455,7 +12861,7 @@ msgstr "Brückenmodul zwischen Amazon Connector und SteuerCloud"
 #. module: base
 #: model:ir.module.module,summary:base.module_sale_timesheet_margin
 msgid "Bridge module between Sales Margin and Sales Timesheet"
-msgstr ""
+msgstr "Bridge-Modul zwischen Umsatzmarge und Zeiterfassung"
 
 #. module: base
 #: model:ir.module.module,summary:base.module_mail_bot_hr
@@ -12490,7 +12896,7 @@ msgstr "Brückenmodul für Projekt und Unternehmen"
 #. module: base
 #: model:ir.module.module,summary:base.module_project_enterprise_hr
 msgid "Bridge module for project_enterprise and hr"
-msgstr ""
+msgstr "Bridge-Modul für project_enterprise und HR"
 
 #. module: base
 #: model:ir.module.module,summary:base.module_project_enterprise_hr_contract
@@ -12610,7 +13016,7 @@ msgstr "CRM-Deduplizierung"
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_gamification_sale_crm
 msgid "CRM Gamification"
-msgstr "CRM Gamifizierung (Gamification)"
+msgstr "CRM Gamification"
 
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_crm_livechat
@@ -12862,6 +13268,13 @@ msgid ""
 "(San Francisco) in its entirety and does not include any costs relating to "
 "the legislation of the country in which the client is located."
 msgstr ""
+"In einigen Ländern wird der Rechnungsbetrag gemäß den dortigen "
+"Rechtsvorschriften an der Quelle einbehalten. Jede Quellensteuer wird vom "
+"Kunden an die Steuerbehörden abgeführt. My Company (San Francisco) kann sich"
+" unter keinen Umständen an den Kosten im Zusammenhang mit der Gesetzgebung "
+"eines Landes beteiligen. Der Rechnungsbetrag geht daher vollständig an My "
+"Company (San Francisco) und enthält keine Kosten, die mit der Gesetzgebung "
+"des Landes, in dem der Kunde ansässig ist, zusammenhängen."
 
 #. module: base
 #: model:res.country,name:base.td
@@ -12967,7 +13380,7 @@ msgstr ""
 #. module: base
 #: model:ir.module.module,summary:base.module_account_check_printing
 msgid "Check printing basic features"
-msgstr ""
+msgstr "Prüfen der Grundfunktionen des Druckens"
 
 #. module: base
 #: model:ir.module.module,summary:base.module_account_accountant_check_printing
@@ -13115,7 +13528,7 @@ msgstr "Stadt"
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_base_address_city
 msgid "City Addresses"
-msgstr "Stadt-Adressen"
+msgstr "Stadt Adressen"
 
 #. module: base
 #: model:ir.model.fields.selection,name:base.selection__ir_logging__type__client
@@ -13414,7 +13827,7 @@ msgstr "Konfigurationsparameter"
 #. module: base
 #: model:ir.model.fields,field_description:base.field_res_currency_rate__company_rate
 msgid "Company Rate"
-msgstr ""
+msgstr "Unternehmensrate"
 
 #. module: base
 #: model:ir.model.fields,field_description:base.field_res_company__company_registry
@@ -14514,7 +14927,7 @@ msgstr "Kundenanpassungen"
 #. module: base
 #: model:ir.module.module,summary:base.module_purchase_stock_enterprise
 msgid "Customized Dashboard for Purchase Stock"
-msgstr ""
+msgstr "Kundenspezifisches Dashboard für Kaufbestände"
 
 #. module: base
 #: model:ir.actions.act_window,name:base.action_ui_view_custom
@@ -15074,7 +15487,7 @@ msgstr "Deaktivieren"
 #. module: base
 #: model:ir.model.fields,field_description:base.field_report_paperformat__disable_shrinking
 msgid "Disable smart shrinking"
-msgstr ""
+msgstr "Smart Shrinking deaktivieren"
 
 #. module: base
 #: code:addons/base/models/res_config.py:0
@@ -15566,6 +15979,8 @@ msgstr ""
 #: model:ir.module.module,summary:base.module_l10n_nl_edi
 msgid "E-Invoicing, Universal Business Language (NLCIUS 1.0.3), nlc"
 msgstr ""
+"Elektronische Rechnungsstellung, Universal Business Language (NLCIUS 1.0.3),"
+" nlc"
 
 #. module: base
 #: model:ir.module.module,summary:base.module_l10n_be_edi
@@ -15605,7 +16020,7 @@ msgstr "ESC/POS Hardware-Treiber"
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_l10n_eu_oss
 msgid "EU One Stop Shop (OSS)"
-msgstr ""
+msgstr "EU One-Stop-Shop (OSS)"
 
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_l10n_eu_oss_reports
@@ -15784,6 +16199,7 @@ msgstr "Elektronische Rechnungsstellung für Kolumbien mit Carvajal"
 #, python-format
 msgid "Element %r cannot be located in parent view"
 msgstr ""
+"Element %r kann nicht in der übergeordneten Ansicht lokalisiert werden."
 
 #. module: base
 #: code:addons/template_inheritance.py:0
@@ -15870,7 +16286,7 @@ msgstr "Mitarbeiter Gantt-Ansicht"
 #: model:ir.module.module,shortdesc:base.module_hr_mobile
 #: model:ir.module.module,summary:base.module_hr_mobile
 msgid "Employees in Mobile"
-msgstr ""
+msgstr "Mitarbeiter Mobil"
 
 #. module: base
 #: code:addons/base/models/ir_model.py:0
@@ -15897,7 +16313,7 @@ msgstr "Profiling aktivieren für"
 #. module: base
 #: model:ir.model,name:base.model_base_enable_profiling_wizard
 msgid "Enable profiling for some time"
-msgstr ""
+msgstr "Aktivieren Sie Profiling für einige Zeit"
 
 #. module: base
 #: model:ir.model.fields,field_description:base.field_base_enable_profiling_wizard__expiration
@@ -15942,7 +16358,7 @@ msgstr "Enterprise-Vertriebspartner"
 #: model:ir.module.module,description:base.module_crm_enterprise_partner_assign
 #: model:ir.module.module,summary:base.module_crm_enterprise_partner_assign
 msgid "Enterprise counterpart for Resellers"
-msgstr ""
+msgstr "Enterprise-Pendant für Reseller"
 
 #. module: base
 #: model:ir.module.module,description:base.module_website_crm_iap_reveal_enterprise
@@ -15981,7 +16397,7 @@ msgstr "Unterhaltung"
 #. module: base
 #: model:ir.model.fields,field_description:base.field_ir_profile__entry_count
 msgid "Entry count"
-msgstr ""
+msgstr "Anzahl Einträge"
 
 #. module: base
 #: model:ir.module.module,summary:base.module_pos_epson_printer_restaurant
@@ -16028,6 +16444,10 @@ msgid ""
 "%(fivelines)s\n"
 "%(error)s"
 msgstr ""
+"Fehler bei der Validierung der Ansicht nahe:\n"
+"\n"
+"%(fivelines)s\n"
+"%(error)s"
 
 #. module: base
 #: code:addons/base/models/ir_ui_view.py:0
@@ -16105,7 +16525,7 @@ msgstr ""
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_event_crm_sale
 msgid "Event CRM Sale"
-msgstr ""
+msgstr "Veranstaltung CRM Verkauf"
 
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_website_event_exhibitor
@@ -16146,7 +16566,7 @@ msgstr ""
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_event_booth_sale
 msgid "Events Booths Sales"
-msgstr ""
+msgstr "Verkauf Veranstaltungsstände"
 
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_event
@@ -16261,7 +16681,7 @@ msgstr "Aufwand"
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_hr_payroll_expense
 msgid "Expenses in Payslips"
-msgstr "Aufwendungen in Payslips"
+msgstr "Auslagen in Gehaltszetteln"
 
 #. module: base
 #: model:ir.model.fields,help:base.field_report_paperformat__report_ids
@@ -16319,17 +16739,17 @@ msgstr "Übersetzung exportieren"
 #. module: base
 #: model:ir.module.module,summary:base.module_l10n_au_aba
 msgid "Export payments as ABA Credit Transfer files"
-msgstr "Exportieren Sie Zahlungen als ABA-Überweisungsdateien"
+msgstr "Zahlungen als ABA-Überweisungsdateien exportieren"
 
 #. module: base
 #: model:ir.module.module,summary:base.module_l10n_us_payment_nacha
 msgid "Export payments as NACHA files"
-msgstr ""
+msgstr "Zahlungen als NACHA-Dateien exportieren"
 
 #. module: base
 #: model:ir.module.module,summary:base.module_account_sepa
 msgid "Export payments as SEPA Credit Transfer files"
-msgstr "Exportiere Zahlungen als SEPA Kreditübertragungsdateien"
+msgstr "Zahlungen als SEPA Überweisungsdateien exportieren"
 
 #. module: base
 #: model:ir.model,name:base.model_ir_exports
@@ -16385,7 +16805,7 @@ msgstr "Externe ID"
 #. module: base
 #: model:ir.model.constraint,message:base.constraint_ir_model_data_name_nospaces
 msgid "External IDs cannot contain spaces"
-msgstr ""
+msgstr "Externe IDs können keine Leerzeichen enthalten"
 
 #. module: base
 #: model:ir.model.fields,field_description:base.field_ir_model_data__name
@@ -16750,7 +17170,7 @@ msgstr "Feldnamen müssen pro Modell eindeutig sein."
 #: code:addons/base/models/ir_ui_view.py:0
 #, python-format
 msgid "Field tag must have a \"name\" attribute defined"
-msgstr ""
+msgstr "Der Feld-Tag muss mit dem Attribut \"name\" definiert sein."
 
 #. module: base
 #: code:addons/model.py:0
@@ -16818,6 +17238,12 @@ msgid ""
 "Technical Details:\n"
 "%s"
 msgstr ""
+"Datei %r kann aufgrund einer fehlerhaften Datei nicht importiert werden.\n"
+"\n"
+"Dieses Problem kann durch doppelte Einträge verursacht werden, die sich auf das gleiche Feld beziehen. Bitte überprüfen Sie den Inhalt der Datei, die Sie zu importieren versuchen.\n"
+"\n"
+"Technische Details:\n"
+"%s"
 
 #. module: base
 #: code:addons/base/wizard/base_import_language.py:0
@@ -17140,7 +17566,7 @@ msgstr "E-Mail Adressenformat \"Name <email@domain>\""
 #: model:ir.model.fields,field_description:base.field_res_partner__email_formatted
 #: model:ir.model.fields,field_description:base.field_res_users__email_formatted
 msgid "Formatted Email"
-msgstr "Formatierte Email"
+msgstr "Formatierte E-Mail"
 
 #. module: base
 #: code:addons/base/models/ir_qweb_fields.py:0
@@ -17195,7 +17621,7 @@ msgstr "Französische Buchhaltungsauswertungen"
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_l10n_fr_fec
 msgid "France - FEC Export"
-msgstr ""
+msgstr "Frankreich - FEC Export"
 
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_l10n_fr_fec_import
@@ -17223,7 +17649,7 @@ msgstr "Französisch-Guayana"
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_l10n_fr_hr_payroll
 msgid "French Payroll"
-msgstr "Französische Lohnabrechnung"
+msgstr "Lohnabrechnung-Frankreich"
 
 #. module: base
 #: model:res.country,name:base.pf
@@ -17373,7 +17799,7 @@ msgstr "Gambia"
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_gamification
 msgid "Gamification"
-msgstr "Gamifizierung"
+msgstr "Gamification"
 
 #. module: base
 #: model:ir.model.fields.selection,name:base.selection__ir_actions_act_window_view__view_mode__gantt
@@ -17442,7 +17868,7 @@ msgstr "Schlüssel generieren"
 #. module: base
 #: model:ir.module.module,summary:base.module_website_crm
 msgid "Generate leads from a contact form"
-msgstr "Generieren Sie Interessenten aus einem Kontaktformular."
+msgstr "Generieren Sie Leads aus einem Kontaktformular."
 
 #. module: base
 #: model:ir.module.module,summary:base.module_appointment_crm
@@ -17614,7 +18040,7 @@ msgstr "Geschenkkarte für Point of Sale-Modul"
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_sale_gift_card
 msgid "Gift Card for sales module"
-msgstr ""
+msgstr "Geschenkkarte für Verkaufsmodul"
 
 #. module: base
 #: model:ir.model.fields,field_description:base.field_ir_rule__global
@@ -17654,7 +18080,7 @@ msgstr "Benutzen Sie das Hauptmenü"
 #: code:addons/base/models/res_partner.py:0
 #, python-format
 msgid "Go to users"
-msgstr ""
+msgstr "Zu Benutzern gehen"
 
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_google_calendar
@@ -17684,7 +18110,7 @@ msgstr "Google-Benutzer"
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_google_recaptcha
 msgid "Google reCAPTCHA integration"
-msgstr ""
+msgstr "Google reCAPTCHA Integration"
 
 #. module: base
 #: model_terms:res.partner,website_description:base.res_partner_address_18
@@ -17865,7 +18291,7 @@ msgstr "HR Anwesenheitsfeiertage"
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_hr_gamification
 msgid "HR Gamification"
-msgstr "HR Gamifizierung (Gamification)"
+msgstr "HR Gamification"
 
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_hr_org_chart
@@ -18289,12 +18715,12 @@ msgstr "Wie man ein berechnetes Feld definiert"
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_hr_expense_extract
 msgid "Hr Expense Extract"
-msgstr ""
+msgstr "HR Spesenauszug"
 
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_hr_expense_predict_product
 msgid "Hr Expense Predict product"
-msgstr ""
+msgstr "Operazione di ricerca non supportata"
 
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_hr_recruitment_survey
@@ -18781,7 +19207,7 @@ msgstr "Implementierung von dünnbesetzten Feldern."
 #. module: base
 #: model:ir.module.module,summary:base.module_pos_l10n_se
 msgid "Implements the registered cash system"
-msgstr ""
+msgstr "Führt das Registrierkassensystem ein"
 
 #. module: base
 #: model:ir.module.module,summary:base.module_pos_blackbox_be
@@ -18800,7 +19226,7 @@ msgstr "Import / Export"
 #. module: base
 #: model:ir.module.module,summary:base.module_l10n_fr_fec_import
 msgid "Import Accounting Data from FEC files"
-msgstr ""
+msgstr "Buchhaltungsdaten aus FEC-Dateien importieren."
 
 #. module: base
 #: model:ir.module.module,summary:base.module_sale_amazon
@@ -18836,7 +19262,7 @@ msgstr "Importiere QIF Bankauszug"
 #: code:addons/base/models/res_partner.py:0
 #, python-format
 msgid "Import Template for Customers"
-msgstr "Vorlagen für Kunden importieren"
+msgstr "Vorlage für Kunden importieren"
 
 #. module: base
 #: model:ir.actions.act_window,name:base.action_view_base_import_language
@@ -18981,7 +19407,7 @@ msgstr "Indien – Lagerbericht (GST)"
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_l10n_in_hr_payroll
 msgid "Indian Payroll"
-msgstr "Indische Lohnabrechnung"
+msgstr "Lohnabrechnung - Indien"
 
 #. module: base
 #: model:ir.model.fields.selection,name:base.selection__res_partner__company_type__person
@@ -19045,6 +19471,9 @@ msgid ""
 "Inherited Qweb view cannot have 'Groups' define on the record. Use 'groups' "
 "attributes inside the view definition"
 msgstr ""
+"In der vererbten Qweb-Ansicht können keine \"Gruppen\" für den Datensatz "
+"definiert werden. Verwenden Sie die Attribute \"Gruppen\" innerhalb der "
+"Ansichtsdefinition"
 
 #. module: base
 #: model:ir.model.fields,field_description:base.field_ir_ui_view__inherit_id
@@ -19339,7 +19768,7 @@ msgstr "Ungültige Aggregationsfunktion %r."
 #: code:addons/base/models/ir_ui_view.py:0
 #, python-format
 msgid "Invalid composed field %(definition)s in %(use)s"
-msgstr ""
+msgstr "Ungültiges zusammengesetztes Feld in %(definition)s in %(use)s"
 
 #. module: base
 #: code:addons/base/models/ir_fields.py:0
@@ -19459,7 +19888,7 @@ msgstr "Ungültiger Wert für %s.%s: %s"
 #: code:addons/base/models/ir_ui_view.py:0
 #, python-format
 msgid "Invalid view %(name)s definition in %(file)s"
-msgstr ""
+msgstr "Ungültige Ansicht %(name)sDefinition in %(file)s"
 
 #. module: base
 #: code:addons/base/models/ir_ui_view.py:0
@@ -19548,7 +19977,7 @@ msgstr "IoT für Restaurants"
 #. module: base
 #: model:ir.actions.act_window,name:base.action_menu_ir_profile
 msgid "Ir profile"
-msgstr ""
+msgstr "Ir profile"
 
 #. module: base
 #: model:res.country,name:base.ir
@@ -19676,7 +20105,7 @@ msgstr "Jersey"
 #: model:ir.model.fields,field_description:base.field_res_partner__function
 #: model:ir.model.fields,field_description:base.field_res_users__function
 msgid "Job Position"
-msgstr "Stelle"
+msgstr "Arbeitsstelle"
 
 #. module: base
 #: model:res.country,name:base.jo
@@ -19706,12 +20135,12 @@ msgstr "K.S.A. - Rechnung"
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_l10n_sa_hr_payroll
 msgid "K.S.A. - Payroll"
-msgstr ""
+msgstr "K.S.A. - Lohnabrechnung"
 
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_l10n_sa_hr_payroll_account
 msgid "K.S.A. - Payroll with Accounting"
-msgstr ""
+msgstr "K.S.A. - Lohnabrechnung mit Buchhaltung"
 
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_digest
@@ -19843,12 +20272,12 @@ msgstr "Einstandskosten"
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_mrp_landed_costs
 msgid "Landed Costs On MO"
-msgstr ""
+msgstr "Wareneinstandskosten bei Fertigungsauftrag"
 
 #. module: base
 #: model:ir.module.module,summary:base.module_mrp_landed_costs
 msgid "Landed Costs on Manufacturing Order"
-msgstr ""
+msgstr "Wareneinstandskosten beim Fertigungsauftrag"
 
 #. module: base
 #: model:ir.model.fields.selection,name:base.selection__report_paperformat__orientation__landscape
@@ -20425,7 +20854,7 @@ msgstr ""
 #. module: base
 #: model:ir.module.module,summary:base.module_pos_sale_product_configurator
 msgid "Link module between point_of_sale and sale_product_configurator"
-msgstr ""
+msgstr "Verbindungsmodul zwischen point_of_sale und sale_product_configurator"
 
 #. module: base
 #: code:addons/base/models/ir_qweb_fields.py:0
@@ -20533,7 +20962,7 @@ msgstr "Protokolle"
 #: code:addons/base/models/ir_qweb_fields.py:0
 #, python-format
 msgid "Long"
-msgstr ""
+msgstr "Lang"
 
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_pos_loyalty
@@ -20594,7 +21023,7 @@ msgstr "MRP Projekt"
 #. module: base
 #: model:ir.module.module,summary:base.module_mrp_workorder_expiry
 msgid "MRP Workorder Expiry"
-msgstr ""
+msgstr "MRP Arbeitsauftrag Ablauf"
 
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_quality_mrp
@@ -20646,7 +21075,7 @@ msgstr "Mailing-Gruppe"
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_mail_mobile
 msgid "Mail Mobile"
-msgstr ""
+msgstr "Mail Mobil"
 
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_mail_plugin
@@ -20955,6 +21384,8 @@ msgstr ""
 #: model_terms:ir.actions.act_window,help:base.action_country
 msgid "Manage the list of countries that can be set on your contacts."
 msgstr ""
+"Verwalten Sie die Liste der Länder, die für Ihre Kontakte festgelegt werden "
+"können."
 
 #. module: base
 #: model:ir.module.module,summary:base.module_hr_work_entry
@@ -21051,7 +21482,7 @@ msgstr "Fertigung"
 #: model:ir.module.module,shortdesc:base.module_mrp_product_expiry
 #: model:ir.module.module,summary:base.module_mrp_product_expiry
 msgid "Manufacturing Expiry"
-msgstr ""
+msgstr "Ablauf Fertigung"
 
 #. module: base
 #: model:ir.module.module,summary:base.module_mrp
@@ -21163,7 +21594,7 @@ msgstr "Massenversand bei Verkaufsaufträgen"
 #: model:ir.module.module,description:base.module_mass_mailing_sale_subscription
 #: model:ir.module.module,shortdesc:base.module_mass_mailing_sale_subscription
 msgid "Mass mailing on sale subscriptions"
-msgstr ""
+msgstr "Massenversand für Verkaufsabos"
 
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_mass_mailing_event_track
@@ -21174,13 +21605,13 @@ msgstr "Massenmailings an Referenten"
 #: model:ir.module.module,description:base.module_mass_mailing_crm_sms
 #: model:ir.module.module,shortdesc:base.module_mass_mailing_crm_sms
 msgid "Mass mailing sms on lead / opportunities"
-msgstr ""
+msgstr "Massenversand von SMS zu Leads/Opportunities"
 
 #. module: base
 #: model:ir.module.module,description:base.module_mass_mailing_sale_sms
 #: model:ir.module.module,shortdesc:base.module_mass_mailing_sale_sms
 msgid "Mass mailing sms on sale orders"
-msgstr ""
+msgstr "Massenversand von SMS bei Verkaufsbestellungen"
 
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_mrp_mps
@@ -21569,7 +22000,7 @@ msgstr "Modellname"
 #. module: base
 #: model:ir.actions.report,name:base.report_ir_model_overview
 msgid "Model Overview"
-msgstr "Modulübersicht"
+msgstr "Modellübersicht"
 
 #. module: base
 #: model:ir.model.fields,help:base.field_ir_actions_server__crud_model_id
@@ -21578,8 +22009,8 @@ msgid ""
 "Model for record creation / update. Set this field only to specify a "
 "different model than the base model."
 msgstr ""
-"Datenmodell für das Beleg erstellen / updaten . Setzen Sie dies Modul nur "
-"für den Fall ein,"
+"Modell für die Datensatzerstellung/-aktualisierung. Wählen Sie dieses Feld "
+"nur, wenn Sie ein anderes Modell als das Basismodell angeben möchten."
 
 #. module: base
 #: model:ir.model.fields,help:base.field_ir_actions_act_window__res_model
@@ -21930,6 +22361,8 @@ msgstr "Name"
 msgid ""
 "Name or id %(name_or_id)r in %(use)s must be present in view but is missing."
 msgstr ""
+"Name oder id %(name_or_id)r in %(use)s muss in Ansicht vorhanden sein aber "
+"fehlt."
 
 #. module: base
 #: model_terms:ir.ui.view,arch_db:base.form_res_users_key_description
@@ -22510,6 +22943,93 @@ msgid ""
 "etc) and directly following Odoo's standard access rights management, so you do\n"
 "not have to configure things twice.\n"
 msgstr ""
+"Odoo Blogs\n"
+"----------\n"
+"\n"
+"Schreiben, Gestalten, Promoten und Kommunizieren mit <a href=\"https://www.odoo.com/app/blog\">Odoo Blogs</a>.\n"
+"\n"
+"Drücken Sie sich mit der Blogging-Plattform von Odoo für Unternehmen aus. Schreiben Sie\n"
+"Blogbeiträge, interagieren Sie mit Besuchern, übersetzen Sie Inhalte und moderieren Sie\n"
+"Social Streams.\n"
+"\n"
+"Lassen Sie Ihre Blogbeiträge mit wenigen Klicks effizient in Google referenzieren und in mehrere Sprachen übersetzen,\n"
+"in nur wenigen Klicks.\n"
+"\n"
+"Schöne Blogbeiträge schreiben\n"
+"--------------------------\n"
+"\n"
+"Drag & Drop praktischer *'Bausteine'* zur Erstellung schöner Blogbeiträge\n"
+"die Bilder, Videos, Call-to-Actions, Zitate, Banner etc. perfekt integrieren.\n"
+"\n"
+"Mit unserem einzigartigen *Inline-Editing* -Ansatz müssen Sie kein Designer sein, um\n"
+"ansprechende, gut aussehende Inhalte zu erstellen. Jeder Blogbeitrag sieht aus, als wäre er\n"
+"von einem professionellen Designer entworfen.\n"
+"\n"
+"Automatische Übersetzung von Profis\n"
+"--------------------------------------\n"
+"\n"
+"Lassen Sie Ihre Blogbeiträge mühelos in mehrere Sprachen übersetzen. Unsere\n"
+"On-Demand\"-Funktion ermöglicht Ihnen die Arbeit mit professionellen\n"
+"Übersetzern, die alle Ihre Änderungen automatisch übersetzen. (\\$0,05 pro Wort)\n"
+"Die übersetzten Versionen werden anschließend automatisch aktualisiert\n"
+"(nach ca. 32 Stunden).\n"
+"\n"
+"Interagieren Sie mit Ihren Besuchern\n"
+"-------------------------\n"
+"\n"
+"Die integrierte Live-Chat-Funktion ermöglicht es Ihnen, in Echtzeit mit Ihren Besuchern zu chatten, um Feedback zu Ihren aktuellen Beiträgen oder Inspiration für neue Post zu erhalten.\n"
+"\n"
+"Die Interaktion mit Ihren Besuchern ist auch ein guter Weg, um Besucher in\n"
+"Kunden zu verwandeln.\n"
+"\n"
+"Kundenbindung aufbauen\n"
+"---------------------\n"
+"\n"
+"Die *Follow*-Schaltfläche ermöglicht es den Besuchern, Ihre Blog-Posts mit einem Klick per\n"
+"per E-Mail zu erhalten, ohne dass sie sich registrieren müssen. Mit Icons für soziale Medien können\n"
+"Besucher Ihre besten Blogbeiträge ganz einfach teilen.\n"
+"\n"
+"Google Analytics Integration\n"
+"----------------------------\n"
+"\n"
+"Verschaffen Sie sich einen klaren Überblick über Ihren Sales Funnel. Die Google Analytics-Tracker von Odoo\n"
+"sind standardmäßig so konfiguriert, dass sie alle Arten von Ereignissen im Zusammenhang mit Warenkörben, Call-to-Actions, etc. verfolgen\n"
+"\n"
+"Da die Marketing-Tools von Odoo (Massenmailings, Kampagnen usw.) auch mit\n"
+"Google Analytics verknüpft sind, erhalten Sie eine 360°-Sicht auf Ihr Unternehmen.\n"
+"\n"
+" Blog Posts mit SEO-Optimierung\n"
+"------------------------\n"
+"\n"
+"Die SEO-Tools sind sofort einsatzbereit und müssen nicht konfiguriert werden. Odoo schlägt\n"
+"Schlüsselwörter für Ihre Titel entsprechend den meistgesuchten Begriffen von Google vor, Google\n"
+"Analytics verfolgt die Aktivitäten Ihrer Besucher, Sitemaps werden automatisch erstellt\n"
+"um eine schnelle Indizierung durch Google zu gewärleisten usw.\n"
+"\n"
+"Das System erstellt sogar automatisch strukturierte Inhalte, um Ihre\n"
+"Produkte und Veranstaltungen effektiv in Google zu bewerben.\n"
+"\n"
+"Designer-freundliche Themes\n"
+"------------------------\n"
+"\n"
+"Themes sind großartig und einfach zu gestalten. Sie brauchen nicht zu programmieren, um neue Seiten,\n"
+"Themes oder Bausteine zu erstellen. Wir verwenden eine saubere HTML-Struktur, ein\n"
+"[bootstrap](http://getbootstrap.com/) CSS und unsere Modularisierung erlaubt es Ihnen, Ihre\n"
+"Themes einfach zu verwalten.\n"
+"\n"
+"Durch den Bausteinansatz bleibt die Website auch dann noch sauber, wenn die Endbenutzer\n"
+"beginnen, neue Inhalte zu erstellen.\n"
+"\n"
+"Einfache Zugriffsrechte\n"
+"------------------\n"
+"\n"
+"Nicht jeder benötigt den gleichen Zugang zu Ihrer Website. Designer verwalten das\n"
+"Layout der Website, Redakteure genehmigen den Inhalt, der von Autoren verfasst wird.\n"
+"So können Sie Ihren Veröffentlichungsprozess nach Ihren Bedürfnissen organisieren.\n"
+"\n"
+"Andere Zugriffsrechte beziehen sich auf Geschäftsobjekte (Produkte, Personen, Ereignisse,\n"
+"usw.) und folgen direkt der Standard-Zugriffsrechteverwaltung von Odoo, so dass Sie\n"
+"nicht zweimal konfigurieren müssen.\n"
 
 #. module: base
 #: model:ir.module.module,description:base.module_crm
@@ -22612,6 +23132,102 @@ msgid ""
 "Compare revenues with forecasts and budgets in real time.\n"
 "\n"
 msgstr ""
+"Odoo CRM\n"
+"--------\n"
+"\n"
+"Steigern Sie die Vertriebsproduktivität, verbessern Sie die Gewinnraten und steigern Sie Ihren Umsatz mit Odoo\n"
+"<a href=\"https://www.odoo.com/app/crm\">Open Source CRM</a>.\n"
+"\n"
+"Verwalten Sie mühelos Ihren Sales Funnel. Gewinnen Sie Leads, verfolgen Sie Telefonate\n"
+"und Meetings nach. Analysieren Sie die Qualität Ihrer Leads, um fundierte Entscheidungen zu treffen\n"
+"und sparen Sie Zeit, indem Sie E-Mails direkt in die Anwendung integrieren.\n"
+"\n"
+"Ihr Sales Funnel, ganz nach Ihren Vorstellungen\n"
+"--------------------------------------\n"
+"\n"
+"Verfolgen Sie Ihre Opportunity-Pipeline mit der revolutionären Kanban-Ansicht. Arbeiten Sie\n"
+"in Ihrem Sales Funnel und erhalten Sie sofortige visuelle Informationen über nächste Aktionen,\n"
+"neue Nachrichten, Top-Chancen und erwartete Einnahmen.\n"
+"\n"
+"Lead Management leicht gemacht\n"
+"-------------------------\n"
+"\n"
+"Generieren Sie automatisch Leads aus eingehenden E-Mails. Analysieren Sie die Effizienz der Leads und\n"
+"vergleichen Sie die Leistung basierend auf Kampagnen, Kanälen oder Vertriebsteam.\n"
+"\n"
+"Finden Sie Dubletten, führen Sie Leads zusammen und weisen Sie sie in einem Arbeitsgang dem richtigen Vertriebsmitarbeiter zu.\n"
+"Sparen Sie Zeit bei der Verwaltung und qualifizieren Sie Leads effizient.\n"
+"\n"
+"Organisieren Sie Ihre Verkaufschancen\n"
+"---------------------------\n"
+"\n"
+"Organisieren Sie Ihre Verkaufschancen, um sich auf die besten Angebote zu konzentrieren. Verwalten Sie\n"
+"Kundeninteraktionen wie E-Mails, Anrufe, interne Notizen, Meetings und Angebote auf einen Blick.\n"
+"\n"
+"Verfolgen Sie Verkaufschancen, die Sie interessieren, um bei bestimmten Ereignissen benachrichtigt zu werden:\n"
+"Gewonnene oder verlorene Leads, Änderung der Phase, neue Kundenanfrage, usw.\n"
+"\n"
+"E-Mail-Integration und Automation\n"
+"--------------------------------\n"
+"\n"
+"Arbeiten Sie mit den E-Mail-Anwendungen, die Sie bereits täglich nutzen. Egal, ob Ihr\n"
+"Unternehmen Microsoft Outlook oder Gmail verwendet, niemand muss seine Arbeitsweise ändern, um produktiv zu bleiben.\n"
+"\n"
+"Leiten, sortieren und filtern Sie eingehende E-Mails automatisch. Odoo CRM verarbeitet eingehende\n"
+"E-Mails und leitet sie an die richtigen Projekte oder das Vertriebsteam weiter. Neue Leads werden\n"
+"erstellt und zuständige Vertriebsmitarbeiter automatisch benachrichtigt.\n"
+"\n"
+"Gemeinsamer Kalender\n"
+"--------------------\n"
+"\n"
+"Planen Sie Meetings und Telefonate mithilfe des integrierten Kalenders. Sie können\n"
+"Ihren Kalender und den Ihrer Kollegen in einer einzigen Ansicht sehen. Manager sehen so ganz leicht,\n"
+"womit ihr Team beschäftigt ist.\n"
+"\n"
+"Lead-Automation and Marketing-Kampagnen\n"
+"---------------------------------------\n"
+"\n"
+"Leistungssteigerung durch Automatisierung von Aufgaben mit Odoo <a href=\"https://www.odoo.com/app/crm\">CRM</a>.\n"
+"\n"
+"Nutzen Sie unsere Marketing-Kampagnen, um die Akquisition von Leads, Follow-ups und\n"
+"Werbeaktionen zu automatisieren. Definieren Sie automatisierte Aktionen (z. B. einen Vertriebsmitarbeiter bitten, anzurufen, eine E-Mail zu senden,\n"
+"...) basierend auf Auslösern (keine Aktivität seit 20 Tagen, Antwort auf eine\n"
+"Werbe-E-Mail, etc.)\n"
+"\n"
+"Optimieren Sie Kampagnen vom Lead bis zum Abschluss, auf jedem Kanal. Treffen Sie klügere Entscheidungen\n"
+"und beeinflussen Sie durch Ihre Marketingaktivitäten das\n"
+"Endergebnis Ihres Unternehmens.\n"
+"\n"
+"Passen Sie Ihren Verkaufszyklus an\n"
+"--------------------------\n"
+"\n"
+"Passen Sie Ihren Verkaufszyklus an, indem Sie Verkaufsstufen konfigurieren, die perfekt zu Ihrem\n"
+"Vertriebsansatz passen. Studieren Sie Statistiken, um genaue Prognosen zu erhalten und Ihre\n"
+"Verkaufsleistung in jeder Phase zu verbessern.\n"
+"\n"
+"Motivation durch Gamification fördern\n"
+"----------------------------------\n"
+"\n"
+"### Nutzen Sie den natürlichen Wettbewerbsdrang Ihres Teams\n"
+"\n"
+"Fördern Sie positive Verhaltensweisen und verbessern Sie die Gewinnraten mit Echtzeit-Erkennung und\n"
+"Belohnungen, die von Spielmechaniken inspiriert sind (http://en.wikipedia.org/wiki/Gamification).\n"
+"Fokussieren Sie Ihr Sales-Team auf klare Geschäftsziele durch Herausforderungen,\n"
+"Ziele und Team-Leaderboards.\n"
+"\n"
+"### Leaderboards\n"
+"\n"
+"Förderung von Führungsqualitäten und Wettbewerb im Verkaufsteam durch Performance-Kriterien.\n"
+"\n"
+"### Individuelle Ziele\n"
+"\n"
+"Weisen Sie den Mitarbeitern klare Ziele zu, um sie mit den Unternehmenszielen in Einklang zu bringen.\n"
+"\n"
+"### Team-Ziele\n"
+"\n"
+"Vergleichen Sie Einnahmen mit Prognosen und Budgets in Echtzeit.\n"
+"\n"
+"\n"
 
 #. module: base
 #: model:ir.model.fields.selection,name:base.selection__ir_module_module__license__oeel-1
@@ -22832,6 +23448,94 @@ msgid ""
 "Compare revenues with forecasts and budgets in real time.\n"
 "\n"
 msgstr ""
+"Odoo Personalwesen\n"
+"--------------------\n"
+"\n"
+"Mit Odoo <a href=\"https://www.odoo.com/app/employees\">PERSONAL</a>,\n"
+"verwalten Sie ganz einfach das wichtigste Kapital in Ihrem Unternehmen: Ihre Mitarbeiter\n"
+"\n"
+"Ihre HR-Prozesse leicht gemacht: Wissensaustausch, Rekrutierung,\n"
+"Beurteilungen, Zeiterfassung, Verträge, Anwesenheiten, Gehaltsabrechnungen usw.\n"
+"\n"
+"All Ihre Anforderungen werden durch eine spezifische App abgedeckt, die Sie bei Bedarf aktivieren können.\n"
+"\n"
+"Mitarbeiter verwalten\n"
+"---------------------\n"
+"\n"
+"Managen Sie alle wichtigen Informationen in Ihrem Firmenadressbuch. Einige\n"
+"Informationen sind auf HR-Manager beschränkt, andere sind öffentlich und leicht für Kollegen\n"
+"einzusehen.\n"
+"\n"
+"Erfassen Sie Mitarbeiterverträge und erhalten Sie Benachrichtigungen, wenn sie verlängert werden müssen.\n"
+"\n"
+"Optimieren Sie Ihren Rekrutierungsprozess\n"
+"-----------------------------------\n"
+"\n"
+"Speichern Sie Lebensläufe, verfolgen Sie Bewerber, suchen Sie Profile mit <a href=\"https://www.odoo.com/app/employees\">Odoo Personal</a>.\n"
+"\n"
+"Veröffentlichen Sie Stellenangebote und behalten Sie den Überblick über jede eingegangene Bewerbung. Verfolgen Sie Bewerber\n"
+"in Ihrem Recruiting-Prozess mit der intelligenten Kanban-Ansicht.\n"
+"\n"
+"Sparen Sie Zeit, indem Sie die Kommunikation bei Bedarf mit E-Mail-Vorlagen automatisieren. Lebensläufe werden\n"
+"automatisch abgelegt, so dass Sie leicht nach spezifischen Profilen suchen können.\n"
+"\n"
+"Soziales Netzwerk für Unternehmen\n"
+"-------------------------\n"
+"\n"
+"Lösen Sie Informationssilos auf. Machen Sie Wissen und Best Practices für alle Mitarbeiter zugänglich.\n"
+"Verfolgen Sie bestimmte Personen oder Dokumente und schließen Sie sich Interessengruppen an, um\n"
+"Fachwissen und Dokumente austauschen.\n"
+"\n"
+"Mitarbeiterinteraktion in Echtzeit mit dem Website-Live-Chat.\n"
+"\n"
+"Arbeitsteit und Anwesenheiten verfolgen\n"
+"--------------------------\n"
+"\n"
+"Behalten Sie den Überblick über den Zeitaufwand pro Projekt, Kunde oder Aufgabe. Zeiterfassung und\n"
+"Anwesenheitskontrolle waren noch nie so einfach. Erhalten Sie Ihre analytische Buchhaltung\n"
+"automatisch auf der Grundlage der für Ihre Projekte aufgewendeten Zeit.\n"
+"\n"
+"Urlaubs-Management\n"
+"-----------------\n"
+"\n"
+"Behalten Sie den Überblick über den Urlaubsanspruch Ihrer Mitarbeiter. Die Mitarbeiter reichen ihre\n"
+"Anträge (bezahlter Urlaub, Krankheitstage usw.) ein, die von Managern zu genehmigen sind.\n"
+"Alles ist mit wenigen Klicks erledigt und der Kalender jedes Mitarbeiters wird\n"
+"entsprechend aktualisiert.\n"
+"\n"
+"Auslagenverwaltung\n"
+"-------------------------------\n"
+"\n"
+"Befreien Sie sich von Papierkram und verfolgen Sie die Ausgaben Ihrer Mitarbeiter direkt in Odoo.\n"
+"Sparen Sie Zeit und Geld, indem Sie den gesamten Ablauf kontrollieren: von der Einreichung der Auslagen,\n"
+"über die Erstattung an den Mitarbeiter, die Verbuchung in Ihren Konten, bishin zur Weiterberechnung an Ihre Kunden.\n"
+"\n"
+"Mitarbeiterbeurteilung\n"
+"--------------------------\n"
+"\n"
+"Stellen Sie Beurteilungspläne und/oder Umfragen für Ihre Mitarbeiter auf und beobachten Sie Ihre\n"
+"Entwicklung. Definieren Sie Interview-Phasen, sodass Odoo Manager oder Mitarbeiter automatisch\n"
+"auf vorzubereitende Beurteilungen hinweist. Verfolgen Sie regelmäßig den Fortschritt\n"
+"Ihrer Mitarbeiter.\n"
+"\n"
+"Wecken Sie den Ehrgeiz Ihrer Mitarbeiter mit Gamification\n"
+"----------------------------------\n"
+"\n"
+"### Klare Ziele definieren und Echtzeit-Feedback geben\n"
+"\n"
+"Spornen Sie mit Herausforderungen, Zielvorgaben und Belohnungen zur Leistung an. Definieren Sie klare Ziele und sorgen Sie für Echtzeit-Feedback und greifbare Ergebnisse. Stellen Sie die Top-Performer dem gesamten Kanal vor und würdigen Sie gute Arbeit öffentlich.\n"
+"\n"
+"### Bestenliste\n"
+"\n"
+"Förderung von Führungspersönlichkeiten und Wettbewerb im Verkaufsteam durch Leistungskennziffern.\n"
+"\n"
+"### Individuelle Ziele\n"
+"\n"
+"Weisen Sie den Benutzern klare Ziele zu, um sie mit den Unternehmenszielen in Einklang zu bringen.\n"
+"\n"
+"### Team-Ziele\n"
+"\n"
+"Vergleichen Sie Gewinne mit Prognosen und Budgets in Echtzeit.\n"
 
 #. module: base
 #: model:ir.module.module,description:base.module_mrp
@@ -22899,6 +23603,72 @@ msgid ""
 "manufacturing operations.\n"
 "\n"
 msgstr ""
+"Odoo Manufacturing Resource Planning\n"
+"------------------------------------\n"
+"\n"
+"Verwalten Sie Stücklisten, planen Sie Fertigungsaufträge, verfolgen Sie Arbeitsaufträge mit der\n"
+"Odoo <a href=\"https://www.odoo.com/app/manufacturing\">Open Source MRP</a>-App.\n"
+"\n"
+"Verwalten Sie alle Ihre Montage- oder Fertigungsvorgänge mit Odoo. Planen Sie\n"
+"Fertigungsaufträge und Arbeitsaufträge automatisch. Überprüfen Sie die vorgeschlagene\n"
+"Planung mit den intelligenten Kanban- und Gantt-Ansichten. Nutzen Sie die erweiterten Analysefunktionen\n"
+"zur Erkennung von Engpässen bei Ressourcenkapazitäten und Lagerorten.\n"
+"\n"
+"Effiziente Planung von Fertigungsaufträgen\n"
+"-----------------------------------------\n"
+"\n"
+"Automatische Einplanung von Fertigungs- und Arbeitsaufträgen auf der Grundlage Ihrer\n"
+"Beschaffungsregeln, prognostizierten Mengen und abhängigem Bedarf (Bedarf für ein\n"
+"Teil basierend auf einem anderen Teil, das es erfordert).\n"
+"\n"
+"Flexible Stammdaten definieren\n"
+"---------------------------\n"
+"\n"
+"Sie erhalten die Flexibilität, mehrstufige Stücklisten, optionales Routing,\n"
+"Versionsänderungen und Phantom-Stücklisten zu erstellen. Sie können Stücklisten für Bausätze oder für\n"
+"Fertigungsaufträge verwenden.\n"
+"\n"
+"Mehr Flexibilität bei allen Vorgängen\n"
+"---------------------------------\n"
+"\n"
+"Bearbeiten Sie manuell alle vorgeschlagenen Vorgänge auf jeder Bearbeitungsebene. Bei Odoo\n"
+"müssen Sie sich nicht mit einem starren System abfinden.\n"
+"\n"
+"Planen von Arbeitsaufträgen\n"
+"--------------------\n"
+"\n"
+"Überprüfen Sie die Kapazitäten der Ressourcen und beheben Sie Engpässe. Definieren Sie Arbeitspläne und planen Sie die\n"
+"Arbeitszeiten und Kapazitäten Ihrer Ressourcen. Identifizieren Sie schnell Ressourcen\n"
+"und Engpässe, um sicherzustellen, dass Sie Ihre Produktion im Einklang mit Ihren Lieferterminen ist.\n"
+"\n"
+"\n"
+"Eine produktive Benutzeroberfläche\n"
+"---------------------------\n"
+"\n"
+"Organisieren Sie Fertigungs- und Arbeitsaufträge so, wie Sie es wünschen. Bearbeiten Sie nächste\n"
+"Aufträge in der Listenansicht, navigieren Sie in der Kalenderansicht und bearbeiten Sie den vorgeschlagenen\n"
+"Zeitplan in der Gantt-Ansicht.\n"
+"\n"
+"\n"
+"Bestands- und Fertigungsanalyse\n"
+"-----------------------------------\n"
+"\n"
+"Verfolgen Sie die Entwicklung des Bestandswerts entsprechend dem Niveau der Fertigungs\n"
+"Aktivitäten im Verlauf des Transformationsprozesses.\n"
+"\n"
+"Vollständig in den Betrieb integriert\n"
+"--------------------------------\n"
+"\n"
+"Sorgen Sie für eine präzise Planung Ihrer Fertigungsressourcen durch die vollständige Integration\n"
+"mit den Anwendungen für Verkauf und Einkauf. Die Buchhaltungsintegration ermöglicht\n"
+"buchhalterische Bewertung und tiefere Berichterstattung über Kosten und Erlöse Ihrer\n"
+"Fertigungsvorgänge in Echtzeit.\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
 
 #. module: base
 #: model:ir.module.module,description:base.module_mass_mailing
@@ -23001,6 +23771,99 @@ msgid ""
 "emails directly into the application.\n"
 "\n"
 msgstr ""
+"Odoo-Massenversand\n"
+"-----------------\n"
+"\n"
+"Einfaches Versenden von Massenmailings an Ihre Leads, Opportunities oder Kunden\n"
+"mit Odoo <a href=\"https://www.odoo.com/app/email-marketing\">E-Mail Marketing</a>. Verfolgen Sie\n"
+"die Leistung von Marketingkampagnen zur Verbesserung der Konversionsraten. Gestaltung von\n"
+"professionellen E-Mails und Wiederverwendung von Vorlagen mit wenigen Klicks.\n"
+"\n"
+"Professionelle E-Mails versenden\n"
+"------------------------\n"
+"\n"
+"Importieren Sie die Datenbank der Interessenten oder filtern Sie nach vorhandenen Leads, Opportunities und\n"
+"Kunden in nur wenigen Klicks.\n"
+"\n"
+"Definieren Sie E-Mail-Vorlagen, um Inhalte oder ein bestimmtes Design für Ihren Newsletter wiederzuverwenden.\n"
+"Richten Sie mehrere E-Mail-Server mit eigener IP/Domain ein, um die Öffnungsraten zu optimieren.\n"
+"\n"
+"Organisieren Sie Marketing-Kampagnen\n"
+"----------------------------\n"
+"\n"
+"Gestalten, versenden, verfolgen Sie Kampagnen mit unserer <a href=\"https://www.odoo.com/app/email-marketing\">Lead Automation</a> App.\n"
+"\n"
+"Erhalten Sie Echtzeit-Statistiken über die Kampagnen-Performance, um Ihre Konversion zu verbessern.\n"
+"Rate. Verfolgen Sie gesendete, empfangene, geöffnete und beantwortete Mails.\n"
+"\n"
+"Verwalten Sie Ihre Marketingkampagnen, Diskussionsgruppen, Leads und\n"
+"Opportunities in einer einfachen und leistungsstarken Plattform.\n"
+"\n"
+"Integriert mit Odoo Apps\n"
+"-------------------------\n"
+"\n"
+"Erhalten Sie Zugriff auf Massenmailing-Funktionen von jeder Odoo App aus, um die Kommunikation Ihrer Benutzer zu verbessern.\n"
+"\n"
+"Versenden Sie E-Mail-Vorlagen aus Odoo <a href=\"https://www.odoo.com/app/email-marketing\">CRM</a>, wählen Sie Leads basierend\n"
+"auf Marketingsegmenten, senden Sie <a href=\"https://www.odoo.com/app/recruitment\">Stellenangebote</a> und automatisieren Sie\n"
+"Antworten an Bewerber. Verwenden Sie E-Mail-Vorlagen in Lead-Automatisierungs-Marketing\n"
+"Kampagnen.\n"
+"\n"
+"Die Antworten auf Ihre E-Mails erscheinen automatisch in der Historie jedes Dokuments\n"
+"mit dem Modul für soziale Netzwerke.\n"
+"\n"
+"Bereinigen Sie Ihre Lead-Datenbank\n"
+"------------------------\n"
+"\n"
+"Erhalten Sie eine saubere Lead-Datenbank, die sich im Laufe der Zeit basierend auf der Performance\n"
+"Ihrer Mails verbessert. Odoo behandelt Bounce-Mails effizient, kennzeichnet fehlerhafte Leads\n"
+"entsprechend und gibt Ihnen Statistiken über die Qualität.\n"
+"\n"
+"E-Mails mit einem Klick versenden\n"
+"---------------------\n"
+"\n"
+"Die Marketingabteilung wird es lieben, an Kampagnen zu arbeiten. Sie können aber auch eine\n"
+"1-Klick-Massenmailing-Option für alle anderen Benutzer einstellen.\n"
+"\n"
+"Wählen Sie einige Dokumente aus (z.B. Leads, Support-Tickets, Lieferanten, Bewerber),\n"
+"...) und versenden Sie mit einem Klick E-Mails an ihre Kontakte, wobei Sie Vorlagen wiederverwenden können.\n"
+"\n"
+"Follow-ups\n"
+"--------------------\n"
+"\n"
+"Die Chat-Funktion ermöglicht Ihnen eine schnellere und effizientere Kommunikation mit\n"
+"Ihren Kunden. Lassen Sie Dokumente automatisch erstellen (Leads, Opportunities,\n"
+"Aufgaben, ...) basierend auf Antworten auf Ihre Massenmailing-Kampagnen. Verfolgen Sie Gespräche\n"
+"direkt über das Dokument innerhalb von Odoo oder per E-Mail.\n"
+"\n"
+"Alle Verhandlungen und Diskussionen werden an das richtige Dokument angehängt und\n"
+"zuständige Manager über bestimmte Ereignisse informiert.\n"
+"\n"
+"Kampagnen Dashboard\n"
+"-------------------\n"
+"\n"
+"Erhalten Sie die Einblicke, die Sie für eine intelligentere Marketingkampagne benötigen. Statistiken pro Kampagne\n"
+"verfolgen: Bounce-Raten, gesendete Mails, bester Inhalt, etc. Das übersichtliche Dashboard\n"
+"gibt Ihnen einen direkten Überblick über die Performance Ihrer Kampagne.\n"
+"\n"
+"Vollständig integriert mit anderen Apps\n"
+"---------------------------------\n"
+"\n"
+"Definieren Sie automatisierte Aktionen (z.B. einen Verkäufer bitten, anzurufen, eine E-Mail zu senden, ...)\n"
+"basierend auf Triggern (keine Aktivität seit 20 Tagen, Antwort auf eine Werbe-E-Mail,\n"
+"etc.)\n"
+"\n"
+"Optimieren Sie Kampagnen vom Lead bis zum Abschluss, auf jedem Kanal. Treffen Sie klügere\n"
+"Investment-Entscheidungen und machen Sie deutlich, wie sich Ihre Marketingaktivitäten auf das\n"
+"Endergebnis des Unternehmens auswirken.\n"
+"\n"
+"Integrieren Sie einfach ein Kontaktformular in Ihre Website. Ausgefüllte Formulare erstellen\n"
+"automatisch Leads in Odoo CRM, die in Marketingkampagnen verwendet werden können.\n"
+"\n"
+"Verwalten Sie Ihren <a href=\"https://www.odoo.com/app/crm\">Sales-Funnel</a> ohne\n"
+"viel Mühe. Lead-Gewinnung, Follow-ups von Telefonaten und Meetings. Analysieren Sie die\n"
+"Qualität Ihrer Leads, um fundierte Entscheidungen zu treffen und Zeit zu sparen durch die Integration\n"
+"von E-Mails direkt in der Anwendung.\n"
 
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_l10n_mx_reports
@@ -23089,6 +23952,66 @@ msgid ""
 "The real time collaborative writings on notes makes it the perfect tool to collaborate on meeting minutes. Attendees will be able to contribute to the minutes, attach important documents or discuss on the related thread.\n"
 "\n"
 msgstr ""
+"Odoo Notizen\n"
+"----------\n"
+"\n"
+"Arbeiten Sie organisiert mit effizienten <a href=\"https://www.odoo.com/app/notes\">To Do-Listen und Notizen</a>.\n"
+"Von persönlichen Aufgaben bis hin zu gemeinsamen Besprechungsprotokollen - Steigern Sie die Produktivität Ihrer Benutzer, indem Sie ihnen Werkzeuge an die Hand geben, mit denen sie ihre Arbeit nach Prioritäten ordnen,\n"
+"Ideen austauschen und gemeinsam an Dokumenten arbeiten können.\n"
+"\n"
+"Persönliche To Do-Listen, die Sie voranbringen\n"
+"-------------------------------\n"
+"\n"
+"Erstellen Sie schnell To-Dos, organisieren Sie sie horizontal für den mittelfristigen Zeitraum (heute, diese Woche, diesen Monat, ...), priorisieren Sie sie vertikal für den kurzfristigen Zeitraum und gruppieren Sie sie durch Zuweisung von Farben. Die Kanban-Ansicht ermöglicht eine einfache visuelle Organisation Ihrer Aufgaben.\n"
+"\n"
+"### Arbeitsüberlastung vermeiden\n"
+"\n"
+"Erleben Sie, wie angenehm es ist, sich auf eine strukturierte Art und Weise zu organisieren, anstatt sich alles merken zu müssen. Verwenden Sie Notizen, um [Dinge zu erledigen] (http://en.wikipedia.org/wiki/Getting_Things_Done).\n"
+"\n"
+"### Effizient Prioritäten setzen\n"
+"\n"
+"Die meisten Menschen verlieren sich in der Flut dringender täglicher Aufgaben und haben Schwierigkeiten, langfristige, wichtige Projekte im Blick zu behalten. Odoo Notizen bietet Ihnen eine einfache Möglichkeit, jeden Tag Zeit für wichtige, aber weniger dringende Aufgaben einzuplanen.\n"
+"\n"
+"### Motivation finden, Aufgaben abzuschließen\n"
+"\n"
+"Früher arbeiteten die Menschen an Aufgaben, die ihnen Spaß machten, statt sich um wichtige Angelegenheiten zu kümmern. Wenn Sie Dinge jedoch als erledigt markieren, werden Sie sich schnell viel besser fühlen.\n"
+"\n"
+"Passt sich an Ihren kreativen Fluss an\n"
+"-------------------------------\n"
+"\n"
+"### Abstimmung auf Ihre individuellen Bedürfnisse\n"
+"\n"
+"Jeder hat seine eigene Art, Aktivitäten zu organisieren. Der intelligente Kanban-Ansatz von Odoo Notizen ermöglicht es jedem Benutzer, seine Schritte zur Bearbeitung seiner Aufgaben und Notizen anzupassen.\n"
+"\n"
+"### Kreative Mitarbeiter\n"
+"\n"
+"Ein kreativer Mensch ordnet seine Notizen nach dem Entwicklungsstand der Idee: Entwürfe ** Ausgereifte Ideen ** Konkrete Ideen ** Zu erledigende Aufgaben\n"
+"\n"
+"### Vielreisende Mitarbeiter\n"
+"\n"
+"Ein Mitarbeiter, der viel unterwegs ist, kann seine Aufgaben entsprechend dem Arbeitskontext organisieren: Büro in den USA | Büro in London | Überprüfung während des Fluges | Zu Hause\n"
+"\n"
+"### Vorgesetzte\n"
+"\n"
+"Führungskräfte organisieren ihre große Anzahl von Aufgaben anhand von Prioritäten: Heute zu erledigen | Diese Woche | Diesen Monat | Später\n"
+"\n"
+"Private Notizen\n"
+"---------------\n"
+"\n"
+"### Notizen sind privat und können bei Bedarf freigegeben werden\n"
+"\n"
+"Halten Sie Ihre Ideen in Pads fest, um sie jederzeit griffbereit zu haben. Hängen Sie zugehörige Dokumente an und verwenden Sie Tags und Farben, um die Informationen zu organisieren. Sobald Ihre Ideen ausgereift sind, können Sie sie mit anderen Nutzern teilen, darüber diskutieren und gemeinsam nach Verbesserungen zu suchen.\n"
+"\n"
+"Kollaborative Sitzungsprotokolle\n"
+"-----------------------------\n"
+"\n"
+"### Gemeinsame Nutzung und Bearbeitung von Notizen in Echtzeit\n"
+"\n"
+"Odoo Notizen ist das perfekte Tool für die Zusammenarbeit bei der Erstellung von Besprechungsprotokollen in Echtzeit. Die Teilnehmer können zu den Protokollen beitragen, wichtige Dokumente anhängen oder über den entsprechenden Thread diskutieren.\n"
+"\n"
+"\n"
+"\n"
+"\n"
 
 #. module: base
 #: model:ir.module.module,description:base.module_point_of_sale
@@ -23203,6 +24126,110 @@ msgid ""
 "interaction history, profiles, and more.\n"
 "\n"
 msgstr ""
+"Odoo Point of Sale\n"
+"-----------------------------\n"
+"\n"
+"Odoo <a href=\"https://www.odoo.com/app/point-of-sale-shop\">Point of Sale</a>\n"
+"führt eine saubere Schnittstelle ein, die keine Installation erfordert und\n"
+"online und offline auf modernen Hardwaresystemen läuft.\n"
+"\n"
+"Durch die vollständige Integration mit dem Unternehmensinventar und der Buchhaltung erhalten Sie\n"
+"Echtzeit-Statistiken und Konsolidierungen zwischen allen Geschäften ohne\n"
+"mehrere Anwendungen integrieren zu müssen.\n"
+"\n"
+"Arbeiten Sie mit Ihrer eigenen Hardware\n"
+"---------------------------------------\n"
+"\n"
+"### In Ihrem Webbrowser\n"
+"\n"
+"Odoo POS ist eine Webanwendung, die auf jedem Gerät läuft, das Webseiten anzeigen kann\n"
+"und wenig bis gar keine Einrichtung erfordert.\n"
+"\n"
+"### Touchscreen oder Tastatur?\n"
+"\n"
+"Das Kassensystem funktioniert perfekt auf jeder Art von Touchscreen-fähigem Gerät, ob\n"
+"Multitouch-Tablets wie dem iPad oder tastaturlosen resistiven Touchscreen-Terminals.\n"
+"\n"
+"### Waagen und Drucker\n"
+"\n"
+"Barcode-Scanner und -Drucker werden standardmäßig unterstützt, ohne dass eine Einrichtung\n"
+"erforderlich ist. Waagen, Registrierkassen und andere Hilfsmittel können mit der Proxy\n"
+"API verwendet werden.\n"
+"\n"
+"Online und Offline\n"
+"------------------\n"
+"\n"
+"### Das POS-System von Odoo bleibt zuverlässig, auch wenn Ihre Verbindung nicht funktioniert\n"
+"\n"
+"Richten Sie neue Läden einfach mit einer Internetverbindung ein: **keine Installation, keine\n"
+"spezielle Hardware erforderlich**. Es funktioniert mit jedem **iPad, Tablet PC, Laptop** oder\n"
+"industriellen POS-Geräten.\n"
+"\n"
+"Zum Starten des Point of Sale ist zwar eine Internetverbindung erforderlich, aber\n"
+"auch nach einer vollständigen Unterbrechung der Verbindung läuft das Geschäft weiter.\n"
+"\n"
+"\n"
+"Eine übersichtliche Benutzeroberfläche\n"
+"----------------------------\n"
+"\n"
+"### Einfach kann so schön sein\n"
+"\n"
+"Verabschieden Sie sich von hässlicher, veralteter POS-Software und genießen Sie die Web-Oberfläche von Odoo,\n"
+"die für moderne Einzelhändler entwickelt wurde.\n"
+"\n"
+"### Produktives Design\n"
+"\n"
+"Ob für ein Restaurant oder ein Geschäft, Sie können mehrere Bestellungen\n"
+"parallel aktivieren, damit Ihre Kunden nicht warten müssen.\n"
+"\n"
+"### Blitzschnelle Suche\n"
+"\n"
+"Scannen Sie Produkte, blättern Sie durch hierarchische Kategorien, oder informieren Sie sich schnell\n"
+"mit dem Filter über alle Ihre Produkte.\n"
+"\n"
+"Integrierte Bestandsverwaltung\n"
+"-------------------------------\n"
+"\n"
+"Konsolidieren Sie alle Ihre Verkaufsteams in Echtzeit: Geschäfte, E-Commerce, Vertrieb.. Erhalten Sie Echtzeit-Kontrolle über den Bestand und genaue Prognosen zur Verwaltung von\n"
+"Anschaffungen.\n"
+"\n"
+"Ein komplettes Lagerverwaltungssystem auf Knopfdruck: Erhalten Sie Informationen über\n"
+"Sie Produktverfügbarkeiten, lösen Sie Beschaffungsaufträge aus usw.\n"
+"\n"
+"Kundendienst in Geschäften leisten----------------------------------\n"
+"\n"
+"Bieten Sie Ihren Kunden ein starkes Erlebnis, indem Sie den Kundenservice integrieren.\n"
+"Reparaturen abwickeln, Garantien und Reklamationen verfolgen, Lieferaufträge planen, etc.\n"
+"\n"
+"Integration von Rechnungsstellung & Buchhaltung\n"
+"----------------------------------\n"
+"\n"
+"Erstellen Sie Kundenrechnungen mit nur wenigen Klicks. Kontrollieren Sie Umsätze und Bargeld in Echtzeit\n"
+"und nutzen Sie das leistungsstarke Berichtswesen von Odoo, um Entscheidungen und die\n"
+"Effizienz Ihres Geschäfts zu verbessern.\n"
+"\n"
+"Kein Ärger mehr mit der Integration von Software: Alle Ihre Verkäufe und\n"
+"Bestandstransaktionen werden automatisch in Ihrer Hauptbuchhaltung erfasst.\n"
+"\n"
+"Einheitliche Daten zwischen allen Geschäften\n"
+"------------------------------\n"
+"\n"
+"Neue Produkte, Preisstrategien und Werbeaktionen werden automatisch auf\n"
+"ausgewählte Geschäfte angewendet. Arbeiten Sie mit einem einheitlichen Kundenstamm. Es ist keine komplexe Schnittstelle\n"
+"erforderlich, um in allen Ihren Filialen eine einheitliche Strategie umzusetzen.\n"
+"\n"
+"Mit Odoo als Backend haben Sie ein System, das sich perfekt eignet für\n"
+"kleine Geschäfte oder große multinationale Unternehmen.\n"
+"\n"
+"Kennen Sie Ihre Kunden - vor Ort und online\n"
+"--------------------------------------\n"
+"\n"
+"Erfolgreiche Marken integrieren ihre Kundenbeziehungen über alle\n"
+"Kanäle hinweg, um ein genaues Kundenprofil zu erstellen und mit den Käufern zu kommunizieren,\n"
+"während sie ihre Kaufentscheidungen treffen, sei es im Geschäft oder online.\n"
+"\n"
+"Mit Odoo erhalten Sie eine 360°-Kundenübersicht, einschließlich kanalübergreifender Verkäufe,\n"
+"Gesprächshistorie, Profile und mehr.\n"
 
 #. module: base
 #: model:ir.model.fields.selection,name:base.selection__ir_module_module__license__opl-1
@@ -23276,6 +24303,63 @@ msgid ""
 "etc.\n"
 "\n"
 msgstr ""
+"Odoo Lieferkette\n"
+"-----------------\n"
+"\n"
+"Automatisieren Sie die Zahlungsanforderung und kontrollieren Sie die Rechnungsstellung mit der Odoo\n"
+"<a href=\"https://www.odoo.com/app/purchase\">Open Source Lieferkette</a>.\n"
+"\n"
+"Automatisieren Sie Beschaffungsvorschläge, starten Sie Angebotsanfragen, verfolgen\n"
+"Sie Bestellungen, verwalten Sie Lieferanteninformationen, kontrollieren Sie den Wareneingang und\n"
+"prüfen Sie Lieferantenrechnungen.\n"
+"\n"
+"Automatisierte Beschaffungsangebote\n"
+"----------------------------------\n"
+"\n"
+"Reduzieren Sie den Lagerbestand mit Beschaffungsregeln. Holen Sie sich das richtige Kauf\n"
+"Vorschlag zur richtigen Zeit, um Ihren Lagerbestand zu reduzieren. Verbessern Sie Ihre\n"
+"Einkaufs- und Bestandsleistung mit Beschaffungsregeln in Abhängigkeit von Lagerbeständen, Logistikregeln, Kundenaufträgen, prognostizierten Fertigungsaufträgen usw.\n"
+"\n"
+"Senden Sie Angebotsanfragen oder Bestellungen mit einem Klick an Ihren Lieferanten.\n"
+"Greifen Sie über Ihre Bestellung auf Wareneingänge und Rechnungen zu.\n"
+"\n"
+"Ausschreibungen\n"
+"----------------\n"
+"\n"
+"Ausschreibungen starten, Antworten der Anbieter in den Prozess integrieren und\n"
+"Angebote vergleichen. Wählen Sie das beste Angebot aus und versenden Sie problemlos Bestellungen.\n"
+"Nutzen Sie das Berichterstattungssystem, um die Qualität von Dienstleistern im Nachhinein zu analysieren.\n"
+"\n"
+"\n"
+"E-Mail-Integration\n"
+"------------------\n"
+"\n"
+"Integrieren Sie alle Mitteilungen der Lieferanten zu den Bestellungen (oder Ausschreibungen), um\n"
+"die Rückverfolgbarkeit der Verhandlungen oder des Kundendienstes zu gewährleisten. Verwenden Sie das\n"
+"Forderungsmanagement-Modul, um Probleme im Zusammenhang mit Lieferanten zu verfolgen.\n"
+"\n"
+"Standardpreis, Durchschnittspreis, FIFO\n"
+"-----------------------------------\n"
+"\n"
+"Verwenden Sie die Kalkulationsmethode, die Ihrem Geschäft entspricht: Standardpreis, Durchschnittspreis, FIFO oder LIFO. Sie erhalten Ihre Buchhaltungseinträge und die korrekte Bestandsbewertung in Echtzeit; Odoo verwaltet alles für Sie, auf transparente Weise.\n"
+"\n"
+"Lieferantenpreislisten importieren\n"
+"--------------------------\n"
+"\n"
+"Treffen Sie intelligente Kaufentscheidungen anhand der besten Preise. Importieren Sie mühelos die Preislisten\n"
+"Ihrer Lieferanten, um intelligentere Kaufentscheidungen auf der Grundlage von Sonderangeboten, Mengenrabatten und speziellen Vertragsbedingungen fällen zu können. Sie können sogar Ihren\n"
+"Verkaufspreis von den Preisen Ihres Lieferanten abhängig machen.\n"
+"\n"
+"Produkt- und Rechnungskontrolle\n"
+"-----------------------------\n"
+"\n"
+"Kein Produkt und keine Bestellung wird vergessen, die Bestandskontrolle ermöglicht Ihnen die Verwaltung von\n"
+"Backorders, Rückerstattungen, Produktannahmen und Qualitätskontrolle. Wählen Sie die richtige\n"
+"Kontrollmethode nach Ihrem Bedarf.\n"
+"\n"
+"Kontrollieren Sie ganz leicht Lieferantenrechnungen. Wählen Sie die richtige Methode je nach\n"
+"Bedarf: Generieren Sie Rechnungsentwürfe auf Basis von Bestellungen oder gelieferten Produkten, erstellen Sie Rechnungen manuell und importieren Sie Zeilen aus Bestellungen,\n"
+"usw.\n"
 
 #. module: base
 #: model:ir.module.module,description:base.module_website
@@ -23393,6 +24477,116 @@ msgid ""
 "\n"
 "Schedule, organize, promote or sell events online; conferences, trainings, webinars, etc.\n"
 msgstr ""
+"Odoo Website Builder\n"
+"--------------------\n"
+"\n"
+"Erstellen Sie eine großartige und <a href=\"https://www.odoo.com/app/website\">konstenlose Website</a>,\n"
+"einfach personalisierbar mit dem Odoo <a href=\"https://www.odoo.com/app/website\">Website Builder</a>.\n"
+"\n"
+"Erstellen Sie eine professionelle Website mit unserem supereinfachen Builder. Verwenden Sie präzise\n"
+"Bausteine und bearbeiten Sie alles Inline.\n"
+"\n"
+"Profitieren Sie von sofort betriebsbereiten Funktionen wie e-Commerce, Veranstaltungen, Blogs, Stellenanzeigen, Kundenreferenzen, Call-to-Actions, etc.\n"
+"\n"
+"Alles Inline bearbeiten\n"
+"--------------------\n"
+"\n"
+"Erstellen Sie schöne Websites ohne technische Kenntnisse. Odoos einzigartiger *'edit\n"
+"inline'* Ansatz macht die Erstellung von Websites überraschend einfach. Kein kompliziertes\n"
+"Backend; Nehmen Sie Änderungen einfach per Klick vor.\n"
+"\n"
+"\"Möchten Sie den Preis eines Produkts ändern oder fett markieren? Möchten Sie einen\n"
+"Blogtitel ändern?\" Einfach anklicken und ändern. Sie bekommen genau das, was Sie sehen. Wirklich toll.\n"
+"\n"
+"Umwerfend. Verblüffend schön.\n"
+"---------------------------------\n"
+"\n"
+"Die Bausteine von Odoo ermöglichen die Gestaltung moderner Websites, die mit herkömmlichen\n"
+"WYSIWYG-Seiteneditoren nicht möglich ist.\n"
+"\n"
+"Ob für Produktbeschreibungen, Blogs oder statische Seiten, Sie müssen kein\n"
+"professioneller Designer sein, um saubere Inhalte zu erstellen. Einfach per Drag&Drop einfügen und\n"
+"vordefinierte Bausteine anpassen.\n"
+"\n"
+"Betriebsbereit, sofort startklar\n"
+"--------------------------------\n"
+"\n"
+"Aktivieren Sie einsatzbereite Enterprise-Funktionen mit nur einem Klick; E-Commerce,\n"
+"Call-to-Actions, Stellenausschreibungen, Veranstaltungen, Kundenreferenzen, Blogs, usw.\n"
+"\n"
+"Herkömmliche eCommerce- und CMS-Systeme haben schlecht gestaltete Backends, da dies nicht ihr\n"
+"Schwerpunkt ist. Mit der Odoo-Integration profitieren Sie von der besten Management\n"
+"Software, um Ihre Aufträge, Ihre Bewerber, Ihre Leads usw. zu verwalten.\n"
+"\n"
+"Ein großartiges mobiles Erlebnis\n"
+"-------------------------\n"
+"\n"
+"Erhalten Sie eine mobilfreundliche Website dank unseres dynamischen Designs, das auf\n"
+"Bootstrap beruht. Alle Ihre Seiten passen sich automatisch an die Bildschirmgröße an.\n"
+"(Handys, Tablets, Desktop) Dank der standardmäßigen Integration müssen Sie sich nicht um mobile Inhalte kümmern.\n"
+"\n"
+"SEO-Tools auf Knopfdruck\n"
+"-----------------------------\n"
+"\n"
+"Das *Promote*-Tool schlägt Schlüsselwörter vor, die den von Google am häufigsten gesuchten Begriffen entsprechen.\n"
+"Die Tools zur Suchmaschinenoptimierung sind sofort einsatzbereit, ohne dass eine Konfiguration\n"
+"erforderlich ist.\n"
+"\n"
+"Google Analytics verfolgt standardmäßig Ihre Warenkorbvorgänge. Sitemap und\n"
+"strukturierte Inhalte werden automatisch für die Indexierung durch Google erstellt.\n"
+"\n"
+"Mehrsprachigkeit leichtgemacht\n"
+"-------------------------\n"
+"\n"
+"Lassen Sie Ihre Website ohne großen Aufwand in mehrere Sprachen übersetzen. Odoo schlägt vor\n"
+"und überträgt die Übersetzungen automatisch auf alle Seiten, je nachdem, was Sie\n"
+"auf der Masterseite bearbeiten.\n"
+"\n"
+"Designer-freundliche Vorlagen\n"
+"---------------------------\n"
+"\n"
+"Die Vorlagen sind großartig und einfach zu gestalten. Sie brauchen nichts zu entwickeln, um\n"
+"neue Seiten, Themen oder Bausteine zu erstellen. Wir verwenden eine saubere HTML-Struktur, ein\n"
+"[bootstrap](http://getbootstrap.com/) CSS.\n"
+"\n"
+"Mit dem integrierten Vorlagen-Editor können Sie jede Seite im Handumdrehen anpassen. Veröffentlichen Sie\n"
+"Ihre Arbeit einfach in Form eines Odoo-Moduls.\n"
+"\n"
+"Fluid Grid Layouting\n"
+"--------------------\n"
+"\n"
+"Gestalten Sie perfekte Seiten durch Ziehen und Ablegen von Bausteinen. Verschieben und skalieren Sie sie\n"
+"um sie an das gewünschte Layout anzupassen.\n"
+"\n"
+"Die Bausteine basieren auf einem dynamischen, mobilfreundlichen Fluid-Grid-System\n"
+"das bis zu 12 Spalten skaliert, wenn sich die Größe des Geräts oder des Ansichtsfensters\n"
+"vergrößert.\n"
+"\n"
+"Professionelle Themes\n"
+"-------------------\n"
+"\n"
+"Entwerfen Sie ein benutzerdefiniertes Theme oder verwenden Sie vordefinierte Themes, um das Erscheinungsbild\n"
+"Ihrer Website anzupassen.\n"
+"\n"
+"Testen Sie ganz einfach ein neues Farbschema; Sie können Ihr Theme jederzeit mit nur einem\n"
+"Klick wechseln.\n"
+"\n"
+"Integriert mit Odoo Apps\n"
+"-------------------------\n"
+"\n"
+"### e-Commerce\n"
+"\n"
+"Produkte anpreisen, online verkaufen, das Einkaufserlebnis der Besucher optimieren.\n"
+"\n"
+"\n"
+"### Blogs\n"
+"\n"
+"Nachrichten schreiben, neue Besucher gewinnen, Kunden binden.\n"
+"\n"
+"### Online Events\n"
+"\n"
+"Planen, Organisieren, Bewerben oder Verkaufen von Online-Veranstaltungen; Konferenzen, Schulungen, Webinare usw.\n"
+"\n"
 
 #. module: base
 #: model:ir.module.module,description:base.module_website_sale
@@ -23552,6 +24746,158 @@ msgid ""
 "Schedule, organize, promote or sell events online; conferences, webinars, trainings, etc.\n"
 "\n"
 msgstr ""
+"Odoo e-Commerce\n"
+"---------------\n"
+"\n"
+"### Optimieren Sie Verkaufszahlen mit einem großartigen Online-Shop.\n"
+"\n"
+"Odoo ist ein <a href=\"https://www.odoo.com/app/ecommerce\">Open Source e-Commerce</a>,\n"
+"anders als alles, was Sie bisher gesehen haben. Hier erhalten Sie tolle Produktkataloge\n"
+"und fantastische Produktbeschreibungsseiten.\n"
+"\n"
+"Es ist voll ausgestattet, mit Ihrer Verwaltungssoftware integriert, individuell anpassbar\n"
+"und super benutzerfreundlich.\n"
+"\n"
+"Erstellen Sie fantastische Produktseiten\n"
+"----------------------------\n"
+"\n"
+"Odoo's einzigartiger *'Inline Editing'* und Baustein-Ansatz macht die Erstellung von Produktseiten\n"
+"erfrischend einfach. \"Sie möchten die Preis eines Produktes ändern? Oder diesen in Fettdruck\n"
+"anzeigen? Sie möchten ein Banner für ein bestimmtes Produkt hinzufügen?\" Einfach klicken und anpassen.\n"
+"Was Sie sehen, bekommen Sie auch. Genau so.\n"
+"\n"
+"Per Drag & Drop können Sie mit durchdachten *'Bausteinen'* schöne Produktseiten erstellen,\n"
+"die Ihre Kunden lieben werden.\n"
+"\n"
+"Steigern Sie Ihre Erlöse pro Auftrag\n"
+"-------------------------------\n"
+"\n"
+"Die integrierte Cross-Selling-Funktion hilft Ihnen, zusätzliche Produkte anzubieten, passend zum Inhalt des\n"
+"Warenkorbs Ihrer Kunde. (z. B. Zubehör).\n"
+"\n"
+"Der Upselling-Algorithmus von Odoo ermöglicht es Ihnen, Besuchern ähnliche, aber\n"
+"teurere Produkte als das angezeigte vorzuschlagen, mit Anreizen.\n"
+"\n"
+"Mit der Inline-Editierfunktion können Sie mit einem Klick einen Preis ändern,\n"
+"eine Werbeaktion starten oder die Beschreibung eines Produkts verfeinern.\n"
+"\n"
+"Saubere Google Analytics-Integration\n"
+"------------------------------------\n"
+"\n"
+"Verschaffen Sie sich einen klaren Überblick über Ihren Sales Funnel. Die Google Analytics-Tracker von Odoo\n"
+"sind standardmäßig so konfiguriert, dass sie alle Ereignisse im Zusammenhang mit Warenkorb,\n"
+"Call-to-Actions, etc. verfolgen.\n"
+"\n"
+"Da Odoo Marketingtools (Massenmailings, Kampagnen, etc.) auch mit  Google Analytics\n"
+"verbunden sind, erhalten Sie einen kompletten Überblick Ihres Unternehmens.\n"
+"\n"
+"Neue Märkte erschließen\n"
+"------------------\n"
+"\n"
+"Lassen Sie Ihre Website ohne großen Aufwand in mehrere Sprachen übersetzen. Odoo macht Vorschläge\n"
+"und überträgt die Übersetzungen automatisch auf alle Seiten.\n"
+"\n"
+"Dank unserer \"On-Demand\"-Übersetzungsfunktion können Sie von professionellen Übersetzern profitieren,\n"
+"die all Ihre Änderungen direkt übernehmen. Passen Sie einen beliebigen Teil\n"
+"Ihrer Website an (neuer Blogbeitrag, Seitenänderung, Produktbeschreibungen,\n"
+"...) und die Übersetzung wird automatisch innerhalb von ca. 32 Std. aktualisiert.\n"
+"\n"
+"Verfeinern Sie Ihren Katalog\n"
+"----------------------\n"
+"\n"
+"Sie haben die volle Kontrolle darüber, wie Sie Ihre Produkte auf der Katalogseite anzeigen:\n"
+"Werbebanner, Anzeigegröße, Rabatte, Varianten, Gitter-/Listenansicht, etc.\n"
+"\n"
+"Bearbeiten Sie alle Produkte inline, damit sich Ihre Website mit den Bedürfnissen Ihrer Kunden weiterentwickelt.\n"
+"\n"
+"Neue Kunden gewinnen\n"
+"---------------------\n"
+"\n"
+"Die SEO-Tools sind sofort einsatzbereit und müssen nicht konfiguriert werden. Odoo schlägt\n"
+"basierend auf Google vielversprechende Suchbegriffe vor. Google Analytics verfolgt\n"
+"Warenkorb-Aktionen, die Sitemap wird automatisch für die Google-Indexierung erstellt,\n"
+"usw.\n"
+"\n"
+"Wir erstellen sogar automatisch strukturierte Inhalte, um Ihr Produkt und Ihre Veranstaltungen\n"
+"effizient über Google zu bewerben.\n"
+"\n"
+"Soziale Medien nutzen\n"
+"---------------------\n"
+"\n"
+"Erstellen Sie neue Landing Pages ganz einfach mit der Inline-Editierfunktion von Odoo. Schicken Sie\n"
+"Besucher Ihrer verschiedenen Marketingkampagnen auf bestimmte Landing Pages, um\n"
+"Konversionen zu optimieren.\n"
+"\n"
+"Verwalten Sie Ihr Reseller-Netzwerk\n"
+"-------------------------\n"
+"\n"
+"Verwalten Sie ein Reseller-Netzwerk, um neue Märkte zu erschließen, lokal präsent zu sein oder Ihren Vertrieb zu erweitern.\n"
+"Gewähren Sie für eine effiziente Zusammenarbeit Zugang zu Ihrem Reseller-Portal.\n"
+"\n"
+"Promoten Sie Ihre Reseller online, leiten Sie Leads an sie weiter (mit integrierter\n"
+"Geolokalisierungsfunktion), definieren Sie spezifische Preislisten, starten Sie ein Treueprogramm\n"
+"(bieten Sie Ihren besten Kunden oder Resellern besondere Rabatte an), usw.\n"
+"\n"
+"Profitieren Sie von der Leistungsfähigkeit von Odoo in Ihrem Online-Shop: leistungsstarke Steuer-Engine,\n"
+"flexible Preisstrukturen, Top-Warenwirtschaftslösung, Reseller-Interface,\n"
+", Unterstützung für verschiedene Produkte; physische Waren,\n"
+"Veranstaltungen, Dienstleistungen, Varianten und Optionen, etc.\n"
+"\n"
+"Sie brauchen keine Schnittstelle zu Ihrer Lager-, Verkaufs- oder Buchhaltungssoftware.\n"
+"Alles ist mit Odoo integriert. Unkompliziert und in Echtzeit.\n"
+"\n"
+"Sauberer Kassenvorgang\n"
+"------------------------\n"
+"\n"
+"Wandeln Sie den Großteil des Besucherinteresses in echte Bestellungen um, mithilfe eines sauberen, \n"
+"benutzerfreundlichen Kassenvorgangs\n"
+"und einer minimalen Anzahl von Schritten auf jeder Seite.\n"
+"\n"
+"Passen Sie Ihren Kassenvorgang an Ihre geschäftlichen Anforderungen an: Zahlungsarten,\n"
+"Liefermethoden, Cross-Selling, Sonderkonditionen, etc.\n"
+"\n"
+"Und vieles mehr...\n"
+"----------------\n"
+"\n"
+"### Online Sales\n"
+"\n"
+"-   Mobiles Interface\n"
+"-   Verkauf von Produkten, Events oder Dienstleistungen\n"
+"-   Flexible Preislisten\n"
+"-   Produkte mit Varianten\n"
+"-   Mehrere Shops\n"
+"-   Hervorragender Kassenvorgang\n"
+"\n"
+"### Kunden-Service\n"
+"\n"
+"-   Kundenportal um Bestellungen zu verfolgen\n"
+"-   Shopping-Hilfe dank Website-Live Chat\n"
+"-   Retourenmanagement\n"
+"-   Erweiterte Versandregeln\n"
+"-   Coupons oder Geschenkgutscheine\n"
+"\n"
+"### Auftragsmanagement\n"
+"\n"
+"-   Erweiterte Lagerverwaltungsfunktionen\n"
+"-   Integration von Abrechnung und Buchhaltung\n"
+"-   Massenmailings und Kundensegmentierung\n"
+"-   Lead Automation und Marketing-Kampagnen\n"
+"-   Persistenter Warenkorb\n"
+"\n"
+"Vollständig integriert mit anderen Apps\n"
+"--------------------------------\n"
+"\n"
+"### CMS\n"
+"\n"
+"Erstellen Sie mühelos beeindruckende Websites, ohne technische Vorkenntnisse.\n"
+"\n"
+"### Blogs\n"
+"\n"
+"Erstellen Sie Inhalte, ziehen Sie Besucher an, verbessern Sie die Kundenbindung.\n"
+"\n"
+"### Online-Veranstaltungen\n"
+"\n"
+"Planen, Organisieren, Bewerben oder Verkaufen von Veranstaltungen online; Konferenzen, Webinare, Schulungen usw.\n"
 
 #. module: base
 #: model_terms:ir.actions.act_window,help:base.action_partner_customer_form
@@ -23678,6 +25024,7 @@ msgstr ""
 #, python-format
 msgid "One of the documents you are trying to merge is encrypted"
 msgstr ""
+"Eines der Dokumente, die Sie zusammenführen möchten, ist verschlüsselt"
 
 #. module: base
 #: code:addons/models.py:0
@@ -23696,6 +25043,9 @@ msgid ""
 "One or more of the selected modules have already been uninstalled, if you "
 "believe this to be an error, you may try again later or contact support."
 msgstr ""
+"Eines oder mehrere der ausgewählten Module wurden bereits deinstalliert. "
+"Wenn Sie glauben, dass dies ein Fehler ist, können Sie es später noch einmal"
+" versuchen oder den Support kontaktieren."
 
 #. module: base
 #: code:addons/base/models/res_partner.py:0
@@ -23720,7 +25070,7 @@ msgstr "Online-Synchronisierung von Kontoauszügen"
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_website_event_booth_sale
 msgid "Online Event Booth Sale"
-msgstr ""
+msgstr "Online-Verkauf von Veranstaltungsständen"
 
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_website_event_booth
@@ -23730,7 +25080,7 @@ msgstr "Online-Veranstaltungsstände"
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_website_event_sale
 msgid "Online Event Ticketing"
-msgstr "Online Event Ticketing"
+msgstr "Online Event Ticketverkauf"
 
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_website_hr_recruitment
@@ -24127,6 +25477,129 @@ msgid ""
 "\n"
 "Create a great \"About us\" page by presenting your team efficiently.\n"
 msgstr ""
+"Events, Trainings & Webinare organisieren\n"
+"-------------------------------------\n"
+"\n"
+"### Planen, Promoten, Verkaufen, Organisieren\n"
+"\n"
+"Organisieren, bewerben und verkaufen Sie Veranstaltungen online. Ob Sie nun Meetings, Konferenzen, Schulungen oder Webinare organisieren, Odoo bietet Ihnen alle Funktionen, die Sie für die Verwaltung Ihrer Events benötigen.\n"
+"\n"
+"Atemberaubende Veranstaltungsseiten erstellen\n"
+"--------------------------\n"
+"\n"
+"### Alte WYSIWYG-Editoren loswerden\n"
+"\n"
+"Erstellen Sie schöne Veranstaltungsseiten durch Drag & Drop von durchdachten *'Building Blocks'*. Veröffentlichen Sie Fotos, Redner, Termine usw.\n"
+"\n"
+"Odoo's einzigartiger *'edit inline'* Ansatz macht die Erstellung von Websites überraschend einfach. Möchten Sie einen Redner vorstellen? Den Preis für ein Ticket ändern? Ein Banner aktualisieren? Sponsoren werben?\" - Einfach klicken und ändern.\n"
+"\n"
+"Tickets online verkaufen\n"
+"-------------------\n"
+"\n"
+"### Automatisieren Sie den Registrierungs- und Zahlungsprozess\n"
+"\n"
+"Verkaufen Sie Tickets für Ihre Veranstaltung mit der Multi-Ticketing-Funktion. Veranstaltungen können gratis oder kostenpflichtig sein. Die Teilnehmer können je nach Konfiguration online per Kreditkarte oder auf Rechnung bezahlen.\n"
+"\n"
+"Steigern Sie Ihren Umsatz mit Frühbucherpreisen, Sonderkonditionen für Mitglieder oder Zusatzleistungen bei mehreren Tickets.\n"
+"\n"
+"Eine saubere Google Analytics-Integration\n"
+"------------------------------------\n"
+"\n"
+"### Kontrollen Sie Ihren Sales Funnel mit Google Analytics\n"
+"\n"
+"Verschaffen Sie sich einen klaren Überblick über Ihren Sales Funnel. Die Google Analytics-Tracker von Odoo sind standardmäßig so konfiguriert, dass sie alle Ereignisse im Zusammenhang mit Warenkörben, Call-to-Actions usw. verfolgen.\n"
+"\n"
+"Da die Odoo-Marketing-Tools (Massenmailing, Kampagnen usw.) auch mit Google Analytics verknüpft sind, erhalten Sie einen vollständigen Überblick über Ihr Unternehmen.\n"
+"\n"
+"Events effizient bewerben\n"
+"--------------------------\n"
+"\n"
+"### Massenmailing & Social Media\n"
+"\n"
+"Nutzen Sie die Segmentierung, die Integration sozialer Netzwerke und die Massenversandfunktionen, um Ihre Veranstaltungen bei der richtigen Zielgruppe zu bewerben. Richten Sie automatisierte E-Mails an Teilnehmer ein, um sie kurzfristig zu informieren.\n"
+"\n"
+"Designer-freundliche Themes\n"
+"------------------------\n"
+"\n"
+"### Designer lieben die Arbeit mit Odoo\n"
+"\n"
+"Themes sind großartig und einfach zu gestalten. Sie brauchen nichts zu programmieren, um neue Seiten, Themes oder Bausteine zu erstellen. Wir verwenden eine saubere HTML-Struktur, ein [bootstrap](http://getbootstrap.com/) CSS und unsere Modularität ermöglicht es, Ihre Themes leicht anderswo einzusetzen.\n"
+"\n"
+"Dank des Bausteinkonzepts bleibt die Website auch dann sauber, wenn die Endnutzer neue Inhalte erstellen.\n"
+"\n"
+"Rücken Sie Ihre Events in den Fokus\n"
+"----------------------------\n"
+"\n"
+"### SEO-Tools immer Griffbereit\n"
+"\n"
+"Die SEO-Tools sind sofort einsatzbereit und müssen nicht konfiguriert werden. Odoo schlägt Schlüsselwörter entsprechend der meist gesuchten Begriffe in Google vor, Google Analytics verfolgt Warenkörbe und Sitemaps werden automatisch erstellt.\n"
+"\n"
+"Wir erstellen sogar automatisch strukturierte Inhalte, um Ihre Veranstaltungen und Produkte effizient in Google zu bewerben.\n"
+"\n"
+"Soziale Medien nutzen\n"
+"---------------------\n"
+"\n"
+"### Optimieren: von Werbung zu Geschäftsabschlüssen\n"
+"\n"
+"Erstellen Sie neue Landing Pages ganz einfach mit der Inline-Editing-Funktion von Odoo. Schicken Sie Besucher Ihrer verschiedenen Marketing-Kampagnen auf Event-Landing Pages, um die Konversionen zu optimieren.\n"
+"\n"
+"Und vieles mehr...\n"
+"----------------\n"
+"\n"
+"### Planen\n"
+"\n"
+"-   Veranstaltungskalender\n"
+"-   Veröffentlichung von Dokumenten\n"
+"-   Ressourcenallokation\n"
+"-   Einkäufe automatisieren (Catering...)\n"
+"-   Mehrere Standorte und Organisatoren\n"
+"-   Mobiles Interface\n"
+"\n"
+"### Verkaufen\n"
+"\n"
+"-   Online- oder Offline-Verkäufe\n"
+"-   Automatische Rechnungsstellung\n"
+"-   Stornierungsbedingungen\n"
+"-   Sonderpreise für Mitglieder\n"
+"-   Dashboards und Reporting\n"
+"\n"
+"### Organisieren\n"
+"\n"
+"-   Erweiterte Planung\n"
+"-   Ausweise drucken\n"
+"-   Follow-up-E-Mails automatisieren\n"
+"-   min/max Kapazitäten\n"
+"-   Kurse und Ressourcen verwalten\n"
+"-   Mitgliedergruppe anlegen\n"
+"-   Zufriedenheitsumfragen automatisieren\n"
+"\n"
+"Voll integriert mit anderen Apps\n"
+"---------------------------------\n"
+"\n"
+"### Hunderte von Open Source-Apps gratis\n"
+"\n"
+"\n"
+"### eCommerce\n"
+"\n"
+"Produkte anpreisen, online verkaufen, das Einkaufserlebnis der Besucher optimieren.\n"
+"\n"
+"\n"
+"### Blogs\n"
+"\n"
+"Nachrichten schreiben, neue Besucher gewinnen, Kunden binden.\n"
+"\n"
+"### Unser Team\n"
+"\n"
+"Erstellen Sie eine großartige \"Über uns\"-Seite, indem Sie Ihr Team effizient präsentieren.\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
 
 #. module: base
 #: model:ir.module.module,summary:base.module_project
@@ -24443,7 +25916,7 @@ msgstr "Oberkategorie"
 #: model:ir.model.fields,field_description:base.field_base_partner_merge_automatic_wizard__group_by_parent_id
 #: model:ir.model.fields,field_description:base.field_res_company__parent_id
 msgid "Parent Company"
-msgstr "Stamm-Unternehmen"
+msgstr "Muttergesellschaft"
 
 #. module: base
 #: model:ir.model.fields,field_description:base.field_ir_ui_menu__parent_id
@@ -24884,7 +26357,7 @@ msgstr "Kassensystem"
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_pos_coupon
 msgid "Point of Sale Coupons"
-msgstr ""
+msgstr "Verkaufsstellen-Coupons"
 
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_pos_discount
@@ -24984,7 +26457,7 @@ msgstr "Präfixwert des Datensatzes für Sequenz"
 #. module: base
 #: model:ir.model.fields.selection,name:base.selection__ir_asset__directive__prepend
 msgid "Prepend"
-msgstr ""
+msgstr "Voranstellen"
 
 #. module: base
 #: model:ir.module.module,summary:base.module_website_twitter_wall
@@ -25149,7 +26622,7 @@ msgstr "Professor"
 #. module: base
 #: model_terms:ir.ui.view,arch_db:base.ir_profile_view_list
 msgid "Profile Session"
-msgstr ""
+msgstr "Profil Sitzung"
 
 #. module: base
 #: model:ir.ui.menu,name:base.menu_ir_profile
@@ -25232,7 +26705,7 @@ msgstr "Projektkosten"
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_project_mail_plugin
 msgid "Project Mail Plugin"
-msgstr ""
+msgstr "Project Mail Plugin"
 
 #. module: base
 #: model:ir.module.module,description:base.module_project
@@ -25307,11 +26780,76 @@ msgid ""
 "accurate reports on your team's performance.\n"
 "\n"
 msgstr ""
+"Projekt-Management\n"
+"------------------\n"
+"\n"
+"### Unglaublich flexibel und benutzerfreundlich\n"
+"\n"
+"\n"
+"Odoo's kollaboratives und echtzeitbasiertes <a href=\"https://www.odoo.com/app/project\">Open-Source-Projektmanagement</a>\n"
+"hilft Ihrem Team bei der Arbeit. Behalten Sie den Überblick über alles, vom Gesamtbild\n"
+"bis hin zum kleinsten Detail, vom Vertragsabschluss bis zur Rechnungsstellung.\n"
+"\n"
+"Maßgeschneidert für Ihre Arbeitsabläufe\n"
+"--------------------------------\n"
+"\n"
+"Organisieren Sie Projekte rund um Ihre eigenen Prozesse. Bearbeiten Sie Aufgaben und Probleme in der\n"
+"Kanban-Ansicht, planen Sie Tätigkeiten mit dem Gantt-Diagramm und kontrollieren Sie Fristen in der\n"
+"Kalenderansicht. Jedes Projekt kann aus individuellen Phasen bestehen, um den Teams zu helfen,\n"
+"Arbeitsabläufe zu optimieren.\n"
+"\n"
+"Benutzerfreundlichkeit\n"
+"-----------\n"
+"\n"
+"Blitzschnelle Organisation. Die benutzerfreundliche Oberfläche ist leicht verständlich und jede Aktion erfolgt sofort, so dass ihrem produktiven Fluss nichts mehr im Weg steht.\n"
+"\n"
+"Zusammenarbeiten\n"
+"-------------\n"
+"\n"
+"### Echtzeit-Chat, Dokumentenaustausch, E-Mail-Integration\n"
+"\n"
+"Nutzen Sie den Chat, um mit Ihrem Team oder Ihren Kunden zu kommunizieren sowie Kommentare\n"
+"und Dokumente zu Aufgaben und Problemen zu teilen. Integrieren Sie Diskussionen schnell mit der E-Mail-Integration.\n"
+"\n"
+"Sprechen Sie mit anderen Benutzern oder Kunden über die Live Chat-Funktion der Website-Anwendung.\n"
+"\n"
+"Kollaboratives Schreiben\n"
+"---------------------\n"
+"\n"
+"### Die Kraft von Etherpad, für Ihre Aufgaben\n"
+"\n"
+"Bearbeiten Sie gemeinsam dieselben Daten oder Sitzungsprotokolle direkt in der\n"
+"Anwendung. Mit der integrierten Etherpad-Funktion können mehrere Personen\n"
+"gleichzeitig an denselben Aufgaben arbeiten.\n"
+"\n"
+"Dies ist sehr effizient für Scrum-Meetings, Sitzungsprotokolle oder komplexe\n"
+"Beschreibungen. Jeder Benutzer hat seine eigene Farbe und Sie können die gesamte\n"
+"Erstellung des Inhalts nachverfolgen.\n"
+"\n"
+"Effizientes Arbeiten\n"
+"-------------\n"
+"\n"
+"Erhalten Sie Benachrichtigungen über verfolgte Veranstaltungen, um über das, was Sie interessiert, auf dem Laufenden zu bleiben. Verwenden Sie\n"
+"grüne/rote visuelle Indikatoren, um zu sehen, was erledigt ist und was\n"
+"Ihre Aufmerksamkeit erfordert.\n"
+"\n"
+"Zeiterfassung, Verträge & Abrechnung\n"
+"---------------------------------\n"
+"\n"
+"Projekte werden automatisch mit Kundenverträgen integriert, sodass Sie ganz einfach\n"
+"basierend auf Zeit- und Materialaufwand abrechnen und Ihre Tätigkeit erfassen können.\n"
+"\n"
+"Probleme nachverfolgen\n"
+"------------\n"
+"\n"
+"Filtern Sie die Probleme, die in einem Projekt auftreten, heraus, um schnell eine Lösung zu finden.\n"
+"Verknüpfen Sie Probleme mit Kundeninteraktionen und\n"
+"erhalten Sie genaue Berichte über die Leistung Ihres Teams.\n"
 
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_data_merge_project
 msgid "Project Merge action"
-msgstr ""
+msgstr "Aktion \"Projekt zusammenführen\""
 
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_project_hr_payroll_account
@@ -25326,7 +26864,7 @@ msgstr ""
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_project_purchase
 msgid "Project Purchase"
-msgstr ""
+msgstr "Projekt Einkauf"
 
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_sale_project_account
@@ -25341,7 +26879,7 @@ msgstr ""
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_project_holidays
 msgid "Project Time Off"
-msgstr ""
+msgstr "Projekt Freizeit"
 
 #. module: base
 #: model:ir.module.module,summary:base.module_project_account_budget
@@ -25376,7 +26914,7 @@ msgstr "Projekt aus Dokumenten"
 #. module: base
 #: model:ir.module.module,summary:base.module_project_hr_payroll_account
 msgid "Project payroll accounting"
-msgstr ""
+msgstr "Projekt Payroll Buchhaltung"
 
 #. module: base
 #: model:ir.module.module,summary:base.module_sale_project_account
@@ -25503,7 +27041,7 @@ msgstr "Veranstaltungen veröffentlichen, Tickets verkaufen"
 #. module: base
 #: model:ir.module.module,summary:base.module_event_social
 msgid "Publish on social account from Event"
-msgstr ""
+msgstr "Veröffentlichen auf sozialen Konten aus Events"
 
 #. module: base
 #: model:ir.module.module,description:base.module_event_social
@@ -25735,7 +27273,7 @@ msgstr "Quiz zu Tracks"
 #. module: base
 #: model:ir.module.module,summary:base.module_website_event_track_quiz
 msgid "Quizzes on tracks"
-msgstr ""
+msgstr "Quiz zu Videos"
 
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_sale_quotation_builder
@@ -25868,7 +27406,7 @@ msgstr "RTN"
 #. module: base
 #: model:ir.model.fields.selection,name:base.selection__res_company__font__raleway
 msgid "Raleway"
-msgstr "Autobahn"
+msgstr "Raleway"
 
 #. module: base
 #: model:ir.model.fields,field_description:base.field_res_currency__rate_string
@@ -25968,7 +27506,7 @@ msgstr "Regel aufzeichnen"
 #. module: base
 #: model:ir.module.module,summary:base.module_timer
 msgid "Record time"
-msgstr ""
+msgstr "Zeit erfassen"
 
 #. module: base
 #: code:addons/models.py:0 code:addons/models.py:0
@@ -26029,7 +27567,7 @@ msgstr "Referenz"
 #: code:addons/base/models/ir_qweb_fields.py:0
 #, python-format
 msgid "Reference date"
-msgstr "Referenz-datum"
+msgstr "Bezugsdatum"
 
 #. module: base
 #: model:ir.module.category,name:base.module_category_human_resources_referrals
@@ -26245,7 +27783,7 @@ msgstr "Berichtswesen"
 #. module: base
 #: model:ir.module.module,summary:base.module_l10n_ar_reports
 msgid "Reporting for Argentinean Localization"
-msgstr ""
+msgstr "Berichterstattung für die argentinische Lokalisierung"
 
 #. module: base
 #: model:ir.actions.act_window,name:base.ir_action_report
@@ -26528,7 +28066,7 @@ msgstr ""
 #. module: base
 #: model:ir.model.fields,field_description:base.field_ir_mail_server__smtp_host
 msgid "SMTP Server"
-msgstr "Postausgang-Server (SMTP)"
+msgstr "SMTP Server"
 
 #. module: base
 #: model:ir.module.module,summary:base.module_sale_purchase_stock
@@ -26658,7 +28196,7 @@ msgstr "Gehaltspaket-Konfigurator"
 #. module: base
 #: model:ir.module.module,summary:base.module_l10n_be_hr_payroll_canteen
 msgid "Salary Package Configurator - Canteen Cost"
-msgstr ""
+msgstr "Gehaltspaket-Konfigurator - Kantinenkosten"
 
 #. module: base
 #: model:ir.module.module,summary:base.module_l10n_be_hr_contract_salary_group_insurance
@@ -26678,7 +28216,7 @@ msgstr "Verkauf - SMS"
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_sale_account_accountant
 msgid "Sale Accounting"
-msgstr ""
+msgstr "Buchhaltung Vertrieb"
 
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_sale_coupon
@@ -26784,7 +28322,7 @@ msgstr "Zeiterfassung im Vertrieb"
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_sale_timesheet_enterprise
 msgid "Sales Timesheet: Invoicing"
-msgstr ""
+msgstr "Stundenzettel Verkauf: Rechnungsstellung"
 
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_sale_mrp
@@ -26998,7 +28536,7 @@ msgstr "Suchen..."
 #: code:addons/base/models/ir_ui_view.py:0
 #, python-format
 msgid "Searchpanel item with select multi cannot have a domain."
-msgstr ""
+msgstr "Suchpanel-Element mit select multi kann keine Domain haben."
 
 #. module: base
 #: model:ir.model.fields,field_description:base.field_res_company__secondary_color
@@ -27391,8 +28929,8 @@ msgid ""
 "Setting a value makes this action available in the sidebar for the given "
 "model."
 msgstr ""
-"Das Setzen eines Wertes macht diese Aktion in der Sidebar für das gegebene "
-"Modell verfügbar."
+"Durch das Setzen eines Wertes wird diese Aktion in der Seitenleiste für das "
+"angegebene Modell verfügbar."
 
 #. module: base
 #: code:addons/base/models/res_users.py:0
@@ -27448,7 +28986,7 @@ msgstr "Wunschliste des Käufers"
 #: code:addons/base/models/ir_qweb_fields.py:0
 #, python-format
 msgid "Short"
-msgstr ""
+msgstr "Kurz"
 
 #. module: base
 #: model:ir.model.fields,field_description:base.field_base_module_uninstall__show_all
@@ -27595,7 +29133,7 @@ msgstr "Slowenien - Buchführung"
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_snailmail
 msgid "Snail Mail"
-msgstr "Snail Mail"
+msgstr "Schneckenpost"
 
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_snailmail_account_followup
@@ -28083,7 +29621,7 @@ msgstr "Subcontract Productions"
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_stock_barcode_mrp_subcontracting
 msgid "Subcontract with Barcode"
-msgstr ""
+msgstr "Untervertrag mit Barcode"
 
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_mrp_subcontracting_account
@@ -28099,7 +29637,7 @@ msgstr "Untermenüs"
 #: model:ir.module.module,summary:base.module_hr_expense
 #: model:ir.module.module,summary:base.module_hr_payroll_expense
 msgid "Submit, validate and reinvoice employee expenses"
-msgstr "Einreichen, Überprüfen und Weiterberechnen von Mitarbeiterausgaben"
+msgstr "Einreichen, Überprüfen und Weiterberechnen von Mitarbeiterauslagen"
 
 #. module: base
 #: model:ir.module.category,name:base.module_category_sales_subscription
@@ -28160,7 +29698,7 @@ msgstr "Unterstützung von Live-Tracks: Streaming, aktive Teilnahme, Youtube"
 #. module: base
 #: model:ir.module.module,summary:base.module_quality_control_picking_batch
 msgid "Support of quality control into batch transfers"
-msgstr ""
+msgstr "Unterstützung der Qualitätskontrolle bei der Übertragung von Batches"
 
 #. module: base
 #: model:res.country,name:base.sr
@@ -28427,7 +29965,7 @@ msgstr "Technischer Name"
 #. module: base
 #: model:ir.model.fields,field_description:base.field_res_currency_rate__rate
 msgid "Technical Rate"
-msgstr ""
+msgstr "Technische Rate"
 
 #. module: base
 #: code:addons/base/models/ir_translation.py:0
@@ -28454,7 +29992,7 @@ msgstr "Geschäftsbedingungen"
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_test_base_automation
 msgid "Test - Base Automation"
-msgstr ""
+msgstr "Test - Base Automation"
 
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_test_new_api
@@ -28485,7 +30023,7 @@ msgstr ""
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_test_discuss_full
 msgid "Test Discuss (full)"
-msgstr ""
+msgstr "Test Discuss (komplett)"
 
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_test_event_full
@@ -28542,7 +30080,7 @@ msgstr ""
 #. module: base
 #: model:ir.module.module,summary:base.module_test_discuss_full
 msgid "Test of Discuss with all possible overrides installed."
-msgstr ""
+msgstr "Test von Discuss mit allen möglichen Übersteuerungen installiert."
 
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_test_testing_utilities
@@ -28574,7 +30112,7 @@ msgstr "Tests für read_group"
 #. module: base
 #: model:ir.module.module,description:base.module_test_search_panel
 msgid "Tests for the search panel python methods"
-msgstr ""
+msgstr "Tests für die Python-Methoden des Suchpanels"
 
 #. module: base
 #: model:ir.module.module,description:base.module_test_converter
@@ -28585,6 +30123,8 @@ msgstr "Tests für Feldumwandlungen"
 #: model:ir.module.module,shortdesc:base.module_test_auth_custom
 msgid "Tests that custom auth works & is not impaired by CORS"
 msgstr ""
+"Tests, ob die benutzerdefinierte Autorisierung funktioniert und nicht durch "
+"CORS beeinträchtigt wird"
 
 #. module: base
 #: model:ir.model.fields.selection,name:base.selection__ir_actions_report__report_type__qweb-text
@@ -28762,7 +30302,7 @@ msgstr "Der Währungscode muss eindeutig sein!"
 #: model:ir.model.fields,help:base.field_res_currency_rate__company_rate
 #: model:ir.model.fields,help:base.field_res_currency_rate__inverse_company_rate
 msgid "The currency of rate 1 to the rate of the currency."
-msgstr ""
+msgstr "Die Währung des Kurses 1 zum Kurs der Währung."
 
 #. module: base
 #: model:ir.model.constraint,message:base.constraint_res_currency_rate_currency_rate_check
@@ -28876,7 +30416,7 @@ msgstr "Der interne Benutzer, der für diesen Kontakt verantwortlich ist."
 #: code:addons/base/models/res_country.py:0
 #, python-format
 msgid "The layout contains an invalid format key"
-msgstr ""
+msgstr "Das Layout enthält einen ungültigen Formatschlüssel"
 
 #. module: base
 #: model:ir.model.fields,help:base.field_ir_model__inherited_model_ids
@@ -29422,6 +30962,11 @@ msgid ""
 "modules build on mail (sms, snailmail, mail_enterprise) are set as dependencies\n"
 "in order to test the whole mail codebase. "
 msgstr ""
+"Dieses Modul enthält Tests zum Thema E-Mail. Diese sind\n"
+"in einem separaten Modul vorhanden, da es Modelle enthält, die nur zur Durchführung von\n"
+"Tests unabhängig von den funktionalen Aspekten der anderen Modelle dienen. Außerdem sind die meisten\n"
+"Module, die auf Mail basieren (sms, snailmail, mail_enterprise), als Abhängigkeiten festgelegt\n"
+"gesetzt, um die gesamte Mail-Codebasis testen zu können. "
 
 #. module: base
 #: model:ir.module.module,description:base.module_test_mass_mailing
@@ -29505,6 +31050,11 @@ msgid ""
 "dependencies. Neither we want to add in website module some routes, views and\n"
 "models which only purpose is to run tests."
 msgstr ""
+"Dieses Modul enthält Tests im Zusammenhang mit der Website. Diese sind\n"
+"in einem separaten Modul vorhanden, da wir Installation/Deinstallation/Upgrade des Moduls testen\n"
+"und nicht jedes Mal das Website-Modul (und abhängige Module) neu laden mächten.\n"
+"Wir wollen auch keine Routen, Ansichten und Modelle in das Website-Modul einfügen,\n"
+"deren einziger Zweck es ist, Tests auszuführen."
 
 #. module: base
 #: model:ir.module.module,description:base.module_sale_subscription_timesheet
@@ -29512,6 +31062,9 @@ msgid ""
 "This module ensure that data (such as analytic accounts) defined on the sale"
 " order via timesheet app are correctly set also on subscriptions"
 msgstr ""
+"Dieses Modul stellt sicher, dass Daten (wie z.B. analytische Konten), die "
+"auf dem Verkaufsauftrag über die Timesheet-App definiert wurden, auch auf "
+"Abonnements korrekt eingestellt sind."
 
 #. module: base
 #: model:ir.module.module,description:base.module_sale_subscription_taxcloud
@@ -29854,7 +31407,7 @@ msgstr "Verfolgen Sie Geräte und verwalten Sie Wartungsanfragen"
 #. module: base
 #: model:ir.module.module,summary:base.module_crm
 msgid "Track leads and close opportunities"
-msgstr "Track leads and close opportunities"
+msgstr "Leads verfolgen und Verkaufschancen erfolgreich wahrnehmen"
 
 #. module: base
 #: model:ir.module.module,summary:base.module_hr_recruitment
@@ -29997,6 +31550,8 @@ msgstr "Baum"
 #, python-format
 msgid "Tree child can only have one of %(tags)s tag (not %(wrong_tag)s)"
 msgstr ""
+"Ein untergeordneter Teil der Struktur kann nur einen %(tags)s-Tag haben "
+"(nicht %(wrong_tag)s)"
 
 #. module: base
 #: model:ir.model,name:base.model_ir_cron_trigger
@@ -30473,6 +32028,7 @@ msgstr "Nicht gespeicherte Änderungen"
 #, python-format
 msgid "Unsearchable field %(field)r in path %(field_path)r in %(use)s)"
 msgstr ""
+"Nicht durchsuchbares Feld %(field)r in Pfad %(field_path)r in %(use)s)"
 
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_web_unsplash
@@ -31022,7 +32578,7 @@ msgstr "Venezuelanische Buchführung"
 #: code:addons/base/models/ir_qweb_fields.py:0
 #, python-format
 msgid "Vertical bar"
-msgstr ""
+msgstr "Vertikaler Balken"
 
 #. module: base
 #: model:res.country,name:base.vn
@@ -31241,7 +32797,7 @@ msgstr "Web"
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_test_web_cohort
 msgid "Web Cohort Tests"
-msgstr ""
+msgstr "Web Cohort Tests"
 
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_web_editor
@@ -31363,7 +32919,7 @@ msgstr "Website Mail"
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_website_mail_group
 msgid "Website Mail Group"
-msgstr ""
+msgstr "Website Mail Group"
 
 #. module: base
 #: model:ir.module.module,summary:base.module_website_mail
@@ -31530,6 +33086,12 @@ msgid ""
 "number upon assignment, there can still be gaps in the sequence if records "
 "are deleted. The 'no gap' implementation is slower than the standard one."
 msgstr ""
+"Bei der Zuweisung einer Sequenznummer an einen Datensatz stellt die "
+"Implementierung der \"lückenlosen\" Sequenz sicher, dass jede vorherige "
+"Sequenznummer bereits zugewiesen wurde. Obwohl diese Sequenzimplementierung "
+"keine Sequenznummer bei der Zuweisung überspringt, kann es dennoch zu Lücken"
+" in der Sequenz kommen, wenn Datensätze gelöscht werden. Die lückenlose "
+"Implementierung ist langsamer als die Standardimplementierung."
 
 #. module: base
 #: model:res.partner.industry,name:base.res_partner_industry_G
@@ -31604,7 +33166,7 @@ msgstr ""
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_hr_work_entry_contract_enterprise
 msgid "Work Entries - Contract Enterprise"
-msgstr ""
+msgstr "Arbeitseinträge - Enterprise Vertrag"
 
 #. module: base
 #: model:ir.module.module,summary:base.module_mrp_workorder
@@ -31624,7 +33186,7 @@ msgstr "Arbeitsblatt für Qualitätskontrolle"
 #. module: base
 #: model:ir.module.module,summary:base.module_helpdesk_fsm_report
 msgid "Worksheet template when planning an intervention"
-msgstr ""
+msgstr "Arbeitsblattvorlage für die Planung einer Aktion"
 
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_payment_sips
@@ -32412,7 +33974,7 @@ msgstr "minute"
 #. module: base
 #: model_terms:ir.ui.view,arch_db:base.demo_failures_dialog
 msgid "module(s) failed to install and were disabled"
-msgstr "Modul (e) konnten nicht installiert werden und wurden deaktiviert"
+msgstr "Modul(e) konnte(n) nicht installiert werden und wurden deaktiviert"
 
 #. module: base
 #: model:ir.model.fields.selection,name:base.selection__ir_model_fields__ttype__monetary
@@ -32558,7 +34120,7 @@ msgstr "test mimetypes-guessing"
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_test_data_module
 msgid "test module to test data only modules"
-msgstr ""
+msgstr "Testmodul zum Testen von reinen Datenmodulen"
 
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_test_access_rights
@@ -32603,7 +34165,7 @@ msgstr "Test Übernahme"
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_test_inherit_depends
 msgid "test-inherit-depends"
-msgstr ""
+msgstr "test-inherit-depends"
 
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_test_inherits

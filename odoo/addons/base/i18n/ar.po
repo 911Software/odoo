@@ -9,6 +9,7 @@
 # Mustafa Rawi <mustafa@cubexco.com>, 2021
 # Talal Albahra <talal.albahra@outlook.com>, 2021
 # Hussain Hammad, 2021
+# Mustafa J. Kadhem <safi2266@gmail.com>, 2022
 # Malaz Abuidris <msea@odoo.com>, 2022
 # 
 msgid ""
@@ -8700,7 +8701,7 @@ msgstr "3. %y, %Y         ==&gt; 08, 2008"
 #. module: base
 #: model:ir.module.module,summary:base.module_hr_appraisal_survey
 msgid "360 Feedback"
-msgstr ""
+msgstr "360 ملاحظة "
 
 #. module: base
 #: model_terms:ir.ui.view,arch_db:base.res_lang_form
@@ -10550,7 +10551,7 @@ msgstr ""
 #: code:addons/base/models/res_partner.py:0
 #, python-format
 msgid "An email is required for find_or_create to work"
-msgstr ""
+msgstr "مطلوب بريد إلكتروني لكي يعمل find_or_create"
 
 #. module: base
 #: code:addons/base/models/ir_mail_server.py:0
@@ -10840,7 +10841,7 @@ msgstr "جزيرة أروبا"
 #: model_terms:res.partner,website_description:base.res_partner_3
 #: model_terms:res.partner,website_description:base.res_partner_4
 msgid "As a team, we are happy to contribute to this event."
-msgstr ""
+msgstr "كفريق، يسعدنا أن نساهم في هذه الفعالية. "
 
 #. module: base
 #: model:ir.module.module,summary:base.module_hr_appraisal
@@ -11105,28 +11106,28 @@ msgstr "الصورة الرمزية"
 #: model:ir.model.fields,field_description:base.field_res_partner__avatar_1024
 #: model:ir.model.fields,field_description:base.field_res_users__avatar_1024
 msgid "Avatar 1024"
-msgstr ""
+msgstr "الصورة الرمزية 1024 "
 
 #. module: base
 #: model:ir.model.fields,field_description:base.field_avatar_mixin__avatar_128
 #: model:ir.model.fields,field_description:base.field_res_partner__avatar_128
 #: model:ir.model.fields,field_description:base.field_res_users__avatar_128
 msgid "Avatar 128"
-msgstr ""
+msgstr "الصورة الرمزية 128 "
 
 #. module: base
 #: model:ir.model.fields,field_description:base.field_avatar_mixin__avatar_256
 #: model:ir.model.fields,field_description:base.field_res_partner__avatar_256
 #: model:ir.model.fields,field_description:base.field_res_users__avatar_256
 msgid "Avatar 256"
-msgstr ""
+msgstr "الصورة الرمزية 256 "
 
 #. module: base
 #: model:ir.model.fields,field_description:base.field_avatar_mixin__avatar_512
 #: model:ir.model.fields,field_description:base.field_res_partner__avatar_512
 #: model:ir.model.fields,field_description:base.field_res_users__avatar_512
 msgid "Avatar 512"
-msgstr ""
+msgstr "الصورة الرمزية 512 "
 
 #. module: base
 #: model:ir.model,name:base.model_avatar_mixin
@@ -11648,7 +11649,7 @@ msgstr "نوع الربط"
 #: model:ir.model.fields,field_description:base.field_ir_actions_server__binding_view_types
 #: model:ir.model.fields,field_description:base.field_ir_cron__binding_view_types
 msgid "Binding View Types"
-msgstr ""
+msgstr "فرض طرق العرض "
 
 #. module: base
 #: model:ir.model.fields.selection,name:base.selection__res_company__layout_background__blank
@@ -12597,7 +12598,7 @@ msgstr ""
 #: model_terms:res.partner,website_description:base.res_partner_3
 #: model_terms:res.partner,website_description:base.res_partner_4
 msgid "Come see us live, we hope to meet you !"
-msgstr ""
+msgstr "تعالوا لملاقاتنا، فنحن نتوق لرؤيتكم! "
 
 #. module: base
 #: model:ir.model.fields.selection,name:base.selection__report_paperformat__format__comm10e
@@ -13655,7 +13656,7 @@ msgstr "كرواتيا - المحاسبة (RRIF 2012)"
 #. module: base
 #: model:ir.model.fields,field_description:base.field_ir_cron_trigger__cron_id
 msgid "Cron"
-msgstr ""
+msgstr "Cron"
 
 #. module: base
 #: model_terms:ir.ui.view,arch_db:base.ir_cron_trigger_view_form
@@ -16014,7 +16015,7 @@ msgstr "محتوى الملف (base64) "
 #. module: base
 #: model:ir.model.fields,field_description:base.field_ir_attachment__raw
 msgid "File Content (raw)"
-msgstr ""
+msgstr "محتوى الملف (أولي)"
 
 #. module: base
 #: model:ir.model.fields,field_description:base.field_base_language_export__format
@@ -16282,7 +16283,7 @@ msgstr "تنسيق البريد الإلكتروني \"الاسم <email@domain>
 #: model:ir.model.fields,field_description:base.field_res_partner__email_formatted
 #: model:ir.model.fields,field_description:base.field_res_users__email_formatted
 msgid "Formatted Email"
-msgstr ""
+msgstr "البريد الإلكتروني المنسق"
 
 #. module: base
 #: code:addons/base/models/ir_qweb_fields.py:0
@@ -16727,7 +16728,7 @@ msgstr "جبل طارق"
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_gift_card
 msgid "Gift Card"
-msgstr ""
+msgstr "بطاقة الهدايا "
 
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_pos_gift_card
@@ -17015,7 +17016,7 @@ msgstr "إدارة طلبات غداء موظفيك"
 #: model_terms:res.partner,website_description:base.res_partner_3
 #: model_terms:res.partner,website_description:base.res_partner_4
 msgid "Happy to be Sponsor"
-msgstr ""
+msgstr "سعيد بالرعاية "
 
 #. module: base
 #: model:ir.module.module,summary:base.module_hw_escpos
@@ -18482,6 +18483,8 @@ msgid ""
 "Invalid server name !\n"
 " %s"
 msgstr ""
+"اسم الخادم غير صالح!\n"
+" %s"
 
 #. module: base
 #: code:addons/base/models/ir_ui_view.py:0
@@ -24803,7 +24806,7 @@ msgstr ""
 #: code:addons/models.py:0 code:addons/models.py:0
 #, python-format
 msgid "Records:"
-msgstr ""
+msgstr "السجلات:"
 
 #. module: base
 #: code:addons/base/models/ir_rule.py:0
@@ -24863,7 +24866,7 @@ msgstr "تاريخ رقم الإشارة"
 #. module: base
 #: model:ir.module.category,name:base.module_category_human_resources_referrals
 msgid "Referrals"
-msgstr ""
+msgstr "الإحالات "
 
 #. module: base
 #: model:ir.model.fields,field_description:base.field_res_partner__parent_id
@@ -26144,6 +26147,8 @@ msgid ""
 "Server replied with following exception:\n"
 " %s"
 msgstr ""
+"رد الخادم بالاستثناءات التالية:\n"
+" %s "
 
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_sale_timesheet_margin
@@ -30206,7 +30211,7 @@ msgstr ""
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_hr_work_entry
 msgid "Work Entries"
-msgstr ""
+msgstr "قيود العمل "
 
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_hr_work_entry_contract

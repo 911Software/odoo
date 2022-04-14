@@ -23,7 +23,7 @@ msgstr ""
 #. module: website_livechat
 #: model:ir.model.fields,field_description:website_livechat.field_website_visitor__session_count
 msgid "# Sessions"
-msgstr ""
+msgstr "عدد الجلسات "
 
 #. module: website_livechat
 #: code:addons/website_livechat/models/mail_channel.py:0
@@ -147,7 +147,7 @@ msgstr "تم نشره "
 #: code:addons/website_livechat/static/src/components/visitor_banner/visitor_banner.xml:0
 #, python-format
 msgid "Lang"
-msgstr ""
+msgstr "اللغة "
 
 #. module: website_livechat
 #: code:addons/website_livechat/models/website.py:0

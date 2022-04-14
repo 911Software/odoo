@@ -252,6 +252,9 @@ class MrpWorkorder(models.Model):
             workorder.date_planned_finished = workorder.leave_id.date_to
 
     def _set_dates_planned(self):
+        if self.leave_id and (not self[0].date_planned_start or not self[0].date_planned_finished):
+            raise UserError(_("It is not possible to unplan one single Work Order. "
+                              "You should unplan the Manufacturing Order instead in order to unplan all the linked operations."))
         date_from = self[0].date_planned_start
         date_to = self[0].date_planned_finished
         self.mapped('leave_id').sudo().write({
@@ -448,7 +451,7 @@ class MrpWorkorder(models.Model):
             bom = self.env['mrp.bom']
             moves = production.move_raw_ids | production.move_finished_ids
 
-            for workorder in self:
+            for workorder in workorders:
                 bom = workorder.operation_id.bom_id or workorder.production_id.bom_id
                 previous_workorder = workorders_by_bom[bom][-1:]
                 previous_workorder.next_work_order_id = workorder.id

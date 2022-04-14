@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 15.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-24 08:19+0000\n"
+"POT-Creation-Date: 2022-02-18 09:52+0000\n"
 "PO-Revision-Date: 2021-09-14 12:18+0000\n"
 "Last-Translator: Braulio D. López Vázquez <bdl@odoo.com>, 2022\n"
 "Language-Team: Spanish (Mexico) (https://www.transifex.com/odoo/teams/41243/es_MX/)\n"
@@ -47,6 +47,12 @@ msgstr ""
 "        Por ejemplo, 180 / (1 - 10%) = 200 (sin precio incluido)\n"
 "        Por ejemplo, 200 * (1-10%) = 180 (precio incluido)\n"
 "        "
+
+#. module: account
+#: code:addons/account/models/account_move.py:0
+#, python-format
+msgid " The %(lock_type)s lock date is set on %(lock_date)s."
+msgstr "La fecha de bloqueo de %(lock_type)s se estableció el %(lock_date)s."
 
 #. module: account
 #: model:ir.model.fields,field_description:account.field_account_payment__reconciled_bills_count
@@ -152,6 +158,16 @@ msgstr "%s no es un campo almacenado"
 #: model:ir.actions.report,print_report_name:account.account_invoices_without_payment
 msgid "(object._get_report_base_filename())"
 msgstr "(object._get_report_base_filename())"
+
+#. module: account
+#: model_terms:ir.ui.view,arch_db:account.report_journal
+msgid "- Posted Entries Only"
+msgstr "- Solo asientos publicados"
+
+#. module: account
+#: model_terms:ir.ui.view,arch_db:account.report_journal
+msgid "- Posted and Draft Entries"
+msgstr "- Asientos en borrador y publicados"
 
 #. module: account
 #: model_terms:ir.ui.view,arch_db:account.view_move_line_form
@@ -4723,7 +4739,7 @@ msgstr "Diferencia en tasa de cambio de divisa"
 #: code:addons/account/models/account_move.py:0
 #, python-format
 msgid "Currency exchange rate difference (cash basis)"
-msgstr "Diferencia de tipo de cambio de divisa (base de efectivo)"
+msgstr "Diferencia de tasa de cambio de divisa (base de efectivo)"
 
 #. module: account
 #: code:addons/account/models/res_bank.py:0
@@ -6327,6 +6343,11 @@ msgid "From"
 msgstr "Desde"
 
 #. module: account
+#: model_terms:ir.ui.view,arch_db:account.report_journal
+msgid "From :"
+msgstr "De :"
+
+#. module: account
 #: model_terms:ir.ui.view,arch_db:account.view_account_move_line_filter
 msgid "From Payable accounts"
 msgstr "Desde cuentas por pagar"
@@ -7421,6 +7442,16 @@ msgid ""
 msgstr ""
 "La distribución de facturas y notas de crédito debe contener cada una "
 "exactamente una línea para la base."
+
+#. module: account
+#: code:addons/account/models/account_tax.py:0
+#, python-format
+msgid ""
+"Invoice and credit note repartition should have at least one tax repartition"
+" line."
+msgstr ""
+"La repartición de facturas y notas de crédito debe tener por lo menos una "
+"línea de repartición de impuestos."
 
 #. module: account
 #: code:addons/account/models/account_tax.py:0
@@ -10394,6 +10425,12 @@ msgstr ""
 " partners."
 
 #. module: account
+#: code:addons/account/models/ir_module_module.py:0
+#, python-format
+msgid "Please update the Invoicing module before continuing."
+msgstr "Actualice el módulo de Facturación antes de continuar."
+
+#. module: account
 #: model_terms:ir.ui.view,arch_db:account.bill_preview
 #: model_terms:ir.ui.view,arch_db:account.report_invoice_document
 msgid "Please use the following communication for your payment :"
@@ -10407,7 +10444,7 @@ msgstr "Reporte de líneas de impuesto agregado"
 #. module: account
 #: model:ir.model.fields,field_description:account.field_account_chart_template__default_pos_receivable_account_id
 msgid "PoS receivable account"
-msgstr "Cuenta por cobrar PDV"
+msgstr "Cuenta por cobrar PdV"
 
 #. module: account
 #: model:ir.model.fields,field_description:account.field_account_bank_statement_line__access_url
@@ -10472,6 +10509,11 @@ msgid "Posted Before"
 msgstr "Publicado antes"
 
 #. module: account
+#: model_terms:ir.ui.view,arch_db:account.report_journal
+msgid "Posted Entries only"
+msgstr "Solo asientos publicados"
+
+#. module: account
 #: model_terms:ir.ui.view,arch_db:account.view_account_move_filter
 msgid "Posted Journal Entries"
 msgstr "Asientos de diario publicados"
@@ -10480,6 +10522,11 @@ msgstr "Asientos de diario publicados"
 #: model_terms:ir.ui.view,arch_db:account.view_account_move_line_filter
 msgid "Posted Journal Items"
 msgstr "Apuntes contables publicados"
+
+#. module: account
+#: model_terms:ir.ui.view,arch_db:account.report_journal
+msgid "Posted and Draft Entries"
+msgstr "Asientos en borrador y publicados"
 
 #. module: account
 #: code:addons/account/models/account_move.py:0
@@ -12972,6 +13019,7 @@ msgid "Taxes"
 msgstr "Impuestos"
 
 #. module: account
+#: model_terms:ir.ui.view,arch_db:account.report_journal
 #: model_terms:ir.ui.view,arch_db:account.view_move_form
 msgid "Taxes Applied"
 msgstr "Impuestos aplicados"
@@ -13576,6 +13624,16 @@ msgstr ""
 #: code:addons/account/models/account_move.py:0
 #, python-format
 msgid ""
+"The accounting date being set prior to the %(lock_type)s lock date "
+"%(lock_date)s, it will be changed to %(accounting_date)s upon posting."
+msgstr ""
+"La fecha contable establecida antes de la fecha de bloqueo %(lock_date)s "
+"para %(lock_type)s se cambiará a %(accounting_date)s después de publicar."
+
+#. module: account
+#: code:addons/account/models/account_move.py:0
+#, python-format
+msgid ""
 "The accounting date is set prior to the tax lock date which is set on %s. "
 "Hence, the accounting date will be changed to %s."
 msgstr ""
@@ -13817,6 +13875,18 @@ msgstr ""
 "editable con borradores de asientos de diario.- Procesando: ya no se puede "
 "editar con asientos de diario publicados, listo para la conciliación.- "
 "Validado: todas las líneas están conciliadas. No queda nada por procesar."
+
+#. module: account
+#: code:addons/account/wizard/account_automatic_entry_wizard.py:0
+#, python-format
+msgid "The date of some related entries is protected by a lock date"
+msgstr "La fecha de algunos asientos está protegida por una fecha de bloqueo."
+
+#. module: account
+#: code:addons/account/wizard/account_automatic_entry_wizard.py:0
+#, python-format
+msgid "The date selected is protected by a lock date"
+msgstr "La fecha seleccionada está protegida por una fecha de bloqueo."
 
 #. module: account
 #: code:addons/account/models/account_payment_term.py:0
@@ -14955,6 +15025,11 @@ msgstr ""
 #: model:ir.model.fields,field_description:account.field_account_automatic_entry_wizard__destination_account_id
 msgid "To"
 msgstr "A"
+
+#. module: account
+#: model_terms:ir.ui.view,arch_db:account.report_journal
+msgid "To :"
+msgstr "A :"
 
 #. module: account
 #: model:ir.model.fields,field_description:account.field_account_bank_statement_line__to_check
@@ -16859,6 +16934,12 @@ msgstr ""
 " 10% de la suma que queda por pagar."
 
 #. module: account
+#: code:addons/account/models/account_move.py:0
+#, python-format
+msgid "tax"
+msgstr "impuesto"
+
+#. module: account
 #: model:ir.model.fields,help:account.field_account_move_line__tax_group_id
 msgid "technical field for widget tax-group-custom-field"
 msgstr "campo técnico para el widget tax-group-custom-field"
@@ -16904,6 +16985,12 @@ msgstr ""
 "se compromete a hacer todo lo posible para prestar los servicios en el plazo"
 " acordado. Sin embargo, ninguna de sus obligaciones puede considerarse como "
 "una obligación a obtener resultados."
+
+#. module: account
+#: code:addons/account/models/account_move.py:0
+#, python-format
+msgid "user"
+msgstr "usuario"
 
 #. module: account
 #: model_terms:ir.ui.view,arch_db:account.account_default_terms_and_conditions

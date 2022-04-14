@@ -174,6 +174,11 @@ class Website(models.Model):
     def _get_menu_ids(self):
         return self.env['website.menu'].search([('website_id', '=', self.id)]).ids
 
+    # self.env.uid for ir.rule groups on menu
+    @tools.ormcache('self.env.uid', 'self.id')
+    def _get_menu_page_ids(self):
+        return self.env['website.menu'].search([('website_id', '=', self.id)]).page_id.ids
+
     @api.model
     def create(self, vals):
         self._handle_create_write(vals)
@@ -1357,6 +1362,7 @@ class Website(models.Model):
             'user_id': self.user_id.id,
             'company_id': self.company_id.id,
             'default_lang_id': self.default_lang_id.id,
+            'homepage_id': self.homepage_id.id,
         }
 
     def _get_cached(self, field):
@@ -1424,7 +1430,7 @@ class Website(models.Model):
 
         # As well as every snippet dropped in html fields
         self.env.cr.execute(sql.SQL(" UNION ").join(
-            sql.SQL('SELECT regexp_matches({}, {}) FROM {}').format(
+            sql.SQL("SELECT regexp_matches({}, {}, 'g') FROM {}").format(
                 sql.Identifier(column),
                 sql.Placeholder('snippet_regex'),
                 sql.Identifier(table)
@@ -1449,16 +1455,17 @@ class Website(models.Model):
 
         for snippet_module, snippet_id, asset_version, asset_type, _ in snippets_assets:
             is_snippet_used = self._is_snippet_used(snippet_module, snippet_id, asset_version, asset_type, html_fields)
-            filename_type = 'scss' if asset_type == 'css' else asset_type
-            assets_path = f'{snippet_id}/{asset_version}.{filename_type}'
+
+            # The regex catches XXX.scss, XXX.js and XXX_variables.scss
+            assets_regex = f'{snippet_id}/{asset_version}.+{asset_type}'
 
             # The query will also set to active or inactive assets overrides, as they
             # share the same snippet_id, asset_version and filename_type as their parents
             self.env.cr.execute("""
                 UPDATE ir_asset
                 SET active = %(active)s
-                WHERE path ~ %(assets_path)s
-            """, {"active": is_snippet_used, "assets_path": assets_path})
+                WHERE path ~ %(assets_regex)s
+            """, {"active": is_snippet_used, "assets_regex": assets_regex})
 
     def _search_build_domain(self, domain, search, fields, extra=None):
         """
@@ -1630,7 +1637,7 @@ class Website(models.Model):
         :param limit: maximum number of records fetched per model to build the word list
         :return: yields words
         """
-        match_pattern = '\\w{%s,}' % min(4, len(search) - 3)
+        match_pattern = r'[\w-]{%s,}' % min(4, len(search) - 3)
         similarity_threshold = 0.3
         for search_detail in search_details:
             model_name, fields = search_detail['model'], search_detail['search_fields']
@@ -1746,7 +1753,7 @@ class Website(models.Model):
         :param limit: maximum number of records fetched per model to build the word list
         :return: yields words
         """
-        match_pattern = '\\w{%s,}' % min(4, len(search) - 3)
+        match_pattern = r'[\w-]{%s,}' % min(4, len(search) - 3)
         first = escape_psql(search[0])
         for search_detail in search_details:
             model_name, fields = search_detail['model'], search_detail['search_fields']

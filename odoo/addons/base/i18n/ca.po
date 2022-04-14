@@ -15,6 +15,11 @@
 # Carles Antoli <carlesantoli@hotmail.com>, 2021
 # jabelchi, 2022
 # Harcogourmet, 2022
+# ramiadavid, 2022
+# AncesLatino2004, 2022
+# ericrolo, 2022
+# Jonatan Gk, 2022
+# marcescu, 2022
 # 
 msgid ""
 msgstr ""
@@ -22,7 +27,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-11-16 13:42+0000\n"
 "PO-Revision-Date: 2021-09-14 12:18+0000\n"
-"Last-Translator: Harcogourmet, 2022\n"
+"Last-Translator: marcescu, 2022\n"
 "Language-Team: Catalan (https://www.transifex.com/odoo/teams/41243/ca/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -44,6 +49,16 @@ msgid ""
 "\n"
 "    "
 msgstr ""
+"\n"
+"\n"
+"Informes comptables per a Àustria.\n"
+"================================\n"
+"\n"
+"    * Defineix els informes següents:\n"
+"        * Guanys/Pèrdues (§ 231 UGB Gesamtkostenverfahren)\n"
+"        * Full de balanç (§ 224 UGB)\n"
+"\n"
+"    "
 
 #. module: base
 #: model:ir.module.module,description:base.module_l10n_at
@@ -62,6 +77,17 @@ msgid ""
 "\n"
 "    "
 msgstr ""
+"\n"
+"\n"
+"Plans de comptes austríacs (Einheitskontenrahmen 2010).\n"
+"===================================================== ========\n"
+"\n"
+"* Defineix les plantilles de gràfic de comptes següents:\n"
+"* Pla de comptes general austríac 2010\n"
+"* Defineix plantilles per a l'IVA en vendes i compres\n"
+"* Defineix plantilles d'impostos\n"
+"* Defineix les posicions fiscals per a la legislació fiscal austríaca\n"
+"* Defineix els informes fiscals U1/U30"
 
 #. module: base
 #: model:ir.module.module,description:base.module_l10n_hu
@@ -78,6 +104,16 @@ msgid ""
 " - Hungarian Bank information\n"
 " "
 msgstr ""
+"\n"
+"\n"
+"Mòdul base per a la localització hongarès\n"
+"============================================\n"
+"\n"
+"Aquest mòdul consta de:\n"
+"\n"
+"- Pla comptable hongarès genèric\n"
+"- Impostos hongaresos\n"
+"- Informació del banc hongarès"
 
 #. module: base
 #: model:ir.module.module,description:base.module_l10n_dk
@@ -165,6 +201,87 @@ msgid ""
 "Copyright 2018 Odoo House ApS\n"
 "    "
 msgstr ""
+"\n"
+"\n"
+"Mòdul de localització per a Dinamarca\n"
+"=================================\n"
+"\n"
+"Aquest és el mòdul per gestionar el **taula comptable de Dinamarca**. Cobriu tant negocis unipersonals com I/S, IVS, ApS i A/S\n"
+"\n"
+"** Opsætter de mòduls:**\n"
+"\n"
+"- **Dansk kontoplan**\n"
+"\n"
+"- Les mares danses\n"
+"- 25% mares\n"
+"- Resturationsmoms 6,25%\n"
+"- Omvendt betalingspligt\n"
+"\n"
+"- Konteringsgrupper\n"
+"- UE (Virksomhed)\n"
+"- UE (Privat)\n"
+"- 3.lande\n"
+"\n"
+"- Reporter de finances\n"
+"- Resulttopgørelse\n"
+"- Balanç\n"
+"- Momsafregning\n"
+"- Afregnant\n"
+"- Rubrik A, B og C\n"
+"\n"
+"- **Regnskabsmetode anglosaxó**\n"
+"\n"
+".\n"
+"\n"
+"Configuració del producte:\n"
+"===============\n"
+"\n"
+"**Vare**\n"
+"\n"
+"**Salgsmoms:** Salgmoms 25%\n"
+"\n"
+"**Salgskonto:** 1010 Salg af vare, m/moms\n"
+"\n"
+"**Købsmoms:** Købsmoms 25%\n"
+"\n"
+"**Købskonto:** 2010 Direkte omkostninger vare, m/moms\n"
+"\n"
+".\n"
+"\n"
+"**Ydelse**\n"
+"\n"
+"**Salgsmoms:** Salgmoms 25%, ydelser\n"
+"\n"
+"**Salgskonto:** 1011 Salg af ydelser, m/moms\n"
+"\n"
+"**Købsmoms:** Købsmoms 25%, ydelser\n"
+"\n"
+"**Købskonto:** 2011 Direkte omkostninger ydelser, m/moms\n"
+"\n"
+".\n"
+"\n"
+"**Vare med omvendt betalingspligt**\n"
+"\n"
+"**Salgsmoms:** Salg omvendt betalingspligt\n"
+"\n"
+"**Salgskonto:** 1012 Salg af vare, u/moms\n"
+"\n"
+"**Købsmoms:** Køb omvendt betalingspligt\n"
+"\n"
+"**Købskonto:** 2012 Direkte omkostninger vare, u/moms\n"
+"\n"
+"\n"
+".\n"
+"\n"
+"**Restauració**\n"
+"\n"
+"**Købsmoms:** Restaurationsmoms 6,25%, købsmoms\n"
+"\n"
+"**Købskonto:** 4010 Restaurationsbesøg\n"
+"\n"
+".\n"
+"\n"
+"Copyright 2018 Odoo House ApS"
 
 #. module: base
 #: model:ir.module.module,description:base.module_l10n_do
@@ -258,6 +375,19 @@ msgid ""
 "\n"
 "    "
 msgstr ""
+"\n"
+"Visió general:\n"
+"---------\n"
+"\n"
+"* Plantilla de gràfic de comptes i impostos per a empreses del Japó.\n"
+"* Això probablement no cobreix tots els comptes necessaris per a una empresa. S'espera que afegiu/suprimiu/modifiqueu comptes basats en aquesta plantilla.\n"
+"\n"
+"Nota:\n"
+"-----\n"
+"\n"
+"* S'han afegit les posicions fiscals \"内税\" i \"外税\" per gestionar els requisits especials que podrien sorgir de la implementació del TPV. [1] En circumstàncies normals, és possible que no els hàgiu d'utilitzar en absolut.\n"
+"\n"
+"[1] Vegeu https://github.com/odoo/odoo/pull/6470 per obtenir més informació."
 
 #. module: base
 #: code:addons/base/models/res_config.py:0
@@ -278,6 +408,9 @@ msgid ""
 "\n"
 "This module adds a custom Sales Team for the Point of Sale. This enables you to view and manage your point of sale sales with more ease.\n"
 msgstr ""
+"\n"
+"\n"
+"Aquest mòdul afegeix un equip de vendes personalitzat per al punt de venda. Això us permet veure i gestionar el vostre punt de venda amb més facilitat.\n"
 
 #. module: base
 #: model:ir.module.module,description:base.module_pos_restaurant
@@ -290,6 +423,13 @@ msgid ""
 "- Kitchen Order Printing: allows you to print orders updates to kitchen or bar printers\n"
 "\n"
 msgstr ""
+"\n"
+"\n"
+"Aquest mòdul afegeix diverses funcions al punt de venda específiques de la gestió de restaurants:\n"
+"- Impressió de factures: us permet imprimir un rebut abans de pagar la comanda\n"
+"- Divisió de factures: us permet dividir una comanda en diferents comandes\n"
+"- Impressió de comandes de cuina: us permet imprimir actualitzacions de comandes a impressores de cuina o bar\n"
+"\n"
 
 #. module: base
 #: model:ir.module.module,description:base.module_pos_discount
@@ -300,6 +440,11 @@ msgid ""
 "discount to a customer.\n"
 "\n"
 msgstr ""
+"\n"
+"\n"
+"Aquest mòdul permet al caixer donar ràpidament en funció del percentatge\n"
+"descompte a un client.\n"
+"\n"
 
 #. module: base
 #: model:ir.module.module,description:base.module_pos_loyalty
@@ -311,6 +456,12 @@ msgid ""
 "and get rewards.\n"
 "\n"
 msgstr ""
+"\n"
+"\n"
+"Aquest mòdul us permet definir un programa de fidelització en\n"
+"el punt de venda, on els clients guanyen punts de fidelitat\n"
+"i obtenir recompenses.\n"
+"\n"
 
 #. module: base
 #: model:ir.module.module,description:base.module_pos_epson_printer_restaurant
@@ -6664,7 +6815,7 @@ msgstr ""
 #. module: base
 #: model:ir.model.fields,field_description:base.field_res_users__groups_count
 msgid "# Groups"
-msgstr ""
+msgstr "Núm de Grups"
 
 #. module: base
 #: model:ir.model.fields,field_description:base.field_res_users__rules_count
@@ -7158,7 +7309,7 @@ msgstr "<i class=\"fa fa-times\" title=\"Close the onboarding panel\"/>"
 #. module: base
 #: model_terms:ir.ui.view,arch_db:base.view_users_form_simple_modif
 msgid "<i title=\"Documentation\" class=\"fa fa-fw o_button_icon fa-info-circle\"/>"
-msgstr ""
+msgstr "<i title=\"Documentation\" class=\"fa fa-fw o_button_icon fa-info-circle\"/>"
 
 #. module: base
 #: model_terms:ir.ui.view,arch_db:base.onboarding_container
@@ -7354,6 +7505,8 @@ msgstr "<strong>Telèfon</strong>"
 msgid ""
 "<strong>Please enter your password to confirm you own this account</strong>"
 msgstr ""
+"<strong>Introduïu la vostra contrasenya per confirmar que sou el propietari "
+"d'aquest compte</strong>"
 
 #. module: base
 #: model_terms:ir.ui.view,arch_db:base.report_irmodeloverview
@@ -7896,7 +8049,7 @@ msgstr ""
 #. module: base
 #: model_terms:ir.ui.view,arch_db:base.view_users_form_simple_modif
 msgid "Account Security"
-msgstr ""
+msgstr "Seguretat del compte"
 
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_account_taxcloud
@@ -8658,6 +8811,8 @@ msgid ""
 "All our contractual relations will be governed exclusively by United States "
 "law."
 msgstr ""
+"Totes les nostres relacions de contracte seran basades en la llei dels "
+"Estats Units."
 
 #. module: base
 #: model:ir.model.fields,help:base.field_res_partner__lang
@@ -8851,7 +9006,7 @@ msgstr ""
 #: code:addons/base/models/res_partner.py:0
 #, python-format
 msgid "An email is required for find_or_create to work"
-msgstr ""
+msgstr "Es requereix un correu per a trobar_ o_ create a treballar"
 
 #. module: base
 #: code:addons/base/models/ir_mail_server.py:0
@@ -9143,7 +9298,7 @@ msgstr "Aruba"
 #: model_terms:res.partner,website_description:base.res_partner_3
 #: model_terms:res.partner,website_description:base.res_partner_4
 msgid "As a team, we are happy to contribute to this event."
-msgstr ""
+msgstr "Com a equip, ens complau contribuir a aquest esdeveniment."
 
 #. module: base
 #: model:ir.module.module,summary:base.module_hr_appraisal
@@ -9409,28 +9564,28 @@ msgstr "Avatar"
 #: model:ir.model.fields,field_description:base.field_res_partner__avatar_1024
 #: model:ir.model.fields,field_description:base.field_res_users__avatar_1024
 msgid "Avatar 1024"
-msgstr ""
+msgstr "Avatar 1024Comment"
 
 #. module: base
 #: model:ir.model.fields,field_description:base.field_avatar_mixin__avatar_128
 #: model:ir.model.fields,field_description:base.field_res_partner__avatar_128
 #: model:ir.model.fields,field_description:base.field_res_users__avatar_128
 msgid "Avatar 128"
-msgstr ""
+msgstr "Avatar 128"
 
 #. module: base
 #: model:ir.model.fields,field_description:base.field_avatar_mixin__avatar_256
 #: model:ir.model.fields,field_description:base.field_res_partner__avatar_256
 #: model:ir.model.fields,field_description:base.field_res_users__avatar_256
 msgid "Avatar 256"
-msgstr ""
+msgstr "Avatar 256"
 
 #. module: base
 #: model:ir.model.fields,field_description:base.field_avatar_mixin__avatar_512
 #: model:ir.model.fields,field_description:base.field_res_partner__avatar_512
 #: model:ir.model.fields,field_description:base.field_res_users__avatar_512
 msgid "Avatar 512"
-msgstr ""
+msgstr "Avatar 512"
 
 #. module: base
 #: model:ir.model,name:base.model_avatar_mixin
@@ -9582,6 +9737,7 @@ msgstr "compte bancari"
 msgid ""
 "Bank account type: Normal or IBAN. Inferred from the bank account number."
 msgstr ""
+"Tipus de compte bancari: Normal o IBAN. Deduït del número de compte bancari."
 
 #. module: base
 #: model:ir.actions.act_window,name:base.action_res_bank_form
@@ -9774,7 +9930,7 @@ msgstr ""
 #. module: base
 #: model:ir.model.fields.selection,name:base.selection__ir_asset__directive__before
 msgid "Before"
-msgstr ""
+msgstr "Abans"
 
 #. module: base
 #: model:ir.model.fields.selection,name:base.selection__res_country__name_position__before
@@ -9889,6 +10045,8 @@ msgid ""
 "Below text serves as a suggestion and doesn’t engage Odoo S.A. "
 "responsibility."
 msgstr ""
+"El text següent serveix com a suggeriment i no implica la responsabilitat "
+"d'Odoo S.A."
 
 #. module: base
 #: model:res.country,name:base.bj
@@ -10910,7 +11068,7 @@ msgstr "Columna referent al registre model de la taula"
 #: model_terms:res.partner,website_description:base.res_partner_3
 #: model_terms:res.partner,website_description:base.res_partner_4
 msgid "Come see us live, we hope to meet you !"
-msgstr ""
+msgstr "¡Vingui a veure'ns en directe, esperem conèixer-li!"
 
 #. module: base
 #: model:ir.model.fields.selection,name:base.selection__report_paperformat__format__comm10e
@@ -11010,7 +11168,7 @@ msgstr "Dades de l'empresa"
 #. module: base
 #: model:ir.model.fields,field_description:base.field_res_company__company_details
 msgid "Company Details"
-msgstr ""
+msgstr "Detalls de la companyia"
 
 #. module: base
 #: model:ir.model.fields,field_description:base.field_res_company__favicon
@@ -11274,7 +11432,7 @@ msgstr ""
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_account_consolidation
 msgid "Consolidation"
-msgstr ""
+msgstr "Consolidat"
 
 #. module: base
 #: model:ir.model.fields,field_description:base.field_ir_model_constraint__name
@@ -11678,7 +11836,7 @@ msgstr "Crear una nova empresa"
 #. module: base
 #: model_terms:ir.actions.act_window,help:base.action_partner_customer_form
 msgid "Create a new customer in your address book"
-msgstr ""
+msgstr "Creeu un client nou a la vostra llibreta d'adreces"
 
 #. module: base
 #: model_terms:ir.actions.act_window,help:base.action_partner_supplier_form
@@ -12354,7 +12512,7 @@ msgstr "Dies"
 #: model:ir.module.module,shortdesc:base.module_account_debit_note
 #: model:ir.module.module,summary:base.module_account_debit_note
 msgid "Debit Notes"
-msgstr ""
+msgstr "Notes de dèbit"
 
 #. module: base
 #: model:ir.model.fields,field_description:base.field_ir_mail_server__smtp_debug
@@ -12659,7 +12817,7 @@ msgstr ""
 #. module: base
 #: model_terms:ir.ui.view,arch_db:base.view_users_form_simple_modif
 msgid "Developer API Keys"
-msgstr ""
+msgstr "Claus de l'API del desenvolupador"
 
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_digest_enterprise
@@ -13442,7 +13600,7 @@ msgstr ""
 #. module: base
 #: model_terms:ir.ui.view,arch_db:base.enable_profiling_wizard
 msgid "Enable profiling"
-msgstr ""
+msgstr "Habilita el perfilat"
 
 #. module: base
 #: model:ir.model.fields,field_description:base.field_base_enable_profiling_wizard__duration
@@ -13481,7 +13639,7 @@ msgstr ""
 #. module: base
 #: model_terms:ir.ui.view,arch_db:base.form_res_users_key_description
 msgid "Enter a description of and purpose for the key."
-msgstr ""
+msgstr "Introduïu una descripció i propòsit per a la clau."
 
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_website_event_track_gantt
@@ -15380,7 +15538,7 @@ msgstr "Gestionar comandes de menjar pels empleats"
 #: model_terms:res.partner,website_description:base.res_partner_3
 #: model_terms:res.partner,website_description:base.res_partner_4
 msgid "Happy to be Sponsor"
-msgstr ""
+msgstr "Feliç de ser Patrocinador"
 
 #. module: base
 #: model:ir.module.module,summary:base.module_hw_escpos
@@ -15410,7 +15568,7 @@ msgstr "Espaiat de la capçalera"
 #. module: base
 #: model:ir.model.fields,help:base.field_res_company__company_details
 msgid "Header text displayed at the top of all reports."
-msgstr ""
+msgstr "Text de capçalera mostrat a dalt de tots els informes."
 
 #. module: base
 #: model:res.partner.industry,name:base.res_partner_industry_Q
@@ -16158,7 +16316,7 @@ msgstr "Imatge"
 #: model:ir.model.fields,field_description:base.field_res_partner__image_1024
 #: model:ir.model.fields,field_description:base.field_res_users__image_1024
 msgid "Image 1024"
-msgstr ""
+msgstr "Imatge 1024Comment"
 
 #. module: base
 #: model:ir.model.fields,field_description:base.field_avatar_mixin__image_128
@@ -16166,7 +16324,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:base.field_res_partner__image_128
 #: model:ir.model.fields,field_description:base.field_res_users__image_128
 msgid "Image 128"
-msgstr ""
+msgstr "Imatge 128"
 
 #. module: base
 #: model:ir.model.fields,field_description:base.field_avatar_mixin__image_256
@@ -16174,7 +16332,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:base.field_res_partner__image_256
 #: model:ir.model.fields,field_description:base.field_res_users__image_256
 msgid "Image 256"
-msgstr ""
+msgstr "Image 256"
 
 #. module: base
 #: model:ir.model.fields,field_description:base.field_avatar_mixin__image_512
@@ -16182,7 +16340,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:base.field_res_partner__image_512
 #: model:ir.model.fields,field_description:base.field_res_users__image_512
 msgid "Image 512"
-msgstr ""
+msgstr "Imatge 512"
 
 #. module: base
 #: model:ir.model,name:base.model_image_mixin
@@ -17649,7 +17807,7 @@ msgstr "Llençar assistent de configuració"
 #. module: base
 #: model:ir.model.fields,field_description:base.field_res_company__layout_background
 msgid "Layout Background"
-msgstr ""
+msgstr "Fons de la disposició"
 
 #. module: base
 #: model:ir.model.fields,field_description:base.field_res_country__address_format
@@ -17679,7 +17837,7 @@ msgstr ""
 #. module: base
 #: model_terms:ir.ui.view,arch_db:base.module_view_kanban
 msgid "Learn More"
-msgstr ""
+msgstr "Veure més"
 
 #. module: base
 #: model:res.country,name:base.lb
@@ -18063,7 +18221,7 @@ msgstr ""
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_mail_group
 msgid "Mail Group"
-msgstr ""
+msgstr "Grup de correu"
 
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_mail_mobile
@@ -18657,7 +18815,7 @@ msgstr ""
 #. module: base
 #: model:ir.model,name:base.model_base_partner_merge_automatic_wizard
 msgid "Merge Partner Wizard"
-msgstr ""
+msgstr "Assistent per a fusionar parelles"
 
 #. module: base
 #: model_terms:ir.ui.view,arch_db:base.base_partner_merge_automatic_wizard_form
@@ -19041,7 +19199,7 @@ msgstr ""
 #. module: base
 #: model:ir.model,name:base.model_base_module_uninstall
 msgid "Module Uninstall"
-msgstr ""
+msgstr "Desinstal· la el mòdul"
 
 #. module: base
 #: model:ir.actions.act_window,name:base.action_view_base_module_update
@@ -19309,7 +19467,7 @@ msgstr ""
 #. module: base
 #: model_terms:ir.ui.view,arch_db:base.form_res_users_key_description
 msgid "Name your key"
-msgstr ""
+msgstr "Anomeneu la vostra clau"
 
 #. module: base
 #: model_terms:ir.ui.view,arch_db:base.report_irmodeloverview
@@ -19370,7 +19528,7 @@ msgstr ""
 #. module: base
 #: model_terms:ir.ui.view,arch_db:base.view_users_form_simple_modif
 msgid "New API Key"
-msgstr ""
+msgstr "Nova clau API"
 
 #. module: base
 #: model:res.country,name:base.nc
@@ -20861,6 +21019,8 @@ msgstr ""
 #: model_terms:ir.actions.act_window,help:base.action_partner_customer_form
 msgid "Odoo helps you easily track all activities related to a customer."
 msgstr ""
+"Odoo us ajuda fàcilment a seguir totes les activitats relacionades amb un "
+"client."
 
 #. module: base
 #: model_terms:ir.actions.act_window,help:base.action_partner_supplier_form
@@ -23803,6 +23963,8 @@ msgstr "SSL/TLS"
 #: model_terms:res.company,invoice_terms_html:base.main_company
 msgid "STANDARD TERMS AND CONDITIONS OF SALE"
 msgstr ""
+"ELS SES DE SENARDA I CONTELLES DEL SANA DE SEGATConstellation name "
+"(optional)"
 
 #. module: base
 #: model:res.country,name:base.bl
@@ -24233,7 +24395,7 @@ msgstr "Seguretat"
 #: code:addons/base/models/res_users.py:0
 #, python-format
 msgid "Security Control"
-msgstr ""
+msgstr "Control de seguretat"
 
 #. module: base
 #: model_terms:ir.ui.view,arch_db:base.ir_mail_server_form
@@ -25859,6 +26021,8 @@ msgid ""
 "The Tax Identification Number. Complete it if the contact is subjected to "
 "government taxes. Used in some legal statements."
 msgstr ""
+"El Número d'identificació. Acabar-ho si el contacte està relacionat amb els "
+"impostos del govern. Utilitzada en algunes declaracions legals."
 
 #. module: base
 #: model:ir.model.constraint,message:base.constraint_res_lang_url_code_uniq
@@ -25895,6 +26059,10 @@ msgid ""
 "order to be valid, any derogation must be expressly agreed to in advance in "
 "writing."
 msgstr ""
+"El client fa explícitament les seves pròpies condicions i condicions "
+"estàndards, fins i tot si aquestes es dibuixen després d'aquests termes "
+"estàndard i condicions de venda. Per tal de ser vàlid, qualsevol derogació "
+"s'ha d'estar explícitament d'acord a avançar per escriptura."
 
 #. module: base
 #: model:ir.model.constraint,message:base.constraint_res_country_code_uniq
@@ -26053,7 +26221,7 @@ msgstr "El nom complert del país."
 #: model:ir.model.fields,help:base.field_res_partner__user_id
 #: model:ir.model.fields,help:base.field_res_users__user_id
 msgid "The internal user in charge of this contact."
-msgstr ""
+msgstr "L' usuari intern a càrrec d' aquest contacte."
 
 #. module: base
 #: code:addons/base/models/res_country.py:0
@@ -27200,6 +27368,14 @@ msgid ""
 "- 'Add Followers': add followers to a record (Discuss)\n"
 "- 'Create Next Activity': create an activity (Discuss)"
 msgstr ""
+"Tipus d' acció del servidor. Els següents valors estan disponibles:\n"
+"-- 'Execut el codi Python': un bloc de codi Python que s' executarà\n"
+"-- 'Crea': crea un nou registre amb nous valors\n"
+"- Actualitza un registre: actualitza els valors d' un registre\n"
+"- 'Execuciona diverses accions': defineix una acció que activa vàries altres accions del servidor\n"
+"- 'Envia correu- e': automàticament envieu un correu electrònic (Discuss)\n"
+"- \"Afegeix seguidors\" - afegeixen seguidors a un disc (discuss)\n"
+"- \"Crea l' activitat següent:\" crea una activitat (disccuss)"
 
 #. module: base
 #: model:ir.model.fields,help:base.field_ir_model_constraint__type
@@ -27951,7 +28127,7 @@ msgstr "Validació del número CIF"
 #: model:ir.model.fields,field_description:base.field_res_partner__vat
 #: model:ir.model.fields,field_description:base.field_res_users__vat
 msgid "VAT/Tax ID"
-msgstr ""
+msgstr "Id. de l' IVA/Tax"
 
 #. module: base
 #: model:ir.module.category,name:base.module_category_productivity_voip
@@ -28514,7 +28690,7 @@ msgstr "Sàhara Occidental"
 #. module: base
 #: model_terms:ir.ui.view,arch_db:base.form_res_users_key_description
 msgid "What's this key for?"
-msgstr ""
+msgstr "Per a què és aquesta clau?"
 
 #. module: base
 #: model:ir.model.fields,help:base.field_ir_actions_server__sequence

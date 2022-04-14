@@ -29,10 +29,29 @@ const isBlock = OdooEditorLib.isBlock;
 const rgbToHex = OdooEditorLib.rgbToHex;
 const preserveCursor = OdooEditorLib.preserveCursor;
 const closestElement = OdooEditorLib.closestElement;
+const setSelection = OdooEditorLib.setSelection;
 
 var id = 0;
 const faZoomClassRegex = RegExp('fa-[0-9]x');
 const mediaSelector = 'img, .fa, .o_image, .media_iframe_video';
+
+// Time to consider a user offline in ms. This fixes the problem of the
+// navigator closing rtc connection when the mac laptop screen is closed.
+const CONSIDER_OFFLINE_TIME = 1000;
+// Check wether the computer could be offline. This fixes the problem of the
+// navigator closing rtc connection when the mac laptop screen is closed.
+// This case happens on Mac OS on every browser when the user close it's laptop
+// screen. At first, the os/navigator closes all rtc connection, and after some
+// times, the os/navigator internet goes offline without triggering an
+// offline/online event.
+// However, if the laptop screen is open and the connection is properly remove
+// (e.g. disconnect wifi), the event is properly triggered.
+const CHECK_OFFLINE_TIME = 1000;
+const PTP_CLIENT_DISCONNECTED_STATES = [
+    'failed',
+    'closed',
+    'disconnected',
+];
 
 const Wysiwyg = Widget.extend({
     xmlDependencies: [
@@ -42,6 +61,7 @@ const Wysiwyg = Widget.extend({
         colors: customColors,
         recordInfo: {context: {}},
         document: document,
+        allowCommandVideo: true,
     },
     init: function (parent, options) {
         this._super.apply(this, arguments);
@@ -56,7 +76,15 @@ const Wysiwyg = Widget.extend({
         this.colorpickers = {};
         this._onDocumentMousedown = this._onDocumentMousedown.bind(this);
         this._onBlur = this._onBlur.bind(this);
-        this.customizableLinksSelector = 'a:not([data-toggle="tab"]):not([data-toggle="collapse"])';
+        this.customizableLinksSelector = 'a'
+            + ':not([data-toggle="tab"])'
+            + ':not([data-toggle="collapse"])'
+            + ':not([data-toggle="dropdown"])'
+            + ':not(.dropdown-item)';
+        // navigator.onLine is sometimes a false positive, this._isOnline use
+        // more heuristics to bypass the limitation.
+        this._isOnline = true;
+        this._signalOnline = this._signalOnline.bind(this);
     },
     /**
      *
@@ -106,10 +134,11 @@ const Wysiwyg = Widget.extend({
             controlHistoryFromDocument: this.options.controlHistoryFromDocument,
             getContentEditableAreas: this.options.getContentEditableAreas,
             defaultLinkAttributes: this.options.userGeneratedContent ? {rel: 'ugc' } : {},
+            allowCommandVideo: this.options.allowCommandVideo,
             getYoutubeVideoElement: getYoutubeVideoElement,
             getContextFromParentRect: options.getContextFromParentRect,
             getPowerboxElement: () => {
-                const selection = document.getSelection();
+                const selection = (this.options.document || document).getSelection();
                 if (selection.isCollapsed && selection.rangeCount) {
                     const node = closestElement(selection.anchorNode, 'P, DIV');
                     return !(node && node.hasAttribute && node.hasAttribute('data-oe-model')) && node;
@@ -131,6 +160,15 @@ const Wysiwyg = Widget.extend({
             commands: commands,
             plugins: options.editorPlugins,
         }, editorCollaborationOptions));
+
+        document.addEventListener("mousemove", this._signalOnline, true);
+        document.addEventListener("keydown", this._signalOnline, true);
+        document.addEventListener("keyup", this._signalOnline, true);
+        if (this.odooEditor.document !== document) {
+            this.odooEditor.document.addEventListener("mousemove", this._signalOnline, true);
+            this.odooEditor.document.addEventListener("keydown", this._signalOnline, true);
+            this.odooEditor.document.addEventListener("keyup", this._signalOnline, true);
+        }
 
         const $wrapwrap = $('#wrapwrap');
         if ($wrapwrap.length) {
@@ -245,9 +283,11 @@ const Wysiwyg = Widget.extend({
 
             if ($target.is(this.customizableLinksSelector)
                     && $target.is('a')
+                    && $target[0].isContentEditable
                     && !$target.attr('data-oe-model')
                     && !$target.find('> [data-oe-model]').length
-                    && !$target[0].closest('.o_extra_menu_items')) {
+                    && !$target[0].closest('.o_extra_menu_items')
+                    && $target[0].isContentEditable) {
                 this.linkPopover = $target.data('popover-widget-initialized');
                 if (!this.linkPopover) {
                     // TODO this code is ugly maybe the mutex should be in the
@@ -265,7 +305,7 @@ const Wysiwyg = Widget.extend({
                     })();
                 }
                 $target.focus();
-                if ($target.closest('#wrapwrap').length) {
+                if ($target.closest('#wrapwrap, .iframe-editor-wrapper').length) {
                     this.toggleLinkTools({
                         forceOpen: true,
                         link: $target[0],
@@ -301,11 +341,6 @@ const Wysiwyg = Widget.extend({
             return;
         }
 
-        const startCollaborationTime = new Date().getTime();
-
-        // No need for secure random number.
-        const currentClientId = Math.floor(Math.random() * Math.pow(2, 52)).toString();
-
         this._collaborationChannelName = channelName;
         Wysiwyg.activeCollaborationChannelNames.add(channelName);
 
@@ -324,9 +359,6 @@ const Wysiwyg = Widget.extend({
         this.call('bus_service', 'addChannel', this._collaborationChannelName);
         this.call('bus_service', 'startPolling');
 
-        // Wether or not the history has been sent or received at least once.
-        let historySyncAtLeastOnce = false;
-        let historySyncFinished = false;
         // const syncHistory = async (fromClientId) => {
         // }
         // Check wether clientA is before clientB.
@@ -339,22 +371,31 @@ const Wysiwyg = Widget.extend({
         };
         const rpcMutex = new Mutex();
 
-        this._peerToPeerLoading = new Promise(async (resolve) => {
-            let iceServers = await this._rpc({route: '/web_editor/get_ice_servers'});
-            if (!iceServers.length) {
-                iceServers = [
-                    {
-                        urls: [
-                            'stun:stun1.l.google.com:19302',
-                            'stun:stun2.l.google.com:19302',
-                        ],
-                    }
-                ];
-            }
+        this._getCurrentRecord = async () => {
+            const records = await this._rpc({
+                model: modelName,
+                method: "read",
+                args: [
+                    [resId],
+                    [fieldName, 'write_date']
+                ],
+            });
+            records[0].body = records[0][fieldName];
+            return records[0];
+        }
+        this._getRecordWriteDate = (record) => {
+            const dateString = record.write_date.replace(/^(\d{4}-\d{2}-\d{2}) ((\d{2}:?){3})$/, '$1T$2Z');
+            return new Date(dateString);
+        }
 
-            this.ptp = new PeerToPeer({
-                peerConnectionConfig: { iceServers },
-                currentClientId: currentClientId,
+        this._getNewPtp = () => {
+            // Wether or not the history has been sent or received at least once.
+            let historySyncAtLeastOnce = false;
+            let historySyncFinished = false;
+
+            return new PeerToPeer({
+                peerConnectionConfig: { iceServers: this._iceServers },
+                currentClientId: this._currentClientId,
                 broadcastAll: (rpcData) => {
                     return rpcMutex.exec(async () => {
                         return this._rpc({
@@ -369,7 +410,7 @@ const Wysiwyg = Widget.extend({
                     });
                 },
                 onRequest: {
-                    get_start_time: () => startCollaborationTime,
+                    get_start_time: () => this._startCollaborationTime,
                     get_client_name: async () => {
                         if (!this._userName) {
                             this._userName = (await this._rpc({
@@ -391,6 +432,12 @@ const Wysiwyg = Widget.extend({
                     switch (notificationName) {
                         case 'ptp_remove':
                             this.odooEditor.multiselectionRemove(notificationPayload);
+                            break;
+                        case 'rtc_signal_description':
+                            const pc = this.ptp.clientsInfos[fromClientId].peerConnection;
+                            if (this._couldBeDisconnected && this._navigatorCheckOnlineWorking && (!pc || pc.connectionState === 'closed')) {
+                                this._signalOnline();
+                            }
                             break;
                         case 'ptp_disconnect':
                             this.ptp.removeClient(fromClientId);
@@ -435,11 +482,65 @@ const Wysiwyg = Widget.extend({
                     }
                 }
             });
+        }
+
+        this._currentClientId = this._generateClientId();
+        this._startCollaborationTime = new Date().getTime();
+
+        this._checkConnectionChange = () => {
+            this._navigatorCheckOnlineWorking = true;
+            if (!this.ptp) {
+                return;
+            }
+            if (!navigator.onLine) {
+                this._signalOffline();
+            } else {
+                this._signalOnline();
+            }
+        };
+
+        window.addEventListener('online', this._checkConnectionChange);
+        window.addEventListener('offline', this._checkConnectionChange);
+
+        this._collaborationInterval = setInterval(async () => {
+            if (this._offlineTimeout || this.preSavePromise || !this.ptp) {
+                return;
+            }
+
+            const clientsInfos = Object.values(this.ptp.clientsInfos);
+            const couldBeDisconnected =
+                Boolean(clientsInfos.length) &&
+                clientsInfos.every((x) => PTP_CLIENT_DISCONNECTED_STATES.includes(x.peerConnection.connectionState));
+
+            if (couldBeDisconnected) {
+                this._offlineTimeout = setTimeout(() => {
+                    this._signalOffline();
+                }, CONSIDER_OFFLINE_TIME);
+            }
+        }, CHECK_OFFLINE_TIME);
+
+        this._peerToPeerLoading = new Promise(async (resolve) => {
+            this._currentRecordWriteDate = this._getRecordWriteDate(await this._getCurrentRecord());
+            let iceServers = await this._rpc({route: '/web_editor/get_ice_servers'});
+            if (!iceServers.length) {
+                iceServers = [
+                    {
+                        urls: [
+                            'stun:stun1.l.google.com:19302',
+                            'stun:stun2.l.google.com:19302',
+                        ],
+                    }
+                ];
+            }
+            this._iceServers = iceServers;
+
+            this.ptp = this._getNewPtp();
+
             resolve();
         });
 
         const editorCollaborationOptions = {
-            collaborationClientId: currentClientId,
+            collaborationClientId: this._currentClientId,
             onHistoryStep: (historyStep) => {
                 if (!this.ptp) return;
                 this.ptp.notifyAllClients('oe_history_step', historyStep, { transport: 'rtc' });
@@ -467,8 +568,8 @@ const Wysiwyg = Widget.extend({
             },
             onHistoryNeedSync: async () => {
                 if (!this.ptp) return;
-                let firstClientId = currentClientId;
-                let firstClientStartTime = startCollaborationTime;
+                let firstClientId = this._currentClientId;
+                let firstClientStartTime = this._startCollaborationTime;
                 const connectedClientIds = this.ptp.getConnectedClientIds();
                 for (const clientId of connectedClientIds) {
                     const clientInfo = this.ptp.clientsInfos[clientId];
@@ -494,7 +595,7 @@ const Wysiwyg = Widget.extend({
                     }
                 }
 
-                if (firstClientId !== currentClientId) {
+                if (firstClientId !== this._currentClientId) {
                     const historySteps = await this.ptp.requestClient(firstClientId, 'get_history_from_snapshot', undefined, { transport: 'rtc' });
                     this.odooEditor.historyResetFromSteps(historySteps);
                     const remoteSelection = await this.ptp.requestClient(firstClientId, 'get_collaborative_selection', undefined, { transport: 'rtc' });
@@ -514,7 +615,16 @@ const Wysiwyg = Widget.extend({
             Wysiwyg.activeCollaborationChannelNames.delete(this._collaborationChannelName);
         }
 
+        if (this.ptp) {
+            this.ptp.stop();
+        }
+        document.removeEventListener("mousemove", this._signalOnline, true);
+        document.removeEventListener("keydown", this._signalOnline, true);
+        document.removeEventListener("keyup", this._signalOnline, true);
         if (this.odooEditor) {
+            this.odooEditor.document.removeEventListener("mousemove", this._signalOnline, true);
+            this.odooEditor.document.removeEventListener("keydown", this._signalOnline, true);
+            this.odooEditor.document.removeEventListener("keyup", this._signalOnline, true);
             this.odooEditor.document.removeEventListener('selectionchange', this._onSelectionChange);
             this.odooEditor.destroy();
         }
@@ -525,6 +635,7 @@ const Wysiwyg = Widget.extend({
                 this.ptp.closeAllConnections();
             });
         }
+        clearInterval(this._collaborationInterval);
         this.$editable && this.$editable.off('blur', this._onBlur);
         document.removeEventListener('mousedown', this._onDocumentMousedown, true);
         const $body = $(document.body);
@@ -537,6 +648,10 @@ const Wysiwyg = Widget.extend({
         $(this.$root).off('mousedown');
         if (this.linkPopover) {
             this.linkPopover.hide();
+        }
+        if (this._checkConnectionChange) {
+            window.removeEventListener('online', this._checkConnectionChange);
+            window.removeEventListener('offline', this._checkConnectionChange);
         }
         window.removeEventListener('beforeunload', this._onBeforeUnload);
         this._super();
@@ -801,6 +916,12 @@ const Wysiwyg = Widget.extend({
             selection.addRange(range);
         }
     },
+    getDeepRange() {
+        return getDeepRange(this.odooEditor.editable);
+    },
+    closestElement(...args) {
+        return closestElement(...args);
+    },
     /**
      * Start or resume the Odoo field changes muation observers.
      *
@@ -902,7 +1023,7 @@ const Wysiwyg = Widget.extend({
      */
     toggleLinkTools(options = {}) {
         const linkEl = getInSelection(this.odooEditor.document, 'a');
-        if (linkEl && !linkEl.matches(this.customizableLinksSelector)) {
+        if (linkEl && (!linkEl.matches(this.customizableLinksSelector) || !linkEl.isContentEditable)) {
             return;
         }
         if (this.snippetsMenu && !options.forceDialog) {
@@ -935,6 +1056,7 @@ const Wysiwyg = Widget.extend({
                 this.linkTools = undefined;
             }
         } else {
+            let link;
             const linkDialog = new weWidgets.LinkDialog(this, {
                 forceNewWindow: this.options.linkForceNewWindow,
                 wysiwyg: this,
@@ -957,11 +1079,17 @@ const Wysiwyg = Widget.extend({
                 }
                 linkWidget.applyLinkToDom(data);
                 this.odooEditor.historyStep();
-                // At this point, the dialog is still open and prevents the
-                // focus in the editable, even though that is where the
-                // selection is. This waits so the dialog is destroyed when we
-                // set the focus.
-                setTimeout(() => this.odooEditor.document.getSelection().collapseToEnd(), 0);
+                link = linkWidget.$link[0];
+                this.odooEditor.setContenteditableLink(linkWidget.$link[0]);
+                setSelection(link, 0, link, link.childNodes.length, false);
+                // Focus the link after the dialog element is removed because
+                // if the dialog element is still in the DOM at the time of
+                // doing link.focus(), because there is the attribute tabindex
+                // on the dialog element, the focus cannot occurs.
+                // Using a microtask to set the focus is hackish and might break
+                // if another microtask wich focus an elemen in the dom occurs
+                // at the same time (but this case seems unlikely).
+                Promise.resolve().then(() => link.focus());
             });
             linkDialog.on('closed', this, function () {
                 // If the linkDialog content has been saved
@@ -1464,7 +1592,7 @@ const Wysiwyg = Widget.extend({
             this._updateFaResizeButtons();
         }
         const link = getInSelection(this.odooEditor.document, this.customizableLinksSelector);
-        if (isInMedia || link) {
+        if (isInMedia || (link && link.isContentEditable)) {
             // Handle the media/link's tooltip.
             this.showTooltip = true;
             setTimeout(() => {
@@ -1606,6 +1734,7 @@ const Wysiwyg = Widget.extend({
         this.$editable.find('.oe_edited_link').removeClass('oe_edited_link');
     },
     _getCommands: function () {
+        const options = this._editorOptions();
         const commands = [
             {
                 groupName: 'Basic blocks',
@@ -1656,7 +1785,9 @@ const Wysiwyg = Widget.extend({
                     this.openMediaDialog();
                 },
             },
-            {
+        ];
+        if (options.allowCommandVideo) {
+            commands.push({
                 groupName: 'Medias',
                 title: 'Video',
                 description: 'Insert a video.',
@@ -1664,117 +1795,12 @@ const Wysiwyg = Widget.extend({
                 callback: () => {
                     this.openMediaDialog({noVideos: false, noImages: true, noIcons: true, noDocuments: true});
                 },
-            },
-        ];
-        if (this.options.snippets) {
-            commands.push(...this._getSnippetsCommands());
+            });
+        }
+        if (options.powerboxCommands) {
+            commands.push(...options.powerboxCommands);
         }
         return commands;
-    },
-
-    _getSnippetsCommands: function () {
-        const snippetCommandCallback = (selector) => {
-            const $separatorBody = $(selector);
-            const $clonedBody = $separatorBody.clone().removeClass('oe_snippet_body');
-            const range = getDeepRange(this.odooEditor.editable);
-            const block = closestElement(range.endContainer, 'p, div, ol, ul, cl, h1, h2, h3, h4, h5, h6');
-            if (block) {
-                block.after($clonedBody[0]);
-                this.snippetsMenu.callPostSnippetDrop($clonedBody);
-            }
-        };
-        return [
-            {
-                groupName: 'Website',
-                title: 'Alert',
-                description: 'Insert an alert snippet.',
-                fontawesome: 'fa-info',
-                callback: () => {
-                    snippetCommandCallback('.oe_snippet_body[data-snippet="s_alert"]');
-                },
-            },
-            {
-                groupName: 'Website',
-                title: 'Rating',
-                description: 'Insert a rating snippet.',
-                fontawesome: 'fa-star-half-o',
-                callback: () => {
-                    snippetCommandCallback('.oe_snippet_body[data-snippet="s_rating"]');
-                },
-            },
-            {
-                groupName: 'Website',
-                title: 'Card',
-                description: 'Insert a card snippet.',
-                fontawesome: 'fa-sticky-note',
-                callback: () => {
-                    snippetCommandCallback('.oe_snippet_body[data-snippet="s_card"]');
-                },
-            },
-            {
-                groupName: 'Website',
-                title: 'Share',
-                description: 'Insert a share snippet.',
-                fontawesome: 'fa-share-square-o',
-                callback: () => {
-                    snippetCommandCallback('.oe_snippet_body[data-snippet="s_share"]');
-                },
-            },
-            {
-                groupName: 'Website',
-                title: 'Text Highlight',
-                description: 'Insert a text Highlight snippet.',
-                fontawesome: 'fa-sticky-note',
-                callback: () => {
-                    snippetCommandCallback('.oe_snippet_body[data-snippet="s_text_highlight"]');
-                },
-            },
-            {
-                groupName: 'Website',
-                title: 'Chart',
-                description: 'Insert a chart snippet.',
-                fontawesome: 'fa-bar-chart',
-                callback: () => {
-                    snippetCommandCallback('.oe_snippet_body[data-snippet="s_chart"]');
-                },
-            },
-            {
-                groupName: 'Website',
-                title: 'Progress Bar',
-                description: 'Insert a progress bar snippet.',
-                fontawesome: 'fa-spinner',
-                callback: () => {
-                    snippetCommandCallback('.oe_snippet_body[data-snippet="s_progress_bar"]');
-                },
-            },
-            {
-                groupName: 'Website',
-                title: 'Badge',
-                description: 'Insert a badge snippet.',
-                fontawesome: 'fa-tags',
-                callback: () => {
-                    snippetCommandCallback('.oe_snippet_body[data-snippet="s_badge"]');
-                },
-            },
-            {
-                groupName: 'Website',
-                title: 'Blockquote',
-                description: 'Insert a blockquote snippet.',
-                fontawesome: 'fa-quote-left',
-                callback: () => {
-                    snippetCommandCallback('.oe_snippet_body[data-snippet="s_blockquote"]');
-                },
-            },
-            {
-                groupName: 'Website',
-                title: 'Separator',
-                description: 'Insert an horizontal separator sippet.',
-                fontawesome: 'fa-minus',
-                callback: () => {
-                    snippetCommandCallback('.oe_snippet_body[data-snippet="s_hr"]');
-                },
-            },
-        ];
     },
 
     /**
@@ -1840,13 +1866,13 @@ const Wysiwyg = Widget.extend({
                     // the DOM regeneration. Add markings instead, and returns a
                     // new rejection with all relevant info
                     var id = _.uniqueId('carlos_danger_');
-                    $el.addClass('o_dirty oe_carlos_danger ' + id);
+                    $el.addClass('o_dirty o_editable oe_carlos_danger ' + id);
                     $('.o_editable.' + id)
                         .removeClass(id)
                         .popover({
                             trigger: 'hover',
                             content: response.message.data.message || '',
-                            placement: 'auto top',
+                            placement: 'auto',
                         })
                         .popover('show');
                 });
@@ -1856,8 +1882,7 @@ const Wysiwyg = Widget.extend({
             window.onbeforeunload = null;
         }).guardedCatch((failed) => {
             // If there were errors, re-enable edition
-            this.cancel();
-            this.start();
+            this.cancel(false);
         });
     },
     // TODO unused => remove or reuse as it should be
@@ -1972,6 +1997,65 @@ const Wysiwyg = Widget.extend({
             this.trigger_up('wysiwyg_blur');
         }
     },
+    _signalOffline: function () {
+        if (!this._isOnline) {
+            return;
+        }
+        this._isOnline = false;
+
+        this.ptp.stop();
+        this.preSavePromise = new Promise((resolve, reject) => {
+            this.preSavePromiseResolve = resolve;
+            this.preSavePromiseReject = reject;
+        });
+    },
+    _signalOnline: async function () {
+        clearTimeout(this._offlineTimeout);
+        this._offlineTimeout = undefined;
+
+        if (this._isOnline || !this.preSavePromise || !navigator.onLine) {
+            return;
+        }
+        this._isOnline = true;
+
+        if (this._removeSignalDisconnectCallback) {
+            this._removeSignalDisconnectCallback();
+        }
+        const resetPreSavePromise = () => {
+            this.preSavePromise = undefined;
+            this.preSavePromiseResolve = undefined;
+            this.preSavePromiseReject = undefined;
+        }
+        try {
+            const record = await this._getCurrentRecord();
+            const newDate = this._getRecordWriteDate(record);
+            if (newDate !== this._currentRecordWriteDate) {
+                this._resetEditor(record.body);
+            }
+            this.preSavePromiseResolve();
+            resetPreSavePromise();
+        } catch (e) {
+            this.preSavePromiseReject(e);
+            resetPreSavePromise();
+        }
+    },
+    _generateClientId: function () {
+        // No need for secure random number.
+        return Math.floor(Math.random() * Math.pow(2, 52)).toString();
+    },
+    _resetEditor: function (value) {
+        if (!this.ptp) {
+            return;
+        }
+        this.ptp.stop();
+        this._currentClientId = this._generateClientId();
+        this._startCollaborationTime = new Date().getTime();
+        this.ptp = this._getNewPtp();
+        this.odooEditor.collaborationSetClientId(this._currentClientId);
+        this.setValue(value);
+        this.odooEditor.historyReset();
+        this.ptp.notifyAllClients('ptp_join');
+    }
 });
 Wysiwyg.activeCollaborationChannelNames = new Set();
 //--------------------------------------------------------------------------

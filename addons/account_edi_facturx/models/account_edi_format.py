@@ -3,7 +3,7 @@
 from odoo import api, models, fields, tools, _
 from odoo.tools import DEFAULT_SERVER_DATE_FORMAT, float_repr, is_html_empty, str2bool
 from odoo.tests.common import Form
-from odoo.exceptions import UserError
+from odoo.exceptions import RedirectWarning, UserError
 
 from datetime import datetime
 from lxml import etree
@@ -194,7 +194,20 @@ class AccountEdiFormat(models.Model):
                 # Currency.
                 currency_str = elements[0].attrib.get('currencyID', None)
                 if currency_str:
-                    invoice_form.currency_id = self._retrieve_currency(currency_str)
+                    currency = self._retrieve_currency(currency_str)
+                    if currency and not currency.active:
+                        error_msg = _('The currency (%s) of the document you are uploading is not active in this database.\n'
+                                      'Please activate it before trying again to import.', currency.name)
+                        error_action = {
+                            'view_mode': 'form',
+                            'res_model': 'res.currency',
+                            'type': 'ir.actions.act_window',
+                            'target': 'new',
+                            'res_id': currency.id,
+                            'views': [[False, 'form']]
+                        }
+                        raise RedirectWarning(error_msg, error_action, _('Display the currency'))
+                    invoice_form.currency_id = currency
 
                     # Store xml total amount.
                     amount_total_import = total_amount * refund_sign
@@ -247,6 +260,24 @@ class AccountEdiFormat(models.Model):
                                 invoice_line_form.price_unit = float(line_elements[0].text) / float(quantity_elements[0].text)
                             else:
                                 invoice_line_form.price_unit = float(line_elements[0].text)
+                            # For Gross price, we need to check if a discount must be taken into account
+                            discount_elements = element.xpath('.//ram:AppliedTradeAllowanceCharge',
+                                                          namespaces=tree.nsmap)
+                            if discount_elements:
+                                discount_percent_elements = element.xpath(
+                                    './/ram:AppliedTradeAllowanceCharge/ram:CalculationPercent', namespaces=tree.nsmap)
+                                if discount_percent_elements:
+                                    invoice_line_form.discount = float(discount_percent_elements[0].text)
+                                else:
+                                    # if discount not available, it will be computed from the gross and net prices.
+                                    net_price_elements = element.xpath('.//ram:NetPriceProductTradePrice/ram:ChargeAmount',
+                                                                  namespaces=tree.nsmap)
+                                    if net_price_elements:
+                                        quantity_elements = element.xpath(
+                                            './/ram:NetPriceProductTradePrice/ram:BasisQuantity', namespaces=tree.nsmap)
+                                        net_unit_price = float(net_price_elements[0].text) / float(quantity_elements[0].text) \
+                                            if quantity_elements else float(net_price_elements[0].text)
+                                        invoice_line_form.discount = (invoice_line_form.price_unit - net_unit_price) / invoice_line_form.price_unit * 100.
                         else:
                             line_elements = element.xpath('.//ram:NetPriceProductTradePrice/ram:ChargeAmount', namespaces=tree.nsmap)
                             if line_elements:
@@ -255,10 +286,6 @@ class AccountEdiFormat(models.Model):
                                     invoice_line_form.price_unit = float(line_elements[0].text) / float(quantity_elements[0].text)
                                 else:
                                     invoice_line_form.price_unit = float(line_elements[0].text)
-                        # Discount.
-                        line_elements = element.xpath('.//ram:AppliedTradeAllowanceCharge/ram:CalculationPercent', namespaces=tree.nsmap)
-                        if line_elements:
-                            invoice_line_form.discount = float(line_elements[0].text)
 
                         # Taxes
                         tax_element = element.xpath('.//ram:SpecifiedLineTradeSettlement/ram:ApplicableTradeTax/ram:RateApplicablePercent', namespaces=tree.nsmap)
