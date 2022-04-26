@@ -153,7 +153,8 @@ def ensure_db(redirect='/web/database/selector'):
     # if no db can be found til here, send to the database selector
     # the database selector will redirect to database manager if needed
     if not db:
-        werkzeug.exceptions.abort(request.redirect(redirect, 303))
+        # werkzeug.exceptions.abort(request.redirect(redirect, 303))
+        werkzeug.exceptions.abort(request.redirect(redirect, 404))
 
     # always switch the session to the computed db
     if db != request.session.db:
