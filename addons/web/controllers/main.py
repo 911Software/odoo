@@ -822,8 +822,8 @@ class Home(http.Controller):
     @http.route('/web', type='http', auth="none")
     def web_client(self, s_action=None, **kw):
         ensure_db()
-        if not request.session.uid:
-            return request.redirect('/web/login', 303)
+        # if not request.session.uid:
+        #     return request.redirect('/web/login', 303)
         if kw.get('redirect'):
             return request.redirect(kw.get('redirect'), 303)
 
