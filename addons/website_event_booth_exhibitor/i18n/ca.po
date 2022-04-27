@@ -112,53 +112,53 @@ msgstr "Slogan"
 #: model_terms:ir.ui.view,arch_db:website_event_booth_exhibitor.event_booth_view_form_from_event
 #: model_terms:ir.ui.view,arch_db:website_event_booth_exhibitor.event_booth_view_search
 msgid "Sponsor"
-msgstr ""
+msgstr "Patrocinador"
 
 #. module: website_event_booth_exhibitor
 #: model:ir.model.fields,field_description:website_event_booth_exhibitor.field_event_booth__sponsor_website_description
 msgid "Sponsor Description"
-msgstr ""
+msgstr "Descripció del Patrocinador"
 
 #. module: website_event_booth_exhibitor
 #: model:ir.model.fields,field_description:website_event_booth_exhibitor.field_event_booth__sponsor_email
 msgid "Sponsor Email"
-msgstr ""
+msgstr "Correu electrònic del Patrocinador"
 
 #. module: website_event_booth_exhibitor
 #: model:ir.model.fields,field_description:website_event_booth_exhibitor.field_event_booth__sponsor_type_id
 #: model:ir.model.fields,field_description:website_event_booth_exhibitor.field_event_booth_category__sponsor_type_id
 msgid "Sponsor Level"
-msgstr ""
+msgstr "Nivell del Patrocinador"
 
 #. module: website_event_booth_exhibitor
 #: model:ir.model.fields,field_description:website_event_booth_exhibitor.field_event_booth__sponsor_image_512
 msgid "Sponsor Logo"
-msgstr ""
+msgstr "Logotip del Patrocinador"
 
 #. module: website_event_booth_exhibitor
 #: model:ir.model.fields,field_description:website_event_booth_exhibitor.field_event_booth__sponsor_mobile
 msgid "Sponsor Mobile"
-msgstr ""
+msgstr "Patrocinador mòbil"
 
 #. module: website_event_booth_exhibitor
 #: model:ir.model.fields,field_description:website_event_booth_exhibitor.field_event_booth__sponsor_name
 msgid "Sponsor Name"
-msgstr ""
+msgstr "Nom del Patrocinador"
 
 #. module: website_event_booth_exhibitor
 #: model:ir.model.fields,field_description:website_event_booth_exhibitor.field_event_booth__sponsor_phone
 msgid "Sponsor Phone"
-msgstr ""
+msgstr "Telèfon Patrocinador"
 
 #. module: website_event_booth_exhibitor
 #: model:ir.model.fields,field_description:website_event_booth_exhibitor.field_event_booth__sponsor_subtitle
 msgid "Sponsor Slogan"
-msgstr ""
+msgstr "Eslogan del patrocinador"
 
 #. module: website_event_booth_exhibitor
 #: model:ir.model.fields,field_description:website_event_booth_exhibitor.field_event_booth_category__exhibitor_type
 msgid "Sponsor Type"
-msgstr ""
+msgstr "Tipus de Patrocinador"
 
 #. module: website_event_booth_exhibitor
 #: model_terms:ir.ui.view,arch_db:website_event_booth_exhibitor.event_booth_category_view_search

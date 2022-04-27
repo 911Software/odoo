@@ -908,11 +908,27 @@ export function isStrikeThrough(node) {
     }
     return false;
 }
+/**
+ * Return true if the given node appears in a different direction than that of
+ * the editable ('ltr' or 'rtl').
+ *
+ * Note: The direction of the editable is set on its "dir" attribute, to the
+ * value of the "direction" option on instantiation of the editor.
+ *
+ * @param {Node} node
+ * @param {Element} editable
+ * @returns {boolean}
+ */
+ export function isDirectionSwitched(node, editable) {
+    const defaultDirection = editable.getAttribute('dir');
+    return getComputedStyle(closestElement(node)).direction !== defaultDirection;
+}
 export const isFormat = {
     bold: isBold,
     italic: isItalic,
     underline: isUnderline,
     strikeThrough: isStrikeThrough,
+    switchDirection: isDirectionSwitched,
 };
 /**
  * Return true if the current selection on the editable appears as the given
@@ -920,16 +936,16 @@ export const isFormat = {
  * node in it appears as that format.
  *
  * @param {Element} editable
- * @param {String} format 'bold'|'italic'|'underline'|'strikeThrought'
+ * @param {String} format 'bold'|'italic'|'underline'|'strikeThrough'|'switchDirection'
  * @returns {boolean}
  */
 export function isSelectionFormat(editable, format) {
     const selectedText = getSelectedNodes(editable)
         .filter(n => n.nodeType === Node.TEXT_NODE && n.nodeValue.trim().length);
     if (selectedText.length) {
-        return selectedText.every(n => isFormat[format](n.parentElement));
+        return selectedText.every(n => isFormat[format](n.parentElement, editable))
     } else {
-        return isFormat[format](closestElement(editable.ownerDocument.getSelection().anchorNode));
+        return isFormat[format](closestElement(editable.ownerDocument.getSelection().anchorNode), editable);
     }
 }
 
@@ -965,7 +981,7 @@ export function isUnremovable(node) {
     return (
         node.oid === 'root' ||
         (node.nodeType === Node.ELEMENT_NODE &&
-            (node.getAttribute('t-set') || node.getAttribute('t-call'))) ||
+            (node.classList.contains('o_editable') || node.getAttribute('t-set') || node.getAttribute('t-call'))) ||
         (node.classList && node.classList.contains('oe_unremovable'))
     );
 }
@@ -1439,7 +1455,7 @@ export function splitAroundUntil(elements, limitAncestor) {
 }
 
 export function insertText(sel, content) {
-    if (sel.anchorNode.nodeType == Node.TEXT_NODE) {
+    if (sel.anchorNode.nodeType === Node.TEXT_NODE) {
         const pos = [sel.anchorNode.parentElement, splitTextNode(sel.anchorNode, sel.anchorOffset)];
         setSelection(...pos, ...pos, false);
     }
