@@ -3,6 +3,7 @@
 # 	* l10n_cn
 # 
 # Translators:
+# Friederike Fasterling-Nesselbosch, 2022
 # Martin Trigaux, 2022
 # 
 msgid ""
@@ -340,12 +341,12 @@ msgstr ""
 #: model:account.account,name:l10n_cn.3_l10n_chart_china_small_business_liquidity_transfer
 #: model:account.account.template,name:l10n_cn.l10n_chart_china_small_business_liquidity_transfer
 msgid "Liquidity Transfer"
-msgstr "Transferkonto"
+msgstr "Liquiditätstransfer"
 
 #. module: l10n_cn
 #: model_terms:ir.ui.view,arch_db:l10n_cn.external_layout_boxed
 msgid "Logo"
-msgstr ""
+msgstr "Logo"
 
 #. module: l10n_cn
 #: model:account.account,name:l10n_cn.3_l10n_cn_2701
@@ -531,7 +532,7 @@ msgstr ""
 #: model:account.account,name:l10n_cn.3_l10n_cn_1403
 #: model:account.account.template,name:l10n_cn.l10n_cn_1403
 msgid "Raw Material"
-msgstr ""
+msgstr "Rohmaterial"
 
 #. module: l10n_cn
 #: model:account.account,name:l10n_cn.3_l10n_cn_6601
@@ -587,12 +588,12 @@ msgstr ""
 #. module: l10n_cn
 #: model:ir.actions.report,name:l10n_cn.account_voucher_cn
 msgid "Voucher"
-msgstr ""
+msgstr "Zahlungsbeleg"
 
 #. module: l10n_cn
 #: model:account.chart.template,name:l10n_cn.l10n_chart_china_small_business
 msgid "小企业会计科目表（财会[2011]17号《小企业会计准则》）"
-msgstr ""
+msgstr "小企业会计科目表（财会[2011]17号《小企业会计准则》）"
 
 #. module: l10n_cn
 #: model:account.tax,description:l10n_cn.3_l10n_cn_purchase_excluded_13

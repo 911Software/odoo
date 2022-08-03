@@ -104,8 +104,10 @@ class TestUiHtmlEditor(odoo.tests.HttpCase):
                 self.env.ref('website.group_website_designer').id
             ])]
         })
-        self.start_tour("/", 'test_html_editor_scss', login='admin')
+        self.start_tour("/", 'test_html_editor_scss', login='admin', timeout=120)
 
+    def media_dialog_undraw(self):
+        self.start_tour("/", 'website_media_dialog_undraw', login='admin')
 
 @odoo.tests.tagged('-at_install', 'post_install')
 class TestUiTranslate(odoo.tests.HttpCase):
@@ -297,3 +299,6 @@ class TestUi(odoo.tests.HttpCase):
 
     def test_18_website_snippets_menu_tabs(self):
         self.start_tour("/?enable_editor=1", "website_snippets_menu_tabs", login="admin")
+
+    def test_19_website_page_options(self):
+        self.start_tour("/?enable_editor=1", "website_page_options", login="admin")

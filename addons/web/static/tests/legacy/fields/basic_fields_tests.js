@@ -50,6 +50,7 @@ QUnit.module('basic_fields', {
                     txt: {string: "txt", type: "text", default: "My little txt Value\nHo-ho-hoooo Merry Christmas"},
                     int_field: {string: "int_field", type: "integer", sortable: true, searchable: true},
                     qux: {string: "Qux", type: "float", digits: [16,1], searchable: true},
+                    monetary: {string: "MMM", type: "monetary", digits: [16,1], searchable: true},
                     p: {string: "one2many field", type: "one2many", relation: 'partner', searchable: true},
                     trululu: {string: "Trululu", type: "many2one", relation: 'partner', searchable: true},
                     timmy: {string: "pokemon", type: "many2many", relation: 'partner_type', searchable: true},
@@ -99,7 +100,17 @@ QUnit.module('basic_fields', {
                     selection: 'done',
                 },
                 {id: 3, bar: true, foo: "gnap", int_field: 80, qux: -3.89859},
-                {id: 5, bar: false, foo: "blop", int_field: -4, qux: 9.1, currency_id: 1}],
+                {id: 5, bar: false, foo: "blop", int_field: -4, qux: 9.1, currency_id: 1, monetary: 99.9}],
+                onchanges: {},
+            },
+            team: {
+                fields: {
+                    partner_ids: { string: "Partner", type: "one2many", relation: 'partner' },
+                },
+                records: [{
+                    id: 1,
+                    partner_ids: [5],
+                }],
                 onchanges: {},
             },
             product: {
@@ -395,6 +406,68 @@ QUnit.module('basic_fields', {
         form.destroy();
     });
 
+    QUnit.test('boolean field is editable in an editable form', async function (assert) {
+        assert.expect(2);
+
+        const form = await createView({
+            View: FormView,
+            model: 'partner',
+            data: this.data,
+            arch: '<form edit="1">' +
+                    '<field name="bar" widget="boolean"/>' +
+                '</form>',
+        });
+
+        assert.containsOnce(form, '.o_field_boolean input:enabled',
+            "the field should be editable");
+
+        await testUtils.form.clickSave(form);
+
+        assert.containsOnce(form, '.o_field_boolean input:enabled',
+            "the field should be editable");
+
+        form.destroy();
+    });
+
+    QUnit.test('boolean field is not editable in a readonly form', async function (assert) {
+        assert.expect(1);
+
+        const form = await createView({
+            View: FormView,
+            model: 'partner',
+            data: this.data,
+            arch: '<form edit="0">' +
+                    '<field name="bar" widget="boolean"/>' +
+                '</form>',
+            viewOptions: {
+               mode: 'readonly',
+            },
+        });
+
+        assert.containsOnce(form, '.o_field_boolean input:disabled',
+            "the field should not be editable");
+
+        form.destroy();
+    });
+
+    QUnit.test('boolean field is not editable with a readonly modifier', async function (assert) {
+        assert.expect(1);
+
+        const form = await createView({
+            View: FormView,
+            model: 'partner',
+            data: this.data,
+            arch: '<form>' +
+                    '<field name="bar" widget="boolean" readonly="1"/>' +
+                '</form>',
+        });
+
+        assert.containsOnce(form, '.o_field_boolean input:disabled',
+            "the field should not be editable");
+
+        form.destroy();
+    });
+
     QUnit.module('FieldBooleanToggle');
 
     QUnit.test('use boolean toggle widget in form view', async function (assert) {
@@ -416,6 +489,63 @@ QUnit.module('basic_fields', {
         assert.containsOnce(form, ".custom-checkbox.o_boolean_toggle .fa-times-circle",
             "Boolean toggle should have fa-times-circle icon");
 
+        form.destroy();
+    });
+
+    QUnit.test('boolean toggle widget is not disabled in readonly mode', async function (assert) {
+        assert.expect(3);
+
+        const form = await createView({
+            View: FormView,
+            model: 'partner',
+            data: this.data,
+            arch: '<form><field name="bar" widget="boolean_toggle"/></form>',
+            res_id: 5,
+        });
+
+        assert.containsOnce(form, ".custom-checkbox.o_boolean_toggle", "Boolean toggle widget applied to boolean field");
+        assert.notOk(form.$('.o_boolean_toggle input')[0].checked);
+        await testUtils.dom.click(form.$('.o_boolean_toggle'));
+        assert.ok(form.$('.o_boolean_toggle input')[0].checked);
+        form.destroy();
+    });
+
+    QUnit.test('boolean toggle widget is disabled with a readonly attribute', async function (assert) {
+        assert.expect(3);
+
+        const form = await createView({
+            View: FormView,
+            model: 'partner',
+            data: this.data,
+            arch: '<form><field name="bar" widget="boolean_toggle" readonly="1"/></form>',
+            res_id: 5,
+        });
+
+        assert.containsOnce(form, ".custom-checkbox.o_boolean_toggle", "Boolean toggle widget applied to boolean field");
+        await testUtils.dom.click(form.$buttons.find('.o_form_button_edit'));
+        assert.notOk(form.$('.o_boolean_toggle input')[0].checked);
+        await testUtils.dom.click(form.$('.o_boolean_toggle'));
+        assert.notOk(form.$('.o_boolean_toggle input')[0].checked);
+        form.destroy();
+    });
+
+    QUnit.test('boolean toggle widget is enabled in edit mode', async function (assert) {
+        assert.expect(3);
+
+        const form = await createView({
+            View: FormView,
+            model: 'partner',
+            data: this.data,
+            arch: '<form><field name="bar" widget="boolean_toggle"/></form>',
+            res_id: 5,
+        });
+
+        assert.containsOnce(form, ".custom-checkbox.o_boolean_toggle", "Boolean toggle widget applied to boolean field");
+        await testUtils.dom.click(form.$buttons.find('.o_form_button_edit'));
+
+        assert.notOk(form.$('.o_boolean_toggle input')[0].checked);
+        await testUtils.dom.click(form.$('.o_boolean_toggle'));
+        assert.ok(form.$('.o_boolean_toggle input')[0].checked);
         form.destroy();
     });
 
@@ -5159,6 +5289,41 @@ QUnit.module('basic_fields', {
         form.destroy();
     });
 
+    QUnit.test('datetime field with date widget: hit enter should update value', async function (assert) {
+        assert.expect(2);
+
+        const form = await createView({
+            View: FormView,
+            model: 'partner',
+            data: this.data,
+            arch:'<form string="Partners"><field name="datetime" widget="date"/></form>',
+            res_id: 1,
+            translateParameters: {  // Avoid issues due to localization formats
+                date_format: '%m/%d/%Y',
+            },
+            viewOptions: {
+                mode: 'edit',
+            },
+            session: {
+                getTZOffset: function () {
+                    return 120;
+                },
+            },
+        });
+
+        const datetime = form.el.querySelector('input[name="datetime"]');
+
+        await testUtils.fields.editInput(datetime, '01/08/22');
+        await testUtils.fields.triggerKeydown(datetime, 'enter');
+        assert.strictEqual(datetime.value, '01/08/2022');
+
+        // Click outside the field to check that the field is not changed
+        await testUtils.dom.click(form.$el);
+        assert.strictEqual(datetime.value, '01/08/2022');
+
+        form.destroy();
+    });
+
     QUnit.module('RemainingDays');
 
     QUnit.test('remaining_days widget on a date field in list view', async function (assert) {
@@ -5560,6 +5725,46 @@ QUnit.module('basic_fields', {
         // Non-breaking space between the currency and the amount
         assert.strictEqual(form.$('.o_field_widget').first().text(), '$\u00a0108.25',
             'The new value should be rounded properly.');
+
+        form.destroy();
+    });
+
+    QUnit.test('monetary field in the lines of a form view', async function (assert) {
+        assert.expect(4);
+
+        var form = await createView({
+            View: FormView,
+            model: 'team',
+            data: this.data,
+            arch:'<form>' +
+                    '<sheet>' +
+                      '<field name="partner_ids">' +
+                        '<tree editable="bottom">' +
+                          '<field name="monetary"/>' +
+                          '<field name="currency_id" invisible="1"/>' +
+                        '</tree>' +
+                      '</field>' +
+                    '</sheet>' +
+                '</form>',
+            res_id: 1,
+            session: {
+                currencies: _.indexBy(this.data.currency.records, 'id'),
+            },
+        });
+
+        // Non-breaking space between the currency and the amount
+        assert.strictEqual(form.$('.o_list_table .o_list_number').first().text(), '$\u00a099.9',
+                           'The value should be displayed properly.');
+        assert.hasAttrValue(form.$('.o_list_table .o_list_number').first(), 'title', '$\u00a099.9',
+                           'The title value should be displayed properly.');
+
+        await testUtils.form.clickEdit(form);
+
+        // Non-breaking space between the currency and the amount
+        assert.strictEqual(form.$('.o_list_table .o_list_number').first().text(), '$\u00a099.9',
+                           'The value should be displayed properly.');
+        assert.hasAttrValue(form.$('.o_list_table .o_list_number').first(), 'title', '$\u00a099.9',
+                            'The title value should be displayed properly.');
 
         form.destroy();
     });

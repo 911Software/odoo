@@ -207,6 +207,9 @@ class DiscussController(http.Controller):
     # Thread API (channel/chatter common)
     # --------------------------------------------------------------------------
 
+    def _get_allowed_message_post_params(self):
+        return {'attachment_ids', 'body', 'message_type', 'partner_ids', 'subtype_xmlid', 'parent_id'}
+
     @http.route('/mail/message/post', methods=['POST'], type='json', auth='public')
     def mail_message_post(self, thread_model, thread_id, post_data, **kwargs):
         if thread_model == 'mail.channel':
@@ -214,14 +217,13 @@ class DiscussController(http.Controller):
             thread = channel_partner_sudo.channel_id
         else:
             thread = request.env[thread_model].browse(int(thread_id)).exists()
-        allowed_params = {'attachment_ids', 'body', 'message_type', 'partner_ids', 'subtype_xmlid', 'parent_id'}
-        return thread.message_post(**{key: value for key, value in post_data.items() if key in allowed_params}).message_format()[0]
+        return thread.message_post(**{key: value for key, value in post_data.items() if key in self._get_allowed_message_post_params()}).message_format()[0]
 
     @http.route('/mail/message/update_content', methods=['POST'], type='json', auth='public')
     def mail_message_update_content(self, message_id, body, attachment_ids):
         guest = request.env['mail.guest']._get_guest_from_request(request)
         message_sudo = guest.env['mail.message'].browse(message_id).sudo().exists()
-        if not message_sudo.is_current_user_or_guest_author and not guest.env.user.has_group('base.group_system'):
+        if not message_sudo.is_current_user_or_guest_author and not guest.env.user._is_admin():
             raise NotFound()
         message_sudo._update_content(body=body, attachment_ids=attachment_ids)
         return {

@@ -23,9 +23,9 @@
 # Polina Alexandrova <polinaalexnder@gmail.com>, 2021
 # Диляра Дельтаева <dilya.kz93@gmail.com>, 2021
 # Gennady Marchenko <gennadym@gmail.com>, 2021
-# Сергей Шебанин <sergey@shebanin.ru>, 2021
 # Martin Trigaux, 2022
 # Валерий Хохлов, 2022
+# Сергей Шебанин <sergey@shebanin.ru>, 2022
 # 
 msgid ""
 msgstr ""
@@ -33,7 +33,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-11-16 13:18+0000\n"
 "PO-Revision-Date: 2021-09-14 12:26+0000\n"
-"Last-Translator: Валерий Хохлов, 2022\n"
+"Last-Translator: Сергей Шебанин <sergey@shebanin.ru>, 2022\n"
 "Language-Team: Russian (https://www.transifex.com/odoo/teams/41243/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -561,7 +561,7 @@ msgstr ""
 #. module: stock
 #: model_terms:ir.ui.view,arch_db:stock.report_picking
 msgid "<strong>From</strong>"
-msgstr "<strong>От</strong>"
+msgstr "<strong>Из</strong>"
 
 #. module: stock
 #: model_terms:ir.ui.view,arch_db:stock.report_inventory
@@ -905,7 +905,7 @@ msgstr "Разрешенное местоположение"
 #. module: stock
 #: model_terms:ir.ui.view,arch_db:stock.res_config_settings_view_form
 msgid "Annual Inventory Day and Month"
-msgstr ""
+msgstr "Дата ежегодной инвентаризации"
 
 #. module: stock
 #: model:ir.model.fields,field_description:stock.field_res_company__annual_inventory_month
@@ -995,7 +995,10 @@ msgid "As soon as possible"
 msgstr "Как можно быстрее"
 
 #. module: stock
+#. openerp-web
+#: code:addons/stock/static/src/js/report_stock_reception.js:0
 #: model_terms:ir.ui.view,arch_db:stock.report_reception_body
+#, python-format
 msgid "Assign"
 msgstr "Назначить"
 
@@ -1115,7 +1118,7 @@ msgstr "Дозаказ из"
 #: model:ir.model.fields,field_description:stock.field_stock_picking__backorder_ids
 #: model_terms:ir.ui.view,arch_db:stock.stock_picking_type_kanban
 msgid "Back Orders"
-msgstr "Дозаказы"
+msgstr "Возвраты"
 
 #. module: stock
 #: model:ir.model,name:stock.model_stock_backorder_confirmation
@@ -1988,7 +1991,7 @@ msgstr ""
 #. module: stock
 #: model_terms:ir.ui.view,arch_db:stock.res_config_settings_view_form
 msgid "Day and month that annual inventory counts should occur."
-msgstr ""
+msgstr "День и месяц, когда должна быть проведена ежегодная инвентаризация."
 
 #. module: stock
 #: model:ir.model.fields,field_description:stock.field_res_company__annual_inventory_day
@@ -2501,7 +2504,7 @@ msgstr "Документация"
 #: model_terms:ir.ui.view,arch_db:stock.view_picking_internal_search
 #: model_terms:ir.ui.view,arch_db:stock.view_picking_move_tree
 msgid "Done"
-msgstr "Сделано"
+msgstr "Выполнено"
 
 #. module: stock
 #: model:ir.model.fields.selection,name:stock.selection__stock_package_level__state__draft
@@ -2546,7 +2549,7 @@ msgstr "Срок эффективности"
 #. module: stock
 #: model_terms:ir.ui.view,arch_db:stock.res_config_settings_view_form
 msgid "Email Confirmation"
-msgstr "Подтверждение электронного адреса"
+msgstr "Подтверждение по email"
 
 #. module: stock
 #: model:ir.model.fields,field_description:stock.field_res_company__stock_move_email_validation
@@ -2643,7 +2646,7 @@ msgstr ""
 #: code:addons/stock/static/src/xml/forecast_widget.xml:0
 #, python-format
 msgid "Exp"
-msgstr "Эксп."
+msgstr "Ожид."
 
 #. module: stock
 #: code:addons/stock/models/stock_picking.py:0
@@ -2893,7 +2896,7 @@ msgstr "Количество в свободном использовании"
 #: model_terms:ir.ui.view,arch_db:stock.view_move_tree
 #: model_terms:ir.ui.view,arch_db:stock.vpicktree
 msgid "From"
-msgstr "От"
+msgstr "Из"
 
 #. module: stock
 #: model:ir.model.fields,field_description:stock.field_stock_move_line__owner_id
@@ -2903,7 +2906,7 @@ msgstr "От владельца"
 #. module: stock
 #: model:ir.model.fields,field_description:stock.field_stock_move__show_reserved_availability
 msgid "From Supplier"
-msgstr "от поставщика"
+msgstr "От поставщика"
 
 #. module: stock
 #: model:ir.model.fields,field_description:stock.field_stock_location__complete_name
@@ -3414,7 +3417,7 @@ msgstr "Внутренний артикул"
 #. module: stock
 #: model:ir.model.fields.selection,name:stock.selection__stock_picking_type__code__internal
 msgid "Internal Transfer"
-msgstr "Внутренний перевод"
+msgstr "Внутреннее перемещение"
 
 #. module: stock
 #: code:addons/stock/models/stock_warehouse.py:0
@@ -4446,7 +4449,7 @@ msgstr ""
 #. module: stock
 #: model_terms:ir.ui.view,arch_db:stock.view_picking_internal_search
 msgid "My Transfers"
-msgstr "Мои переводы"
+msgstr "Мои перемещения"
 
 #. module: stock
 #: model:ir.model.fields,field_description:stock.field_product_removal__name
@@ -4646,7 +4649,7 @@ msgstr ""
 #: model_terms:ir.actions.act_window,help:stock.action_picking_type_list
 #: model_terms:ir.actions.act_window,help:stock.stock_picking_action_picking_type
 msgid "No transfer found. Let's create one!"
-msgstr ""
+msgstr "Нет перемещений."
 
 #. module: stock
 #: code:addons/stock/report/report_stock_reception.py:0
@@ -5310,12 +5313,12 @@ msgstr "Плановое перемещение"
 #: code:addons/stock/static/src/js/stock_rescheduling_popover.js:0
 #, python-format
 msgid "Planning Issue"
-msgstr ""
+msgstr "Не терпит отлагательств"
 
 #. module: stock
 #: model_terms:ir.ui.view,arch_db:stock.view_picking_internal_search
 msgid "Planning Issues"
-msgstr ""
+msgstr "Не терпят отлагательств"
 
 #. module: stock
 #: code:addons/stock/models/stock_picking.py:0
@@ -5351,7 +5354,7 @@ msgstr ""
 #. module: stock
 #: model:ir.model.fields,field_description:stock.field_stock_warehouse_orderpoint__route_id
 msgid "Preferred Route"
-msgstr ""
+msgstr "Рекомендуемый маршрут"
 
 #. module: stock
 #: model:ir.model.fields,field_description:stock.field_product_replenish__route_ids
@@ -5361,7 +5364,7 @@ msgstr "Предпочтительные маршруты"
 #. module: stock
 #: model:ir.model.fields,help:stock.field_stock_move__route_ids
 msgid "Preferred route"
-msgstr "желаемый маршрут"
+msgstr "Рекомендуемый маршрут"
 
 #. module: stock
 #: code:addons/stock/models/stock_quant.py:0
@@ -5419,7 +5422,7 @@ msgstr ""
 #. module: stock
 #: model_terms:ir.ui.view,arch_db:stock.res_config_settings_view_form
 msgid "Process transfers in batch per worker"
-msgstr "Возможность перемещать товары между сотрудниками группами"
+msgstr "Возможность перемещать товары группами"
 
 #. module: stock
 #: model:ir.model,name:stock.model_procurement_group
@@ -5731,7 +5734,7 @@ msgstr "перемещение"
 #. module: stock
 #: model:ir.model.fields.selection,name:stock.selection__stock_rule__action__pull
 msgid "Pull From"
-msgstr "вытащить из"
+msgstr "Получить из"
 
 #. module: stock
 #: model_terms:ir.ui.view,arch_db:stock.report_stock_rule
@@ -6012,7 +6015,7 @@ msgstr "Количества нельзя создавать для расход
 #: model_terms:ir.ui.view,arch_db:stock.view_move_search
 #: model_terms:ir.ui.view,arch_db:stock.view_picking_internal_search
 msgid "Ready"
-msgstr "Готово"
+msgstr "Можно перемещать"
 
 #. module: stock
 #: model:ir.model.fields,field_description:stock.field_stock_move__product_qty
@@ -6326,12 +6329,12 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:stock.view_picking_form
 #: model_terms:ir.ui.view,arch_db:stock.view_picking_move_tree
 msgid "Reserved"
-msgstr "Зарезервированный"
+msgstr "Зарезервировано"
 
 #. module: stock
 #: model:ir.model.fields,field_description:stock.field_stock_quant__reserved_quantity
 msgid "Reserved Quantity"
-msgstr "зарезервирована количество"
+msgstr "Зарезервированное количество"
 
 #. module: stock
 #: model_terms:ir.ui.view,arch_db:stock.report_product_product_replenishment
@@ -6800,7 +6803,7 @@ msgstr ""
 #: model:ir.actions.server,name:stock.action_view_set_quants_tree
 #: model_terms:ir.ui.view,arch_db:stock.view_stock_quant_tree_inventory_editable
 msgid "Set"
-msgstr "установите"
+msgstr "Указать"
 
 #. module: stock
 #: model:ir.model.fields.selection,name:stock.selection__stock_request_count__set_count__set
@@ -7482,7 +7485,7 @@ msgid ""
 msgstr ""
 "Техническое поле, используемое для обозначения ограничения на владение "
 "квантами, которое необходимо учитывать при маркировке этого перемещения как "
-"'сделано'"
+"'Выполнено'"
 
 #. module: stock
 #: model:ir.model.fields,help:stock.field_stock_move__price_unit
@@ -7638,8 +7641,8 @@ msgstr "Имя склада должно быть уникальным в рам
 #. module: stock
 #: code:addons/stock/wizard/stock_assign_serial_numbers.py:0
 #, python-format
-msgid "The number of Serial Numbers to generate must greater than zero."
-msgstr "Количество генерируемых серийных номеров должно быть больше нуля."
+msgid "The number of Serial Numbers to generate must be greater than zero."
+msgstr ""
 
 #. module: stock
 #: model_terms:ir.actions.act_window,help:stock.stock_picking_type_action
@@ -7843,11 +7846,11 @@ msgid ""
 "be done with care."
 msgstr ""
 "Это количество продуктов с точки зрения запасов. Для перемещений в состоянии"
-" 'сделано' это количество продуктов, которые были фактически перемещены. Для"
-" других перемещений это количество продукта, которое планируется перенести. "
-"Понижение этой величины не приводит к освобождению от заказа. Изменение "
-"этого количества в назначенных перемещениях влияет на резервирование "
-"продукта и должно быть сделано с осторожностью."
+" 'Выполнено' это количество продуктов, которые были фактически перемещены. "
+"Для других перемещений это количество продукта, которое планируется "
+"перенести. Понижение этой величины не приводит к освобождению от заказа. "
+"Изменение этого количества в назначенных перемещениях влияет на "
+"резервирование продукта и должно быть сделано с осторожностью."
 
 #. module: stock
 #: model:ir.model.fields,help:stock.field_stock_location__child_internal_location_ids
@@ -8041,7 +8044,7 @@ msgstr "Задача"
 #: model:ir.model.fields,field_description:stock.field_stock_replenishment_info__qty_to_order
 #: model:ir.model.fields,field_description:stock.field_stock_warehouse_orderpoint__qty_to_order
 msgid "To Order"
-msgstr ""
+msgstr "Под заказ"
 
 #. module: stock
 #: model:ir.model.fields,field_description:stock.field_stock_immediate_transfer_line__to_immediate
@@ -8160,12 +8163,12 @@ msgstr "Перемещение"
 #. module: stock
 #: model:ir.model.fields.selection,name:stock.selection__product_label_layout__picking_quantity__picking
 msgid "Transfer Quantities"
-msgstr ""
+msgstr "Количество перемещений"
 
 #. module: stock
 #: model_terms:ir.ui.view,arch_db:stock.view_production_lot_tree
 msgid "Transfer to"
-msgstr ""
+msgstr "Перемещение в"
 
 #. module: stock
 #: model:ir.actions.act_window,name:stock.action_picking_tree_all
@@ -8195,12 +8198,12 @@ msgstr ""
 #: model_terms:ir.actions.act_window,help:stock.action_picking_type_list
 #: model_terms:ir.actions.act_window,help:stock.stock_picking_action_picking_type
 msgid "Transfers allow you to move products from one location to another."
-msgstr "Переводы позволяют перемещать товары из одного места в другое."
+msgstr "Перемещение товаров из одного места в другое."
 
 #. module: stock
 #: model:ir.actions.act_window,name:stock.do_view_pickings
 msgid "Transfers for Groups"
-msgstr "Переводы для групп"
+msgstr "Перемещения для групп"
 
 #. module: stock
 #: model_terms:ir.ui.view,arch_db:stock.view_picking_internal_search
@@ -8275,7 +8278,10 @@ msgid "USPS Connector"
 msgstr "коннектор USPS"
 
 #. module: stock
+#. openerp-web
+#: code:addons/stock/static/src/js/report_stock_reception.js:0
 #: model_terms:ir.ui.view,arch_db:stock.report_reception_body
+#, python-format
 msgid "Unassign"
 msgstr ""
 
@@ -8486,7 +8492,7 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:stock.stock_scrap_form_view
 #: model_terms:ir.ui.view,arch_db:stock.view_picking_form
 msgid "Validate"
-msgstr "Утвердить"
+msgstr "Подтвердить"
 
 #. module: stock
 #. openerp-web
@@ -8568,7 +8574,7 @@ msgstr "Ожидает Перемещения"
 #. module: stock
 #: model:ir.actions.act_window,name:stock.action_picking_tree_waiting
 msgid "Waiting Transfers"
-msgstr "Ожидает Перемещений"
+msgstr "Ожидает перемещения"
 
 #. module: stock
 #: model:ir.model,name:stock.model_stock_warehouse
@@ -9235,15 +9241,6 @@ msgid "You should update this document to reflect your T&amp;C."
 msgstr ""
 
 #. module: stock
-#: code:addons/stock/models/stock_picking.py:0
-#, python-format
-msgid ""
-"You should not use a planned internal transfer to move some products between"
-" two warehouses. Instead, use an immediate internal transfer or the resupply"
-" route."
-msgstr ""
-
-#. module: stock
 #: code:addons/stock/models/stock_warehouse.py:0
 #, python-format
 msgid "You still have ongoing operations for picking types %s in warehouse %s"
@@ -9373,7 +9370,7 @@ msgstr ""
 #. module: stock
 #: model_terms:ir.ui.view,arch_db:stock.stock_warn_insufficient_qty_scrap_form_view
 msgid "from location"
-msgstr ""
+msgstr "из места"
 
 #. module: stock
 #: model_terms:ir.ui.view,arch_db:stock.stock_warn_insufficient_qty_form_view

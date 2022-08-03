@@ -142,6 +142,37 @@ class ProjectTaskType(models.Model):
             else:
                 stage.disabled_rating_warning = False
 
+    def remove_personal_stage(self):
+        """
+        Remove a personal stage, tasks using that stage will move to the first
+        stage with a lower priority if it exists higher if not.
+        This method will not allow to delete the last personal stage.
+        Having no personal_stage_type_id makes the task not appear when grouping by personal stage.
+        """
+        self.ensure_one()
+        assert self.user_id == self.env.user or self.env.su
+
+        users_personal_stages = self.env['project.task.type']\
+            .search([('user_id', '=', self.user_id.id)], order='sequence DESC')
+        if len(users_personal_stages) == 1:
+            raise ValidationError(_("You should at least have one personal stage. Create a new stage to which the tasks can be transferred after this one is deleted."))
+
+        # Find the most suitable stage, they are already sorted by sequence
+        new_stage = self.env['project.task.type']
+        for stage in users_personal_stages:
+            if stage == self:
+                continue
+            if stage.sequence > self.sequence:
+                new_stage = stage
+            elif stage.sequence <= self.sequence:
+                new_stage = stage
+                break
+
+        self.env['project.task.stage.personal'].search([('stage_id', '=', self.id)]).write({
+            'stage_id': new_stage.id,
+        })
+        self.unlink()
+
 class Project(models.Model):
     _name = "project.project"
     _description = "Project"
@@ -287,12 +318,17 @@ class Project(models.Model):
         ],
         string='Visibility', required=True,
         default='portal',
-        help="Defines the visibility of the tasks of the project:\n"
-            "- Invited employees: employees may only see the followed project and tasks.\n"
-            "- All employees: employees may see all project and tasks.\n"
-            "- Invited portal users and all employees: employees may see everything."
-            "   Invited portal users may see project and tasks followed by.\n"
-            "   them or by someone of their company.")
+        help="People to whom this project and its tasks will be visible.\n\n"
+            "- Invited internal users: when following a project, internal users will get access to all of its tasks without distinction. "
+            "Otherwise, they will only get access to the specific tasks they are following.\n "
+            "A user with the project > administrator access right level can still access this project and its tasks, even if they are not explicitly part of the followers.\n\n"
+            "- All internal users: all internal users can access the project and all of its tasks without distinction.\n\n"
+            "- Invited portal users and all internal users: all internal users can access the project and all of its tasks without distinction.\n"
+            "When following a project, portal users will get access to all of its tasks without distinction. Otherwise, they will only get access to the specific tasks they are following.\n\n"
+            "When a project is shared in read-only, the portal user is redirected to their portal. They can view the tasks, but not edit them.\n"
+            "When a project is shared in edit, the portal user is redirected to the kanban and list views of the tasks. They can modify a selected number of fields on the tasks.\n\n"
+            "In any case, an internal user with no project access rights can still access a task, "
+            "provided that they are given the corresponding URL (and that they are part of the followers if the project is private).")
     doc_count = fields.Integer(compute='_compute_attached_docs_count', string="Number of documents attached")
     date_start = fields.Date(string='Start Date')
     date = fields.Date(string='Expiration Date', index=True, tracking=True)
@@ -303,7 +339,7 @@ class Project(models.Model):
 
     # Project Sharing fields
     collaborator_ids = fields.One2many('project.collaborator', 'project_id', string='Collaborators', copy=False)
-    collaborator_count = fields.Integer('# Collaborators', compute='_compute_collaborator_count')
+    collaborator_count = fields.Integer('# Collaborators', compute='_compute_collaborator_count', compute_sudo=True)
 
     # rating fields
     rating_request_deadline = fields.Datetime(compute='_compute_rating_request_deadline', store=True)
@@ -452,7 +488,11 @@ class Project(models.Model):
             defaults = self._map_tasks_default_valeus(task, project)
             if task.parent_id:
                 # set the parent to the duplicated task
-                defaults['parent_id'] = old_to_new_tasks.get(task.parent_id.id, False)
+                parent_id = old_to_new_tasks.get(task.parent_id.id, False)
+                defaults['parent_id'] = parent_id
+                if not parent_id:
+                    defaults['project_id'] = project.id if task.display_project_id == self else False
+                    defaults['display_project_id'] = project.id if task.display_project_id == self else False
             elif task.display_project_id == self:
                 defaults['project_id'] = project.id
                 defaults['display_project_id'] = project.id

@@ -14,6 +14,7 @@
 # jabelchi, 2022
 # Jonatan Gk, 2022
 # marcescu, 2022
+# eriiikgt, 2022
 # 
 msgid ""
 msgstr ""
@@ -21,7 +22,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-10-05 10:54+0000\n"
 "PO-Revision-Date: 2021-09-14 12:26+0000\n"
-"Last-Translator: marcescu, 2022\n"
+"Last-Translator: eriiikgt, 2022\n"
 "Language-Team: Catalan (https://www.transifex.com/odoo/teams/41243/ca/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -124,7 +125,7 @@ msgstr "Domini actiu"
 #. module: sms
 #: model:ir.model.fields,field_description:sms.field_sms_composer__active_domain_count
 msgid "Active records count"
-msgstr ""
+msgstr "Recompte de registres actius"
 
 #. module: sms
 #: model_terms:ir.ui.view,arch_db:sms.sms_template_view_form
@@ -132,6 +133,8 @@ msgid ""
 "Add a contextual action on the related model to open a sms composer with "
 "this template"
 msgstr ""
+"Afegeix una acció contextual al model relacionat per obrir un compositor sms"
+" amb aquesta plantilla"
 
 #. module: sms
 #. openerp-web
@@ -387,6 +390,8 @@ msgid ""
 "Field used to store sanitized phone number. Helps speeding up searches and "
 "comparisons."
 msgstr ""
+"Camp utilitzat per emmagatzemar el número de telèfon sanejat. Ajuda a "
+"accelerar les cerques i comparacions."
 
 #. module: sms
 #: model:ir.model.fields,help:sms.field_sms_template__copyvalue
@@ -552,11 +557,14 @@ msgid ""
 "distinguish which number is blacklisted             when there is both a "
 "mobile and phone field in a model."
 msgstr ""
+"Indica si un número de telèfon a la llista negra és un número de telèfon. "
+"Ajuda a distingir quin número està a la llista negra            quan hi ha "
+"un camp mòbil i un telèfon en un model."
 
 #. module: sms
 #: model:ir.model.fields,help:sms.field_sms_composer__comment_single_recipient
 msgid "Indicates if the SMS composer targets a single specific recipient"
-msgstr ""
+msgstr "Indica si l'editor de SMS es dirigeix a un únic destinatari específic"
 
 #. module: sms
 #: model:ir.model.fields.selection,name:sms.selection__mail_notification__failure_type__sms_credit
@@ -757,6 +765,8 @@ msgid ""
 "Number of recipients that will receive the SMS if sent in mass mode, without"
 " applying the Active Domain value"
 msgstr ""
+"Nombre de destinataris que rebran l'SMS si s'envien en mode massiu, sense "
+"aplicar el valor del domini actiu"
 
 #. module: sms
 #: model:ir.model.fields,help:sms.field_sms_composer__active_domain_count
@@ -771,7 +781,7 @@ msgstr "Nombre de missatges no llegits"
 #. module: sms
 #: model:ir.model.fields.selection,name:sms.selection__sms_sms__failure_type__sms_optout
 msgid "Opted Out"
-msgstr "Opted OutCity name (optional, probably does not need a translation)"
+msgstr "Optat per sortir"
 
 #. module: sms
 #: model:ir.model.fields,help:sms.field_sms_template__lang
@@ -784,7 +794,7 @@ msgstr ""
 "Idioma opcional de traducció (ISO codi) per a seleccionar en enviar un "
 "correu electrònic. Si no està establerta, s' usarà la versió anglesa. Això "
 "normalment hauria de ser una expressió de substitució que proveeix el "
-"llenguatge apropiat, p. ex. {{ objecte. partner_ id. Lang}."
+"llenguatge apropiat, p. ex. {{ objecte. partner_ id. Lang }}."
 
 #. module: sms
 #: model:ir.model.fields,help:sms.field_sms_template__null_value
@@ -804,7 +814,7 @@ msgstr "Empresa"
 #. module: sms
 #: model:ir.model,name:sms.model_mail_thread_phone
 msgid "Phone Blacklist Mixin"
-msgstr ""
+msgstr "Llista negra de telèfons Mixin"
 
 #. module: sms
 #: model:ir.model.fields,field_description:sms.field_res_partner__phone_sanitized_blacklisted
@@ -824,7 +834,7 @@ msgstr "Expressió de marcador"
 #. module: sms
 #: model:ir.model.fields.selection,name:sms.selection__sms_composer__composition_mode__comment
 msgid "Post on a document"
-msgstr "Envia en un document"
+msgstr "Penja en un document"
 
 #. module: sms
 #: model_terms:ir.ui.view,arch_db:sms.sms_template_view_form
@@ -866,17 +876,17 @@ msgstr "Destinataris"
 #. module: sms
 #: model:ir.model.fields,field_description:sms.field_sms_composer__numbers
 msgid "Recipients (Numbers)"
-msgstr ""
+msgstr "Destinataris (Nombres)"
 
 #. module: sms
 #: model:ir.model.fields,field_description:sms.field_sms_composer__recipient_single_description
 msgid "Recipients (Partners)"
-msgstr ""
+msgstr "Destinataris (Parters)"
 
 #. module: sms
 #: model:ir.model.fields,field_description:sms.field_sms_template_preview__resource_ref
 msgid "Record reference"
-msgstr ""
+msgstr "Referència del registre"
 
 #. module: sms
 #: model:ir.model.fields,field_description:sms.field_sms_template__model
@@ -886,7 +896,7 @@ msgstr "Model de document relacionat"
 #. module: sms
 #: model_terms:ir.ui.view,arch_db:sms.sms_template_view_form
 msgid "Remove the contextual action of the related model"
-msgstr ""
+msgstr "Elimina l'acció contextual del model relacionat"
 
 #. module: sms
 #: model:ir.model.fields,field_description:sms.field_sms_template__render_model
@@ -1139,7 +1149,7 @@ msgstr "Error del servidor"
 #. module: sms
 #: model_terms:ir.ui.view,arch_db:sms.mail_resend_message_view_form
 msgid "Set up an account"
-msgstr ""
+msgstr "Configura un compte"
 
 #. module: sms
 #: model:ir.model.fields,field_description:sms.field_sms_template__sidebar_action_id
@@ -1273,6 +1283,8 @@ msgid ""
 "UX field allowing to edit the recipient number. If changed it will be stored"
 " onto the recipient."
 msgstr ""
+"camp UX que permet modificar el número de destinatari. Si es canvia "
+"s'emmagatzemarà al destinatari."
 
 #. module: sms
 #: model:ir.model.fields,field_description:sms.field_res_partner__message_unread

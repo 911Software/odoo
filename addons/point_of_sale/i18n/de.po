@@ -10,8 +10,8 @@
 # Ahmed Aly <ahmed.aly@datenpol.at>, 2021
 # Martin Trigaux, 2021
 # Raymond Vetter, 2021
-# Friederike Fasterling-Nesselbosch, 2022
 # Robert Förster <hello@suppliot.eu>, 2022
+# Friederike Fasterling-Nesselbosch, 2022
 # 
 msgid ""
 msgstr ""
@@ -19,7 +19,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-12-10 07:16+0000\n"
 "PO-Revision-Date: 2021-09-14 12:24+0000\n"
-"Last-Translator: Robert Förster <hello@suppliot.eu>, 2022\n"
+"Last-Translator: Friederike Fasterling-Nesselbosch, 2022\n"
 "Language-Team: German (https://www.transifex.com/odoo/teams/41243/de/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -786,7 +786,7 @@ msgstr "Barcode Scanner/Kartenleser"
 #. module: point_of_sale
 #: model_terms:ir.ui.view,arch_db:point_of_sale.report_saledetails
 msgid "Base Amount"
-msgstr "Grundbetrag"
+msgstr "Basisbetrag"
 
 #. module: point_of_sale
 #: model:ir.model.fields,field_description:point_of_sale.field_pos_session__cash_register_difference
@@ -945,7 +945,7 @@ msgstr "Karteninhaber Name"
 #: model:ir.model.fields.selection,name:point_of_sale.selection__pos_payment_method__type__cash
 #, python-format
 msgid "Cash"
-msgstr "Kasse/Bank"
+msgstr "Bargeld"
 
 #. module: point_of_sale
 #: model:ir.model,name:point_of_sale.model_cash_box_out
@@ -977,7 +977,7 @@ msgstr "Kassenjournal"
 #: code:addons/point_of_sale/static/src/xml/Popups/CashMovePopup.xml:0
 #, python-format
 msgid "Cash Out"
-msgstr "Entnahme"
+msgstr "Auszahlung"
 
 #. module: point_of_sale
 #: model:ir.model.fields,field_description:point_of_sale.field_pos_session__cash_register_id
@@ -2039,7 +2039,7 @@ msgstr "Nicht mehr zeigen"
 #: code:addons/point_of_sale/static/src/xml/Popups/CashMoveReceipt.xml:0
 #, python-format
 msgid "Done by"
-msgstr ""
+msgstr "Erledigt von"
 
 #. module: point_of_sale
 #. openerp-web
@@ -2061,7 +2061,7 @@ msgstr "Unbezahlte Aufträge herunterladen"
 #: code:addons/point_of_sale/static/src/xml/Popups/ErrorTracebackPopup.xml:0
 #, python-format
 msgid "Download error traceback"
-msgstr ""
+msgstr "Fehler-Traceback herunterladen"
 
 #. module: point_of_sale
 #. openerp-web
@@ -2810,7 +2810,7 @@ msgstr "Schließt dies Trinkgeld ein?"
 #. module: point_of_sale
 #: model:ir.model.fields,field_description:point_of_sale.field_pos_payment__is_change
 msgid "Is this payment change?"
-msgstr ""
+msgstr "Handelt es sich bei der Zahlung um Münzen?"
 
 #. module: point_of_sale
 #: code:addons/point_of_sale/models/account_tax.py:0
@@ -3269,7 +3269,7 @@ msgstr "Meine Sitzungen"
 #: model_terms:ir.ui.view,arch_db:point_of_sale.report_saledetails
 #, python-format
 msgid "Name"
-msgstr "Name"
+msgstr "Art"
 
 #. module: point_of_sale
 #. openerp-web
@@ -3360,7 +3360,7 @@ msgstr "Nächster Aktivitätstyp"
 #: code:addons/point_of_sale/static/src/xml/Screens/TicketScreen/TicketScreen.xml:0
 #, python-format
 msgid "Next Order List"
-msgstr ""
+msgstr "Liste nächster Aufträge"
 
 #. module: point_of_sale
 #. openerp-web
@@ -3522,7 +3522,7 @@ msgstr "Anzahl ungelesener Nachrichten"
 #: code:addons/point_of_sale/static/src/xml/Popups/CashOpeningPopup.xml:0
 #, python-format
 msgid "OPENING CASH CONTROL"
-msgstr "ANFANGSSALDO KASSA"
+msgstr "ANFANGSSALDO KASSE"
 
 #. module: point_of_sale
 #. openerp-web
@@ -4024,7 +4024,7 @@ msgstr "Zahlungsreferenz"
 #. module: point_of_sale
 #: model:ir.model.fields,field_description:point_of_sale.field_pos_payment__payment_status
 msgid "Payment Status"
-msgstr "Zahlung Status"
+msgstr "Zahlungsstatus"
 
 #. module: point_of_sale
 #. openerp-web
@@ -4350,7 +4350,7 @@ msgstr "Rechnungsbericht des POS"
 #. module: point_of_sale
 #: model:ir.model.fields,field_description:point_of_sale.field_pos_config__journal_id
 msgid "Point of Sale Journal"
-msgstr ""
+msgstr "Kassensystem Journal"
 
 #. module: point_of_sale
 #: model:ir.model,name:point_of_sale.model_pos_make_payment
@@ -4527,7 +4527,7 @@ msgstr "Preiskontrolle"
 #. module: point_of_sale
 #: model_terms:ir.ui.view,arch_db:point_of_sale.report_saledetails
 msgid "Price Unit"
-msgstr "Preiseinheit"
+msgstr "Preis/Einheit"
 
 #. module: point_of_sale
 #: code:addons/point_of_sale/models/pos_order.py:0
@@ -4712,7 +4712,7 @@ msgstr "Produkt Einheit"
 #. module: point_of_sale
 #: model:ir.model,name:point_of_sale.model_uom_category
 msgid "Product UoM Categories"
-msgstr "Kategorien für Maßeinheiten von Produkten"
+msgstr "Kategorien für Produktmaßeinheiten"
 
 #. module: point_of_sale
 #: model:ir.actions.act_window,name:point_of_sale.product_product_action
@@ -4804,7 +4804,7 @@ msgstr "Menge"
 #: code:addons/point_of_sale/static/src/xml/Popups/CashMoveReceipt.xml:0
 #, python-format
 msgid "REASON"
-msgstr "GRUND"
+msgstr "BEGRÜNDUNG"
 
 #. module: point_of_sale
 #. openerp-web
@@ -4826,7 +4826,7 @@ msgstr "Bereit, Ihr <b>Point-of-Sale</b> zu starten?"
 #: code:addons/point_of_sale/static/src/xml/Popups/CashMovePopup.xml:0
 #, python-format
 msgid "Reason"
-msgstr "Grund"
+msgstr "Begründung"
 
 #. module: point_of_sale
 #. openerp-web
@@ -4859,7 +4859,7 @@ msgstr "Kopfzeile Bon"
 #: model:ir.model.fields,field_description:point_of_sale.field_pos_order__pos_reference
 #, python-format
 msgid "Receipt Number"
-msgstr "Kassenbon Nummer"
+msgstr "Belegnummer"
 
 #. module: point_of_sale
 #: model_terms:ir.ui.view,arch_db:point_of_sale.pos_config_view_form
@@ -4902,7 +4902,7 @@ msgstr "Zeilen für Erstattungsaufträge"
 #: code:addons/point_of_sale/models/pos_order.py:0
 #, python-format
 msgid "Refund Orders"
-msgstr ""
+msgstr "Erstattungsanträge"
 
 #. module: point_of_sale
 #. openerp-web
@@ -6472,7 +6472,7 @@ msgstr "Tipps:"
 #. module: point_of_sale
 #: model_terms:ir.ui.view,arch_db:point_of_sale.view_pos_config_kanban
 msgid "To Close"
-msgstr "Zu Beenden"
+msgstr "Abzuschließen"
 
 #. module: point_of_sale
 #. openerp-web
@@ -6527,7 +6527,7 @@ msgstr "Zum Versand"
 #: model_terms:ir.ui.view,arch_db:point_of_sale.report_saledetails
 #, python-format
 msgid "Total"
-msgstr "Total"
+msgstr "Gesamt"
 
 #. module: point_of_sale
 #: model:ir.model.fields,field_description:point_of_sale.field_pos_session__cash_register_total_entry_encoding
@@ -6551,7 +6551,7 @@ msgstr "Rabattsumme"
 #: code:addons/point_of_sale/static/src/xml/Screens/PaymentScreen/PaymentScreenStatus.xml:0
 #, python-format
 msgid "Total Due"
-msgstr "Gesamtfälligkeit"
+msgstr "Gesamtbetrag"
 
 #. module: point_of_sale
 #. openerp-web
@@ -6644,7 +6644,7 @@ msgstr "Transaktion abgebrochen"
 #. module: point_of_sale
 #: model:ir.model,name:point_of_sale.model_stock_picking
 msgid "Transfer"
-msgstr "Lieferung vornehmen"
+msgstr "Transfer"
 
 #. module: point_of_sale
 #: model:ir.model.fields,field_description:point_of_sale.field_barcode_rule__type
@@ -6789,7 +6789,7 @@ msgstr "Nicht unterstütztes Dateiformat"
 #. module: point_of_sale
 #: model_terms:ir.ui.view,arch_db:point_of_sale.view_pos_pos_form
 msgid "UoM"
-msgstr "UoM"
+msgstr "Mengeneinheit"
 
 #. module: point_of_sale
 #: model:ir.model.fields,field_description:point_of_sale.field_res_company__point_of_sale_update_stock_quantities
@@ -6876,14 +6876,14 @@ msgstr "Vantiv (US & Kanada)"
 #. module: point_of_sale
 #: model:ir.model.fields,field_description:point_of_sale.field_res_config_settings__module_pos_mercury
 msgid "Vantiv Payment Terminal"
-msgstr ""
+msgstr "Vantiv Zahlungsterminal"
 
 #. module: point_of_sale
 #. openerp-web
 #: code:addons/point_of_sale/static/src/xml/Screens/PaymentScreen/PaymentScreenElectronicPayment.xml:0
 #, python-format
 msgid "Waiting for card"
-msgstr ""
+msgstr "Warten auf Karte"
 
 #. module: point_of_sale
 #: model:product.product,name:point_of_sale.wall_shelf
@@ -6906,7 +6906,7 @@ msgstr "Website-Nachrichten"
 #. module: point_of_sale
 #: model:ir.model.fields,help:point_of_sale.field_pos_session__website_message_ids
 msgid "Website communication history"
-msgstr "Website-Kommunikationshistorie"
+msgstr "Website-Kommunikationsverlauf"
 
 #. module: point_of_sale
 #. openerp-web
@@ -6996,6 +6996,8 @@ msgid ""
 "You are trying to sell products with serial/lot numbers, but some of them are not set.\n"
 "Would you like to proceed anyway?"
 msgstr ""
+"Sie versuchen, Produkte mit Serien-/Losnummern zu verkaufen, aber einige von ihnen sind nicht eingestellt.\n"
+"Möchten Sie trotzdem fortfahren?"
 
 #. module: point_of_sale
 #: code:addons/point_of_sale/models/account_bank_statement.py:0
@@ -7181,7 +7183,7 @@ msgstr "PLZ"
 #: code:addons/point_of_sale/static/src/xml/Screens/ProductScreen/Orderline.xml:0
 #, python-format
 msgid "at"
-msgstr "bei"
+msgstr "zu"
 
 #. module: point_of_sale
 #. openerp-web
@@ -7272,7 +7274,7 @@ msgstr "Geöffnete Sitzungen"
 #: code:addons/point_of_sale/static/src/xml/Popups/ClosePosPopup.xml:0
 #, python-format
 msgid "orders"
-msgstr "Aufträge"
+msgstr "Auftrag/Aufträge"
 
 #. module: point_of_sale
 #. openerp-web

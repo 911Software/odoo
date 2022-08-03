@@ -152,8 +152,11 @@ class Website(Home):
         if lang == 'default':
             lang = request.website.default_lang_id.url_code
             r = '/%s%s' % (lang, r or '/')
-        redirect = werkzeug.utils.redirect(r or ('/%s' % lang), 303)
         lang_code = request.env['res.lang']._lang_get_code(lang)
+        # replace context with correct lang, to avoid that the url_for of request.redirect remove the
+        # default lang in case we switch from /fr -> /en with /en as default lang.
+        request.context = dict(request.context, lang=lang_code)
+        redirect = request.redirect(r or ('/%s' % lang))
         redirect.set_cookie('frontend_lang', lang_code)
         return redirect
 
@@ -606,12 +609,25 @@ class Website(Home):
             return werkzeug.wrappers.Response(url, mimetype='text/plain')
 
         if ext_special_case:  # redirect non html pages to backend to edit
-            return werkzeug.utils.redirect('/web#id=' + str(page.get('view_id')) + '&view_type=form&model=ir.ui.view')
-        return werkzeug.utils.redirect(url + "?enable_editor=1")
+            return request.redirect('/web#id=' + str(page.get('view_id')) + '&view_type=form&model=ir.ui.view')
+        return request.redirect(url + "?enable_editor=1")
 
     @http.route("/website/get_switchable_related_views", type="json", auth="user", website=True)
     def get_switchable_related_views(self, key):
         views = request.env["ir.ui.view"].get_related_views(key, bundles=False).filtered(lambda v: v.customize_show)
+
+        # TODO remove in master: customize_show was kept by mistake on a view
+        # in website_crm. It was removed in stable at the same time this hack is
+        # introduced but would still be shown for existing customers if nothing
+        # else was done here. For users that disabled the view but were not
+        # supposed to be able to, we hide it too. The feature does not do much
+        # and is not a discoverable feature anyway, best removing the confusion
+        # entirely. If someone somehow wants that very technical feature, they
+        # can still enable the view again via the backend. We will also
+        # re-enable the view automatically in master.
+        crm_contactus_view = request.website.viewref('website_crm.contactus_form', raise_if_not_found=False)
+        views -= crm_contactus_view
+
         views = views.sorted(key=lambda v: (v.inherit_id.id, v.name))
         return views.with_context(display_website=False).read(['name', 'id', 'key', 'xml_id', 'active', 'inherit_id'])
 

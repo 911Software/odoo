@@ -101,7 +101,7 @@ const ReplenishReport = clientAction.extend({
         // Hack to put the res_model on the url. This way, the report always know on with res_model it refers.
         if (location.href.indexOf('active_model') === -1) {
             const url = window.location.href + `&active_model=${this.resModel}`;
-            window.history.pushState({}, "", url);
+            window.history.replaceState({}, "", url);
         }
     },
 
@@ -121,6 +121,7 @@ const ReplenishReport = clientAction.extend({
             modelName: model,
             noContentHelp: _t("Try to add some incoming or outgoing transfers."),
             withControlPanel: false,
+            context: {fill_temporal: false},
         };
         const GraphView = viewRegistry.get("graph");
         const graphView = new GraphView(viewInfo, params);

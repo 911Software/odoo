@@ -6,8 +6,8 @@
 # 黎伟杰 <674416404@qq.com>, 2021
 # 深圳市耀影科技有限公司_QQ1006399173, 2021
 # Benson <Benson.Dr@Gmail.com>, 2022
-# Jeffery CHEN <jeffery9@gmail.com>, 2022
 # Martin Trigaux, 2022
+# Jeffery CHEN <jeffery9@gmail.com>, 2022
 # 山西清水欧度(QQ:54773801) <54773801@qq.com>, 2022
 # 
 msgid ""
@@ -471,7 +471,7 @@ msgstr "创建时间"
 msgid ""
 "Currently available to everyone viewing this document, click to restrict to "
 "internal employees."
-msgstr "目前每个人都可以查看此文件，点击限制内部员工使用。"
+msgstr "目前每个人都可以视图此文件，点击限制内部员工使用。"
 
 #. module: portal
 #. openerp-web
@@ -480,7 +480,7 @@ msgstr "目前每个人都可以查看此文件，点击限制内部员工使用
 msgid ""
 "Currently restricted to internal employees, click to make it available to "
 "everyone viewing this document."
-msgstr "目前仅限于内部员工使用，点击可使每个人都能查看此文件。"
+msgstr "目前仅限于内部员工使用，点击可使每个人都能视图此文件。"
 
 #. module: portal
 #: model:ir.model.fields,field_description:portal.field_res_config_settings__portal_allow_api_keys
@@ -640,6 +640,20 @@ msgstr "重要提示:"
 #: model_terms:ir.ui.view,arch_db:portal.wizard_view
 msgid "Internal User"
 msgstr "内部用户"
+
+#. module: portal
+#. openerp-web
+#: code:addons/portal/static/src/xml/portal_chatter.xml:0
+#, python-format
+msgid "Internal Note"
+msgstr "内部备注"
+
+#. module: portal
+#. openerp-web
+#: code:addons/portal/static/src/xml/portal_chatter.xml:0
+#, python-format
+msgid "Internal notes are only displayed to internal users."
+msgstr "内部注释仅向内部用户显示."
 
 #. module: portal
 #: code:addons/portal/controllers/portal.py:0
@@ -1160,7 +1174,7 @@ msgstr "验证新密码："
 #. module: portal
 #: model:ir.model,name:portal.model_ir_ui_view
 msgid "View"
-msgstr "查看"
+msgstr "视图"
 
 #. module: portal
 #. openerp-web

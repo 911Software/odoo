@@ -14,10 +14,11 @@
 # Tim Siu Lai <tl@roomsfor.hk>, 2022
 # Noma Yuki, 2022
 # Masayuki Takesue <m_takesue@nifty.com>, 2022
-# Yoshi Tashiro (Quartile) <tashiro@roomsfor.hk>, 2022
 # 高木正勝 <masakatsu.takagi@pro-spire.co.jp>, 2022
 # Norimichi Sugimoto <norimichi.sugimoto@tls-ltd.co.jp>, 2022
 # Martin Trigaux, 2022
+# Yoshi Tashiro (Quartile) <tashiro@roomsfor.hk>, 2022
+# 江口和志 <sandwhale1010@gmail.com>, 2022
 # Ryoko Tsuda <ryoko@quartile.co>, 2022
 # 
 msgid ""
@@ -454,7 +455,7 @@ msgstr "アセットのデバッグを有効化"
 #: code:addons/web/static/src/core/debug/debug_menu_items.js:0
 #, python-format
 msgid "Activate Tests Assets Debugging"
-msgstr ""
+msgstr "テストアセットのデバッグを有効化"
 
 #. module: web
 #. openerp-web
@@ -582,7 +583,7 @@ msgstr "お気に入りに追加"
 #: code:addons/web/static/src/legacy/xml/base.xml:0
 #, python-format
 msgid "Additional actions"
-msgstr ""
+msgstr "追加アクション"
 
 #. module: web
 #. openerp-web
@@ -1129,7 +1130,7 @@ msgstr "会社"
 #: model:ir.model.fields,field_description:web.field_base_document_layout__company_details
 #: model_terms:ir.ui.view,arch_db:web.view_base_document_layout
 msgid "Company Details"
-msgstr ""
+msgstr "会社詳細"
 
 #. module: web
 #: model:ir.model,name:web.model_base_document_layout
@@ -1681,7 +1682,7 @@ msgstr "ダウンロード"
 #. module: web
 #: model_terms:ir.ui.view,arch_db:web.view_base_document_layout
 msgid "Download PDF Preview"
-msgstr ""
+msgstr "PDFプレビューをダウンロード"
 
 #. module: web
 #. openerp-web
@@ -1766,7 +1767,7 @@ msgstr "ステージ編集"
 #: code:addons/web/static/src/views/debug_items.js:0
 #, python-format
 msgid "Edit View: "
-msgstr ""
+msgstr "ビュー編集："
 
 #. module: web
 #. openerp-web
@@ -2243,7 +2244,7 @@ msgstr ""
 #: code:addons/web/static/src/legacy/js/widgets/attach_document.js:0
 #, python-format
 msgid "Invalid fields:"
-msgstr ""
+msgstr "項目が無効です:"
 
 #. module: web
 #: code:addons/web/controllers/main.py:0
@@ -2275,7 +2276,7 @@ msgstr "かんばん"
 #: code:addons/web/static/src/legacy/js/views/kanban/kanban_column_quick_create.js:0
 #, python-format
 msgid "Kanban Examples"
-msgstr ""
+msgstr "かんばん例"
 
 #. module: web
 #. openerp-web
@@ -2327,7 +2328,7 @@ msgstr "レイアウト"
 #. module: web
 #: model:ir.model.fields,field_description:web.field_base_document_layout__layout_background
 msgid "Layout Background"
-msgstr ""
+msgstr "レイアウト背景"
 
 #. module: web
 #. openerp-web
@@ -2646,8 +2647,8 @@ msgstr "複数行テキスト"
 #. openerp-web
 #: code:addons/web/static/src/webclient/user_menu/user_menu_items.js:0
 #, python-format
-msgid "My Odoo.com.account"
-msgstr ""
+msgid "My Odoo.com account"
+msgstr "Odoo.comアカウント"
 
 #. module: web
 #. openerp-web
@@ -3239,7 +3240,7 @@ msgstr ""
 #: code:addons/web/static/src/core/ui/block_ui.js:0
 #, python-format
 msgid "Please be patient."
-msgstr ""
+msgstr "今しばらくお待ちください。"
 
 #. module: web
 #. openerp-web
@@ -4405,7 +4406,7 @@ msgstr "True"
 msgid ""
 "Try to add some records, or make sure that there is no\n"
 "                    active filter in the search bar."
-msgstr ""
+msgstr "レコードを追加するか、または、検索バーのフィルタが有効になっていないことを確認してください。"
 
 #. module: web
 #. openerp-web
@@ -4696,7 +4697,7 @@ msgstr "%sを見る"
 #: code:addons/web/static/src/webclient/actions/debug_items.js:0
 #, python-format
 msgid "View Access Rights"
-msgstr ""
+msgstr "アクセス権を参照"
 
 #. module: web
 #. openerp-web
@@ -4718,7 +4719,7 @@ msgstr "メタデータ照会"
 #: code:addons/web/static/src/webclient/actions/debug_items.js:0
 #, python-format
 msgid "View Record Rules"
-msgstr ""
+msgstr "レコード規則を参照"
 
 #. module: web
 #: model:ir.model.fields,field_description:web.field_ir_actions_act_window_view__view_mode

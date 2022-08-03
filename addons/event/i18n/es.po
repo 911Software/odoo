@@ -7,20 +7,21 @@
 # Rafael Blasco <rafael.blasco@tecnativa.com>, 2022
 # Camille Dantinne <cmd@odoo.com>, 2022
 # Martin Trigaux, 2022
+# Pedro M. Baeza <pedro.baeza@tecnativa.com>, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 15.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-05 10:54+0000\n"
+"POT-Creation-Date: 2021-11-16 16:40+0000\n"
 "PO-Revision-Date: 2021-09-14 12:21+0000\n"
-"Last-Translator: Martin Trigaux, 2022\n"
+"Last-Translator: Pedro M. Baeza <pedro.baeza@tecnativa.com>, 2022\n"
 "Language-Team: Spanish (https://www.transifex.com/odoo/teams/41243/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Language: es\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
 
 #. module: event
 #: model:ir.model.fields,field_description:event.field_res_partner__event_count
@@ -2175,7 +2176,7 @@ msgstr "Seguidores"
 #: model:ir.model.fields,field_description:event.field_event_event__message_partner_ids
 #: model:ir.model.fields,field_description:event.field_event_registration__message_partner_ids
 msgid "Followers (Partners)"
-msgstr "Seguidores (Partners)"
+msgstr "Seguidores (Contactos)"
 
 #. module: event
 #: model:ir.model.fields,help:event.field_event_event__activity_type_icon
@@ -3650,12 +3651,8 @@ msgstr "Instrucciones adicionales de la entrada"
 #. module: event
 #: model:ir.model.fields,field_description:event.field_event_event__ticket_instructions
 #: model:ir.model.fields,field_description:event.field_event_type__ticket_instructions
-msgid "Ticket Instructions"
-msgstr "Instrucciones de la entrada"
-
-#. module: event
 #: model_terms:ir.ui.view,arch_db:event.view_event_form
-msgid "Ticket Intructions"
+msgid "Ticket Instructions"
 msgstr "Instrucciones de la entrada"
 
 #. module: event

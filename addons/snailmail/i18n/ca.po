@@ -13,6 +13,7 @@
 # Harcogourmet, 2022
 # Jonatan Gk, 2022
 # marcescu, 2022
+# eriiikgt, 2022
 # 
 msgid ""
 msgstr ""
@@ -20,7 +21,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-11-16 13:19+0000\n"
 "PO-Revision-Date: 2021-09-14 12:26+0000\n"
-"Last-Translator: marcescu, 2022\n"
+"Last-Translator: eriiikgt, 2022\n"
 "Language-Team: Catalan (https://www.transifex.com/odoo/teams/41243/ca/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -53,6 +54,7 @@ msgstr "S'ha produït un error en enviar una carta amb Snailmail."
 #, python-format
 msgid "An error occurred when sending the document by post.<br>Error: %s"
 msgstr ""
+"S'ha produït un error en enviar el document per publicació.<br>Error: %s"
 
 #. module: snailmail
 #: code:addons/snailmail/models/snailmail_letter.py:0
@@ -74,6 +76,8 @@ msgid ""
 "Are you sure you want to discard %s snailmail delivery failures? You won't "
 "be able to re-send these letters later!"
 msgstr ""
+"Estàs segur que vols descartar %s fracassos de lliurament de snailmail? No "
+"podràs tornar a enviar aquestes cartes més tard!"
 
 #. module: snailmail
 #: model:ir.model.fields,field_description:snailmail.field_snailmail_letter__attachment_id
@@ -293,7 +297,7 @@ msgstr "Error de format"
 #. module: snailmail
 #: model:ir.model,name:snailmail.model_snailmail_letter_format_error
 msgid "Format Error Sending a Snailmail Letter"
-msgstr ""
+msgstr "Error de format Enviament d'una carta de correu"
 
 #. module: snailmail
 #: model:ir.model.fields,field_description:snailmail.field_snailmail_letter_cancel__help_message
@@ -315,6 +319,9 @@ msgid ""
 "notification and review them one by one by clicking on the red paper-plane "
 "next to each message."
 msgstr ""
+"Si voleu tornar a enviar-los, feu clic a Cancel·la ara, després feu clic a "
+"la notificació i reviseu-los un per un fent clic en el paper-plà vermell al "
+"costat de cada missatge."
 
 #. module: snailmail
 #: model:ir.model.fields.selection,name:snailmail.selection__snailmail_letter__state__pending
@@ -361,7 +368,7 @@ msgstr "Carta"
 #: code:addons/snailmail/models/snailmail_letter.py:0
 #, python-format
 msgid "Letter sent by post with Snailmail"
-msgstr ""
+msgstr "Carta enviada per publicació amb Snailmail"
 
 #. module: snailmail
 #: model_terms:ir.ui.view,arch_db:snailmail.snailmail_letter_list
@@ -509,7 +516,7 @@ msgstr "Enviat per"
 #: model:ir.model.fields.selection,name:snailmail.selection__mail_notification__notification_type__snail
 #, python-format
 msgid "Snailmail"
-msgstr "SungmailCity name (optional, probably does not need a translation)"
+msgstr "Correu postal"
 
 #. module: snailmail
 #: model:ir.model,name:snailmail.model_snailmail_confirm
@@ -586,7 +593,7 @@ msgstr "Missatge de Snailmail per error"
 #: model:ir.cron,cron_name:snailmail.snailmail_print
 #: model:ir.cron,name:snailmail.snailmail_print
 msgid "Snailmail: process letters queue"
-msgstr ""
+msgstr "Snailmail: processar la cua de cartes"
 
 #. module: snailmail
 #: model:ir.model.fields,field_description:snailmail.field_snailmail_letter__state_id
@@ -625,7 +632,7 @@ msgstr "2a adreça"
 #. module: snailmail
 #: model:ir.model.fields.selection,name:snailmail.selection__snailmail_letter__error_code__trial_error
 msgid "TRIAL_ERROR"
-msgstr ""
+msgstr "PROVA I ERROR"
 
 #. module: snailmail
 #: code:addons/snailmail/models/snailmail_letter.py:0
@@ -720,11 +727,14 @@ msgid ""
 "If the letter is correctly sent, the status goes in 'Sent',\n"
 "If not, it will got in state 'Error' and the error message will be displayed in the field 'Error Message'."
 msgstr ""
+"Quan es crea una carta, l'estat és \"Pending\".\n"
+"Si la lletra s'envia correctament, l'estat s'inclou a «Envia»,\n"
+"En cas contrari, s'aconseguirà l'estat \"error\" i el missatge d'error es mostrarà en el camp \"Missatge d'error\"."
 
 #. module: snailmail
 #: model_terms:ir.ui.view,arch_db:snailmail.snailmail_confirm_view
 msgid "You are about to send this"
-msgstr ""
+msgstr "Està a punt d'enviar això"
 
 #. module: snailmail
 #: code:addons/snailmail/models/snailmail_letter.py:0
@@ -733,6 +743,9 @@ msgid ""
 "You don't have an IAP account registered for this service.<br>Please go to "
 "<a href=%s target=\"new\">iap.odoo.com</a> to claim your free credits."
 msgstr ""
+"No teniu registrat un compte IAP per a aquest servei.<br>Si us plau, "
+"dirigeixi's a <a href=%s target=\"new\">iap.odoo.com</a> per a reclamar els "
+"seus crèdits gratuïts."
 
 #. module: snailmail
 #: code:addons/snailmail/models/snailmail_letter.py:0
@@ -741,13 +754,15 @@ msgid ""
 "You don't have enough credits to perform this operation.<br>Please go to "
 "your <a href=%s target=\"new\">iap account</a>."
 msgstr ""
+"No tens suficients crèdits per a realitzar aquesta operació.<br>Si us plau "
+"aneu al vostre <a href=%s target=\"new\">compte d'iap</a>."
 
 #. module: snailmail
 #. openerp-web
 #: code:addons/snailmail/static/src/components/snailmail_error_dialog/snailmail_error_dialog.xml:0
 #, python-format
 msgid "You need credits on your IAP account to send a letter."
-msgstr ""
+msgstr "Necessites crèdits al teu compte IAP per enviar una carta."
 
 #. module: snailmail
 #: model_terms:ir.ui.view,arch_db:snailmail.snailmail_letter_missing_required_fields

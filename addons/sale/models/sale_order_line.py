@@ -61,7 +61,7 @@ class SaleOrderLine(models.Model):
             price = line.price_unit * (1 - (line.discount or 0.0) / 100.0)
             taxes = line.tax_id.compute_all(price, line.order_id.currency_id, line.product_uom_qty, product=line.product_id, partner=line.order_id.partner_shipping_id)
             line.update({
-                'price_tax': taxes['total_included'] - taxes['total_excluded'],
+                'price_tax': sum(t.get('amount', 0.0) for t in taxes.get('taxes', [])),
                 'price_total': taxes['total_included'],
                 'price_subtotal': taxes['total_excluded'],
             })
@@ -289,7 +289,7 @@ class SaleOrderLine(models.Model):
     salesman_id = fields.Many2one(related='order_id.user_id', store=True, string='Salesperson')
     currency_id = fields.Many2one(related='order_id.currency_id', depends=['order_id.currency_id'], store=True, string='Currency')
     company_id = fields.Many2one(related='order_id.company_id', string='Company', store=True, index=True)
-    order_partner_id = fields.Many2one(related='order_id.partner_id', store=True, string='Customer')
+    order_partner_id = fields.Many2one(related='order_id.partner_id', store=True, string='Customer', index=True)
     analytic_tag_ids = fields.Many2many(
         'account.analytic.tag', string='Analytic Tags',
         compute='_compute_analytic_tag_ids', store=True, readonly=False,
@@ -645,11 +645,12 @@ class SaleOrderLine(models.Model):
             vals['product_uom'] = self.product_id.uom_id
             vals['product_uom_qty'] = self.product_uom_qty or 1.0
 
+        lang = get_lang(self.env, self.order_id.partner_id.lang).code
         product = self.product_id.with_context(
-            lang=get_lang(self.env, self.order_id.partner_id.lang).code,
+            lang=lang,
         )
 
-        self.update({'name': self.get_sale_order_line_multiline_description_sale(product)})
+        self.update({'name': self.with_context(lang=lang).get_sale_order_line_multiline_description_sale(product)})
 
     def _update_taxes(self):
         if not self.product_id:
@@ -733,10 +734,11 @@ class SaleOrderLine(models.Model):
 
         Lines cannot be deleted if the order is confirmed; downpayment
         lines who have not yet been invoiced bypass that exception.
+        Also, allow deleting UX lines (notes/sections).
         :rtype: recordset sale.order.line
         :returns: set of lines that cannot be deleted
         """
-        return self.filtered(lambda line: line.state in ('sale', 'done') and (line.invoice_lines or not line.is_downpayment))
+        return self.filtered(lambda line: line.state in ('sale', 'done') and (line.invoice_lines or not line.is_downpayment) and not line.display_type)
 
     @api.ondelete(at_uninstall=False)
     def _unlink_except_confirmed(self):
@@ -866,13 +868,13 @@ class SaleOrderLine(models.Model):
         # display the no_variant attributes, except those that are also
         # displayed by a custom (avoid duplicate description)
         for ptav in (no_variant_ptavs - custom_ptavs):
-            name += "\n" + ptav.with_context(lang=self.order_id.partner_id.lang).display_name
+            name += "\n" + ptav.display_name
 
         # Sort the values according to _order settings, because it doesn't work for virtual records in onchange
         custom_values = sorted(self.product_custom_attribute_value_ids, key=lambda r: (r.custom_product_template_attribute_value_id.id, r.id))
         # display the is_custom values
         for pacv in custom_values:
-            name += "\n" + pacv.with_context(lang=self.order_id.partner_id.lang).display_name
+            name += "\n" + pacv.display_name
 
         return name
 

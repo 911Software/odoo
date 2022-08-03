@@ -2,12 +2,18 @@
 # This file contains the translation of the following modules:
 # 	* l10n_ca
 # 
+# Translators:
+# 山西清水欧度(QQ:54773801) <54773801@qq.com>, 2022
+# 宇洛 李, 2022
+# Martin Trigaux, 2022
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 15.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-04-05 15:45+0000\n"
 "PO-Revision-Date: 2022-04-08 12:41+0000\n"
+"Last-Translator: Martin Trigaux, 2022\n"
 "Language-Team: Chinese (China) (https://www.transifex.com/odoo/teams/41243/zh_CN/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -77,12 +83,12 @@ msgstr ""
 #. module: l10n_ca
 #: model:ir.model,name:l10n_ca.model_res_company
 msgid "Companies"
-msgstr ""
+msgstr "公司"
 
 #. module: l10n_ca
 #: model:ir.model,name:l10n_ca.model_base_document_layout
 msgid "Company Document Layout"
-msgstr ""
+msgstr "公司文档布局"
 
 #. module: l10n_ca
 #: model:account.account,name:l10n_ca.4_chart254102_en
@@ -95,7 +101,7 @@ msgstr ""
 #. module: l10n_ca
 #: model:ir.model,name:l10n_ca.model_res_partner
 msgid "Contact"
-msgstr ""
+msgstr "联系人"
 
 #. module: l10n_ca
 #: model:account.account,name:l10n_ca.4_chart1151_en
@@ -154,7 +160,7 @@ msgstr ""
 #. module: l10n_ca
 #: model:ir.model.fields,field_description:l10n_ca.field_base_document_layout__account_fiscal_country_id
 msgid "Fiscal Country"
-msgstr ""
+msgstr "会计所在国"
 
 #. module: l10n_ca
 #: model:account.tax,description:l10n_ca.4_gstpst_bc_purc_en
@@ -512,7 +518,7 @@ msgstr ""
 #: model:account.account,name:l10n_ca.4_ca_en_chart_template_en_liquidity_transfer
 #: model:account.account.template,name:l10n_ca.ca_en_chart_template_en_liquidity_transfer
 msgid "Liquidity Transfer"
-msgstr ""
+msgstr "流动性转移"
 
 #. module: l10n_ca
 #: model:account.fiscal.position,name:l10n_ca.4_fiscal_position_template_mb_en
@@ -817,12 +823,12 @@ msgstr ""
 #. module: l10n_ca
 #: model:account.tax.group,name:l10n_ca.tax_group_fix
 msgid "Taxes"
-msgstr ""
+msgstr "税率设置"
 
 #. module: l10n_ca
 #: model:ir.model.fields,help:l10n_ca.field_base_document_layout__account_fiscal_country_id
 msgid "The country to use the tax reports from for this company"
-msgstr ""
+msgstr "使用该公司税务报告的国家/地区"
 
 #. module: l10n_ca
 #: model:account.account,name:l10n_ca.4_chart254101_en

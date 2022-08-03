@@ -4,7 +4,7 @@
 # 
 # Translators:
 # RHTodoo, 2021
-# Alexandra Jubert <aju@odoo.com>, 2021
+# Alexandra Jubert, 2021
 # Caroline Renson <car@odoo.com>, 2022
 # sakodoo <sak@odoo.com>, 2022
 # Martin Trigaux, 2022
@@ -22,7 +22,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Language: fr\n"
-"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"Plural-Forms: nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
 
 #. module: portal
 #. openerp-web
@@ -312,7 +312,7 @@ msgstr "Ajouter un contenu supplémentaire à afficher dans l'email"
 #. module: portal
 #: model_terms:ir.ui.view,arch_db:portal.portal_my_security
 msgid "Added On"
-msgstr ""
+msgstr "Ajoute lé"
 
 #. module: portal
 #: code:addons/portal/controllers/mail.py:0
@@ -642,6 +642,20 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:portal.wizard_view
 msgid "Internal User"
 msgstr "Utilisateur interne"
+
+#. module: portal
+#. openerp-web
+#: code:addons/portal/static/src/xml/portal_chatter.xml:0
+#, python-format
+msgid "Internal Note"
+msgstr "Note interne"
+
+#. module: portal
+#. openerp-web
+#: code:addons/portal/static/src/xml/portal_chatter.xml:0
+#, python-format
+msgid "Internal notes are only displayed to internal users."
+msgstr ""
 
 #. module: portal
 #: code:addons/portal/controllers/portal.py:0

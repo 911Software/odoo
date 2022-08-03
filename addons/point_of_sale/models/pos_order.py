@@ -104,6 +104,9 @@ class PosOrder(models.Model):
 
         return new_session
 
+    def _get_fields_for_draft_order(self):
+        """This method is here to be overridden in order to add fields that are required for draft orders."""
+        return []
 
     @api.model
     def _process_order(self, order, draft, existing_order):
@@ -283,7 +286,7 @@ class PosOrder(models.Model):
     )
     payment_ids = fields.One2many('pos.payment', 'pos_order_id', string='Payments', readonly=True)
     session_move_id = fields.Many2one('account.move', string='Session Journal Entry', related='session_id.move_id', readonly=True, copy=False)
-    to_invoice = fields.Boolean('To invoice')
+    to_invoice = fields.Boolean('To invoice', copy=False)
     to_ship = fields.Boolean('To ship')
     is_invoiced = fields.Boolean('Is Invoiced', compute='_compute_is_invoiced')
     is_tipped = fields.Boolean('Is this already tipped?', readonly=True)
@@ -729,6 +732,18 @@ class PosOrder(models.Model):
             'is_total_cost_computed': False
         }
 
+    def _prepare_mail_values(self, name, client, ticket):
+        message = _("<p>Dear %s,<br/>Here is your electronic ticket for the %s. </p>") % (client['name'], name)
+
+        return {
+            'subject': _('Receipt %s', name),
+            'body_html': message,
+            'author_id': self.env.user.partner_id.id,
+            'email_from': self.env.company.email or self.env.user.email_formatted,
+            'email_to': client['email'],
+            'attachment_ids': self._add_mail_attachment(name, ticket),
+        }
+
     def refund(self):
         """Create a copy of order  for refund order"""
         refund_orders = self.env['pos.order']
@@ -792,18 +807,7 @@ class PosOrder(models.Model):
         if not client.get('email'):
             return False
 
-        message = _("<p>Dear %s,<br/>Here is your electronic ticket for the %s. </p>") % (client['name'], name)
-
-        mail_values = {
-            'subject': _('Receipt %s', name),
-            'body_html': message,
-            'author_id': self.env.user.partner_id.id,
-            'email_from': self.env.company.email or self.env.user.email_formatted,
-            'email_to': client['email'],
-            'attachment_ids': self._add_mail_attachment(name, ticket),
-        }
-
-        mail = self.env['mail.mail'].sudo().create(mail_values)
+        mail = self.env['mail.mail'].sudo().create(self._prepare_mail_values(name, client, ticket))
         mail.send()
 
     @api.model
@@ -910,7 +914,7 @@ class PosOrderLine(models.Model):
     total_cost = fields.Float(string='Total cost', digits='Product Price', readonly=True)
     is_total_cost_computed = fields.Boolean(help="Allows to know if the total cost has already been computed or not")
     discount = fields.Float(string='Discount (%)', digits=0, default=0.0)
-    order_id = fields.Many2one('pos.order', string='Order Ref', ondelete='cascade', required=True)
+    order_id = fields.Many2one('pos.order', string='Order Ref', ondelete='cascade', required=True, index=True)
     tax_ids = fields.Many2many('account.tax', string='Taxes', readonly=True)
     tax_ids_after_fiscal_position = fields.Many2many('account.tax', compute='_get_tax_ids_after_fiscal_position', string='Taxes to Apply')
     pack_lot_ids = fields.One2many('pos.pack.operation.lot', 'pos_order_line_id', string='Lot/serial Number')
@@ -1102,13 +1106,12 @@ class PosOrderLine(models.Model):
                 pickings_to_confirm.action_confirm()
                 tracked_lines = order.lines.filtered(lambda l: l.product_id.tracking != 'none')
                 lines_by_tracked_product = groupby(sorted(tracked_lines, key=lambda l: l.product_id.id), key=lambda l: l.product_id.id)
-                mls_to_unlink = self.env['stock.move.line']
                 for product, lines in lines_by_tracked_product:
                     lines = self.env['pos.order.line'].concat(*lines)
-                    moves = pickings_to_confirm.move_lines.filtered(lambda m: m.product_id in tracked_lines.product_id)
-                    mls_to_unlink |= moves.move_line_ids
+                    moves = pickings_to_confirm.move_lines.filtered(lambda m: m.product_id.id == product)
+                    moves.move_line_ids.unlink()
                     moves._add_mls_related_to_order(lines, are_qties_done=False)
-                mls_to_unlink.unlink()
+                    moves._recompute_state()
         return True
 
     def _is_product_storable_fifo_avco(self):

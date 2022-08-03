@@ -342,9 +342,12 @@ class Website(models.Model):
 
     @api.model
     def configurator_recommended_themes(self, industry_id, palette):
-        domain = [('name', '=like', 'theme%'), ('name', 'not in', ['theme_default', 'theme_common'])]
+        domain = [('name', '=like', 'theme%'), ('name', 'not in', ['theme_default', 'theme_common']), ('state', '!=', 'uninstallable')]
         client_themes = request.env['ir.module.module'].search(domain).mapped('name')
-        client_themes_img = dict([(t, http.addons_manifest[t].get('images_preview_theme', {})) for t in client_themes])
+        client_themes_img = dict([
+            (t, http.addons_manifest[t].get('images_preview_theme', {}))
+            for t in client_themes if t in http.addons_manifest
+        ])
         themes_suggested = self._website_api_rpc(
             '/api/website/2/configurator/recommended_themes/%s' % industry_id,
             {'client_themes': client_themes_img}
@@ -1328,7 +1331,14 @@ class Website(models.Model):
             path = urls.url_quote_plus(request.httprequest.path, safe='/')
         lang_path = ('/' + lang.url_code) if lang != self.default_lang_id else ''
         canonical_query_string = '?%s' % urls.url_encode(canonical_params) if canonical_params else ''
-        return self.get_base_url() + lang_path + path + canonical_query_string
+
+        if lang_path and path == '/':
+            # We want `/fr_BE` not `/fr_BE/` for correct canonical on homepage
+            localized_path = lang_path
+        else:
+            localized_path = lang_path + path
+
+        return self.get_base_url() + localized_path + canonical_query_string
 
     def _get_canonical_url(self, canonical_params):
         """Returns the canonical URL for the current request."""

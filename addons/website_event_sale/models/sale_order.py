@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from odoo import api, models, _
+from odoo import api, fields, models, _
 from odoo.exceptions import UserError
 from odoo.osv import expression
 
@@ -40,11 +40,47 @@ class SaleOrder(models.Model):
             values['product_id'] = ticket.product_id.id
             values['event_id'] = ticket.event_id.id
             values['event_ticket_id'] = ticket.id
+            discount = 0
+            ticket_currency = ticket.product_id.currency_id
+            pricelist_currency = order.pricelist_id.currency_id
+            price_reduce = ticket.price_reduce
+            if ticket_currency != pricelist_currency:
+                price_reduce = ticket_currency._convert(
+                    price_reduce,
+                    pricelist_currency,
+                    order.company_id,
+                    order.date_order or fields.Datetime.now()
+                )
             if order.pricelist_id.discount_policy == 'without_discount':
-                values['price_unit'] = ticket.price
+                price = ticket.price
+                if price != 0:
+                    if ticket_currency != pricelist_currency:
+                        price = ticket_currency._convert(
+                            price,
+                            pricelist_currency,
+                            order.company_id,
+                            order.date_order or fields.Datetime.now()
+                        )
+                    discount = (price - price_reduce) / price * 100
+                    price_unit = price
+                    if discount < 0:
+                        discount = 0
+                        price_unit = price_reduce
+                else:
+                    price_unit = price_reduce
             else:
-                values['price_unit'] = ticket.price_reduce
-            values['name'] = ticket._get_ticket_multiline_description()
+                price_unit = price_reduce
+
+            if order.pricelist_id and order.partner_id:
+                order_line = order._cart_find_product_line(ticket.product_id.id)
+                if order_line:
+                    price_unit = self.env['account.tax']._fix_tax_included_price_company(price_unit, ticket.product_id.taxes_id, order_line[0].tax_id, self.company_id)
+
+            values.update(
+                discount=discount,
+                name=ticket._get_ticket_multiline_description(),
+                price_unit=price_unit,
+            )
 
         # avoid writing related values that end up locking the product record
         values.pop('event_ok', None)
@@ -81,13 +117,14 @@ class SaleOrder(models.Model):
 
         # case: buying tickets for a sold out ticket
         values = {}
-        if ticket and ticket.seats_limited and ticket.seats_available <= 0:
+        increased_quantity = new_qty > old_qty
+        if ticket and ticket.seats_limited and ticket.seats_available <= 0 and increased_quantity:
             values['warning'] = _('Sorry, The %(ticket)s tickets for the %(event)s event are sold out.') % {
                 'ticket': ticket.name,
                 'event': ticket.event_id.name}
             new_qty, set_qty, add_qty = 0, 0, -old_qty
         # case: buying tickets, too much attendees
-        elif ticket and ticket.seats_limited and new_qty > ticket.seats_available:
+        elif ticket and ticket.seats_limited and new_qty > ticket.seats_available and increased_quantity:
             values['warning'] = _('Sorry, only %(remaining_seats)d seats are still available for the %(ticket)s ticket for the %(event)s event.') % {
                 'remaining_seats': ticket.seats_available,
                 'ticket': ticket.name,
